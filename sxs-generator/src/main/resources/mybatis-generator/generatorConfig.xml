@@ -28,7 +28,7 @@
                         connectionURL="jdbc:mysql://60.190.63.14:3306/dky" userId="root"
                         password="dkyroot"/>
 
-        <javaModelGenerator targetPackage="com.dky.website.common.bean"
+        <javaModelGenerator targetPackage="com.sxs.common.bean"
                             targetProject="E:/idea15-works/dky-website-1.0/website-common/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
@@ -39,7 +39,7 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="com.dky.website.business.mapper"
+        <javaClientGenerator targetPackage="com.sxs.business.mapper"
                              targetProject="E:/idea15-works/dky-website-1.0/website-business/src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>

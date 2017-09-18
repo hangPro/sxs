@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dky.website.business.mapper.MenuMapper">
-  <resultMap id="BaseResultMap" type="com.dky.website.common.bean.Menu">
+<mapper namespace="com.sxs.business.mapper.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.sxs.common.bean.Menu">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="menuId" jdbcType="BIGINT" property="menuid" />
     <result column="menuName" jdbcType="VARCHAR" property="menuname" />
@@ -24,7 +24,7 @@
     delete from t_menu
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.dky.website.common.bean.Menu">
+  <insert id="insert" parameterType="com.sxs.common.bean.Menu">
     insert into t_menu (id, menuId, menuName, 
       linkUrl, icon, parentMenuId, 
       orderClomun, createTime)
@@ -32,7 +32,7 @@
       #{linkurl,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{parentmenuid,jdbcType=BIGINT}, 
       #{orderclomun,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.dky.website.common.bean.Menu">
+  <insert id="insertSelective" parameterType="com.sxs.common.bean.Menu">
     insert into t_menu
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -87,7 +87,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dky.website.common.bean.Menu">
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxs.common.bean.Menu">
     update t_menu
     <set>
       <if test="menuid != null">
@@ -114,7 +114,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dky.website.common.bean.Menu">
+  <update id="updateByPrimaryKey" parameterType="com.sxs.common.bean.Menu">
     update t_menu
     set menuId = #{menuid,jdbcType=BIGINT},
       menuName = #{menuname,jdbcType=VARCHAR},
@@ -126,7 +126,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-    <select id="queryUserMenuWithParent" resultType="com.dky.website.common.bean.Menu">
+    <select id="queryUserMenuWithParent" resultType="com.sxs.common.bean.Menu">
         SELECT m.* FROM t_user_menu um
         INNER JOIN t_menu m
         ON um.menuId = m.id

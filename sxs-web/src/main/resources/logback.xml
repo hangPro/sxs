@@ -23,10 +23,10 @@
 	<!-- [公共Appender] 默认 -->
 	<appender name="STDOUT_LOGGING"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${LOG_HOME}/dky/dky-website.log</file>
+		<file>${LOG_HOME}/sxs/sxs.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 		  	<!--日志文件输出的文件名 -->  
-			<fileNamePattern>${LOG_HOME}/dky/dky-website.%d{yyyy-MM-dd}.log
+			<fileNamePattern>${LOG_HOME}/sxs/sxs.%d{yyyy-MM-dd}.log
 			</fileNamePattern>
 		</rollingPolicy>
 		<encoder>

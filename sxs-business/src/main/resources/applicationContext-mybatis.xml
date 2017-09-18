@@ -11,14 +11,14 @@
 	<description>Spring数据库配置</description>
 
     <!--MyIbatis分页-->
-    <bean id="paginationInterceptor" class="com.dky.website.business.plugin.PageHelper"></bean>
+    <bean id="paginationInterceptor" class="com.sxs.business.plugin.PageHelper"></bean>
 
 	<!-- MyBatis配置 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
         <property name="configLocation" value="classpath:mybatis-config.xml"></property>
 		<!-- 自动扫描po目录, 省掉Configuration.xml里的手工配置 -->
-		<property name="typeAliasesPackage" value="com.dky.website.common.bean;com.dky.website.common.response" />
+		<property name="typeAliasesPackage" value="com.sxs.common.bean;com.sxs.common.response" />
 		<!-- 显式指定Mapper文件位置 -->
 		<property name="mapperLocations" value="classpath:/mybatis/*Mapper.xml" />
         <property name="plugins">
@@ -28,9 +28,9 @@
 
 	<!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.dky.website.business.mapper" />
+		<property name="basePackage" value="com.sxs.business.mapper" />
 		<property name="annotationClass"
-			value="com.dky.website.business.mapper.MyBatisRepository" />
+			value="com.sxs.business.mapper.MyBatisRepository" />
 	</bean>
 
 	<!-- 事务管理器配置, Jpa单数据源事务 -->

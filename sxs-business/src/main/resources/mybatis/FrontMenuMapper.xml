@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dky.website.business.mapper.FrontMenuMapper" >
-  <resultMap id="BaseResultMap" type="com.dky.website.common.bean.FrontMenu" >
+<mapper namespace="com.sxs.business.mapper.FrontMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.sxs.common.bean.FrontMenu" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
@@ -14,7 +14,7 @@
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.dky.website.common.bean.FrontMenu" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.sxs.common.bean.FrontMenu" extends="BaseResultMap" >
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -36,7 +36,7 @@
     delete from t_front_menu
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.dky.website.common.bean.FrontMenu" >
+  <insert id="insert" parameterType="com.sxs.common.bean.FrontMenu" >
     insert into t_front_menu (id, type, menu_name, menu_en_name,
       parent_id, classify, img_url, 
       ordered, create_time, update_time, 
@@ -46,7 +46,7 @@
       #{ordered,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{status,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.dky.website.common.bean.FrontMenu" >
+  <insert id="insertSelective" parameterType="com.sxs.common.bean.FrontMenu" >
     insert into t_front_menu
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -125,7 +125,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dky.website.common.bean.FrontMenu" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxs.common.bean.FrontMenu" >
     update t_front_menu
     <set >
       <if test="type != null" >
@@ -164,7 +164,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dky.website.common.bean.FrontMenu" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sxs.common.bean.FrontMenu" >
     update t_front_menu
     set type = #{type,jdbcType=VARCHAR},
       menu_name = #{menuName,jdbcType=VARCHAR},
@@ -179,7 +179,7 @@
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dky.website.common.bean.FrontMenu" >
+  <update id="updateByPrimaryKey" parameterType="com.sxs.common.bean.FrontMenu" >
     update t_front_menu
     set type = #{type,jdbcType=VARCHAR},
       menu_name = #{menuName,jdbcType=VARCHAR},
@@ -194,7 +194,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-    <select id="query"  resultMap="ResultMapWithBLOBs" parameterType="com.dky.website.common.bean.FrontMenu" >
+    <select id="query"  resultMap="ResultMapWithBLOBs" parameterType="com.sxs.common.bean.FrontMenu" >
         select
         <include refid="Base_Column_List" />
         ,

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dky.website.business.mapper.ShowMapper" >
-  <resultMap id="BaseResultMap" type="com.dky.website.common.bean.Show" >
+<mapper namespace="com.sxs.business.mapper.ShowMapper" >
+  <resultMap id="BaseResultMap" type="com.sxs.common.bean.Show" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="showSeason" property="showseason" jdbcType="VARCHAR" />
     <result column="image" property="image" jdbcType="VARCHAR" />
@@ -22,7 +22,7 @@
     delete from t_show
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.dky.website.common.bean.Show" >
+  <insert id="insert" parameterType="com.sxs.common.bean.Show" >
     insert into t_show (id, showSeason, image, 
       createTime, updateTime, status
       )
@@ -30,7 +30,7 @@
       #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.dky.website.common.bean.Show" >
+  <insert id="insertSelective" parameterType="com.sxs.common.bean.Show" >
     insert into t_show
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dky.website.common.bean.Show" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxs.common.bean.Show" >
     update t_show
     <set >
       <if test="showseason != null" >
@@ -94,7 +94,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dky.website.common.bean.Show" >
+  <update id="updateByPrimaryKey" parameterType="com.sxs.common.bean.Show" >
     update t_show
     set showSeason = #{showseason,jdbcType=VARCHAR},
       image = #{image,jdbcType=VARCHAR},
@@ -136,7 +136,7 @@
     order by t.createTime desc
   </select>
 
-  <select id="query" resultMap="BaseResultMap" parameterType="com.dky.website.common.bean.Show">
+  <select id="query" resultMap="BaseResultMap" parameterType="com.sxs.common.bean.Show">
     select
     <include refid="Base_Column_List" />
     from t_show
@@ -144,7 +144,7 @@
     <include refid="extendedOrderByClause"></include>
   </select>
 
-  <select id="queryGroupBySeason" resultType="com.dky.website.common.bean.ShowGroupSeason" parameterType="com.dky.website.common.bean.Show">
+  <select id="queryGroupBySeason" resultType="com.sxs.common.bean.ShowGroupSeason" parameterType="com.sxs.common.bean.Show">
     SELECT GROUP_CONCAT(id) as groupConcatIds,GROUP_CONCAT(image) as getGroupConcatImages,showSeason as showseason
     FROM t_show WHERE STATUS = 0
     <if test="showseason != null and ''!= showseason">and showseason = #{showseason}</if>

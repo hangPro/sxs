@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dky.website.business.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.dky.website.common.bean.User" >
+<mapper namespace="com.sxs.business.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.sxs.common.bean.User" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -25,7 +25,7 @@
     delete from t_user
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.dky.website.common.bean.User" >
+  <insert id="insert" parameterType="com.sxs.common.bean.User" >
     insert into t_user (id, username, password,
     nickname, phone, status,
     createTime, email, photo
@@ -35,7 +35,7 @@
     #{createtime,jdbcType=TIMESTAMP}, #{email,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}
     )
   </insert>
-  <insert id="insertSelective" parameterType="com.dky.website.common.bean.User" >
+  <insert id="insertSelective" parameterType="com.sxs.common.bean.User" >
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -96,7 +96,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dky.website.common.bean.User" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxs.common.bean.User" >
     update t_user
     <set >
       <if test="username != null" >
@@ -126,7 +126,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dky.website.common.bean.User" >
+  <update id="updateByPrimaryKey" parameterType="com.sxs.common.bean.User" >
     update t_user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -139,7 +139,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <select id="query"  resultType="com.dky.website.common.bean.User" parameterType="com.dky.website.common.bean.User" >
+  <select id="query" resultType="com.sxs.common.bean.User" parameterType="com.sxs.common.bean.User" >
     select
     <include refid="Base_Column_List" />
     from t_user

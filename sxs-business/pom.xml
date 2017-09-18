@@ -88,6 +88,12 @@
         </dependency>
         <!-- AOP end -->
 
+        <!-- redis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.sxs</groupId>
             <artifactId>sxs-common</artifactId>

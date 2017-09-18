@@ -83,7 +83,7 @@
                         </connector>
                     </connectors>
                     <webAppConfig>
-                        <contextPath>/sxs</contextPath>
+                        <contextPath>/sxs-web</contextPath>
                     </webAppConfig>
                     <systemProperties>
                         <systemProperty>

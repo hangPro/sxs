@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dky.website.business.mapper.ProductImgMapper" >
-  <resultMap id="BaseResultMap" type="com.dky.website.common.bean.ProductImg" >
+<mapper namespace="com.sxs.business.mapper.ProductImgMapper" >
+  <resultMap id="BaseResultMap" type="com.sxs.common.bean.ProductImg" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="product_id" property="productId" jdbcType="BIGINT" />
     <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
@@ -22,7 +22,7 @@
     delete from t_product_img
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.dky.website.common.bean.ProductImg" >
+  <insert id="insert" parameterType="com.sxs.common.bean.ProductImg" >
     insert into t_product_img (id, product_id, img_url, 
       create_time, update_time, status
       )
@@ -30,7 +30,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.dky.website.common.bean.ProductImg" >
+  <insert id="insertSelective" parameterType="com.sxs.common.bean.ProductImg" >
     insert into t_product_img
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dky.website.common.bean.ProductImg" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxs.common.bean.ProductImg" >
     update t_product_img
     <set >
       <if test="productId != null" >
@@ -94,7 +94,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dky.website.common.bean.ProductImg" >
+  <update id="updateByPrimaryKey" parameterType="com.sxs.common.bean.ProductImg" >
     update t_product_img
     set product_id = #{productId,jdbcType=BIGINT},
       img_url = #{imgUrl,jdbcType=VARCHAR},
@@ -104,14 +104,14 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-    <select id="query" resultMap="BaseResultMap"  parameterType="com.dky.website.common.bean.ProductImg" >
+    <select id="query" resultMap="BaseResultMap"  parameterType="com.sxs.common.bean.ProductImg" >
         select
         <include refid="Base_Column_List" />
         from t_product_img
         <include refid="whereClause"></include>
     </select>
 
-    <select id="queryProductImgList" resultMap="BaseResultMap"  parameterType="com.dky.website.common.bean.ProductImg" >
+    <select id="queryProductImgList" resultMap="BaseResultMap"  parameterType="com.sxs.common.bean.ProductImg" >
         select
         <include refid="Base_Column_List" />
         from t_product_img_list

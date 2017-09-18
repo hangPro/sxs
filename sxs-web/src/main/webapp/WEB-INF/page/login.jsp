@@ -55,7 +55,7 @@
     </div>
     <div class="signup-footer">
         <div class="pull-left">
-            &copy; 旦可韵
+            &copy; 香水树
         </div>
     </div>
 </div>
@@ -102,7 +102,7 @@
                         swal("提示！", "登陆成功!", "success");
                         window.location.href = "${ctx}/index";
                     }else{
-                        swal("提示！",result.msg, "error");
+                        window.location.href = "${ctx}/login";
                     }
                 });
                 return false;
