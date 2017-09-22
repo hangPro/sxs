@@ -25,27 +25,27 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://60.190.63.14:3306/dky" userId="root"
-                        password="dkyroot"/>
+                        connectionURL="jdbc:mysql://39.108.140.135:3306/yejing" userId="root"
+                        password="yejing"/>
 
         <javaModelGenerator targetPackage="com.sxs.common.bean"
-                            targetProject="E:/idea15-works/dky-website-1.0/website-common/src/main/java">
+                            targetProject="E:\idea15-works\sxs\sxs-common\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="mybatis"
-                         targetProject="E:/idea15-works/dky-website-1.0/website-business/src/main/resources">
+                         targetProject="E:\idea15-works\sxs\sxs-business\src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <javaClientGenerator targetPackage="com.sxs.business.mapper"
-                             targetProject="E:/idea15-works/dky-website-1.0/website-business/src/main/java" type="XMLMAPPER">
+                             targetProject="E:\idea15-works\sxs\sxs-business\src\main\java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
 
-        <table tableName="t_show" domainObjectName="Show"
+        <table tableName="t_product" domainObjectName="Product"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

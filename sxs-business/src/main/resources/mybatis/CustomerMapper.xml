@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sxs.business.mapper.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.sxs.common.bean.Customer" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="customerName" property="customername" jdbcType="VARCHAR" />
+    <result column="customerPhone" property="customerphone" jdbcType="VARCHAR" />
+    <result column="orderTime" property="ordertime" jdbcType="TIMESTAMP" />
+    <result column="sendTime" property="sendtime" jdbcType="TIMESTAMP" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="companyName" property="companyname" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="wechart" property="wechart" jdbcType="VARCHAR" />
+    <result column="customerSex" property="customersex" jdbcType="SMALLINT" />
+    <result column="clothNo" property="clothno" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="orderAmount" property="orderamount" jdbcType="DECIMAL" />
+    <result column="depositAmount" property="depositamount" jdbcType="DECIMAL" />
+    <result column="clothDesc" property="clothdesc" jdbcType="VARCHAR" />
+    <result column="bodyStatus" property="bodystatus" jdbcType="SMALLINT" />
+    <result column="sendStatus" property="sendstatus" jdbcType="SMALLINT" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type, customerName, customerPhone, orderTime, sendTime, createTime, updateTime, 
+    companyName, address, wechart, customerSex, clothNo, price, orderAmount, depositAmount, 
+    clothDesc, bodyStatus, sendStatus, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_customer
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_customer
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.sxs.common.bean.Customer" >
+    insert into t_customer (id, type, customerName, 
+      customerPhone, orderTime, sendTime, 
+      createTime, updateTime, companyName, 
+      address, wechart, customerSex, 
+      clothNo, price, orderAmount, 
+      depositAmount, clothDesc, bodyStatus, 
+      sendStatus, status)
+    values (#{id,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, #{customername,jdbcType=VARCHAR}, 
+      #{customerphone,jdbcType=VARCHAR}, #{ordertime,jdbcType=TIMESTAMP}, #{sendtime,jdbcType=TIMESTAMP}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{companyname,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{wechart,jdbcType=VARCHAR}, #{customersex,jdbcType=SMALLINT}, 
+      #{clothno,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{orderamount,jdbcType=DECIMAL}, 
+      #{depositamount,jdbcType=DECIMAL}, #{clothdesc,jdbcType=VARCHAR}, #{bodystatus,jdbcType=SMALLINT}, 
+      #{sendstatus,jdbcType=SMALLINT}, #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxs.common.bean.Customer" >
+    insert into t_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="customername != null" >
+        customerName,
+      </if>
+      <if test="customerphone != null" >
+        customerPhone,
+      </if>
+      <if test="ordertime != null" >
+        orderTime,
+      </if>
+      <if test="sendtime != null" >
+        sendTime,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="companyname != null" >
+        companyName,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="wechart != null" >
+        wechart,
+      </if>
+      <if test="customersex != null" >
+        customerSex,
+      </if>
+      <if test="clothno != null" >
+        clothNo,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="orderamount != null" >
+        orderAmount,
+      </if>
+      <if test="depositamount != null" >
+        depositAmount,
+      </if>
+      <if test="clothdesc != null" >
+        clothDesc,
+      </if>
+      <if test="bodystatus != null" >
+        bodyStatus,
+      </if>
+      <if test="sendstatus != null" >
+        sendStatus,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="customername != null" >
+        #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="customerphone != null" >
+        #{customerphone,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertime != null" >
+        #{ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendtime != null" >
+        #{sendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyname != null" >
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="wechart != null" >
+        #{wechart,jdbcType=VARCHAR},
+      </if>
+      <if test="customersex != null" >
+        #{customersex,jdbcType=SMALLINT},
+      </if>
+      <if test="clothno != null" >
+        #{clothno,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="orderamount != null" >
+        #{orderamount,jdbcType=DECIMAL},
+      </if>
+      <if test="depositamount != null" >
+        #{depositamount,jdbcType=DECIMAL},
+      </if>
+      <if test="clothdesc != null" >
+        #{clothdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="bodystatus != null" >
+        #{bodystatus,jdbcType=SMALLINT},
+      </if>
+      <if test="sendstatus != null" >
+        #{sendstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxs.common.bean.Customer" >
+    update t_customer
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="customername != null" >
+        customerName = #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="customerphone != null" >
+        customerPhone = #{customerphone,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertime != null" >
+        orderTime = #{ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendtime != null" >
+        sendTime = #{sendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyname != null" >
+        companyName = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="wechart != null" >
+        wechart = #{wechart,jdbcType=VARCHAR},
+      </if>
+      <if test="customersex != null" >
+        customerSex = #{customersex,jdbcType=SMALLINT},
+      </if>
+      <if test="clothno != null" >
+        clothNo = #{clothno,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="orderamount != null" >
+        orderAmount = #{orderamount,jdbcType=DECIMAL},
+      </if>
+      <if test="depositamount != null" >
+        depositAmount = #{depositamount,jdbcType=DECIMAL},
+      </if>
+      <if test="clothdesc != null" >
+        clothDesc = #{clothdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="bodystatus != null" >
+        bodyStatus = #{bodystatus,jdbcType=SMALLINT},
+      </if>
+      <if test="sendstatus != null" >
+        sendStatus = #{sendstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxs.common.bean.Customer" >
+    update t_customer
+    set type = #{type,jdbcType=VARCHAR},
+      customerName = #{customername,jdbcType=VARCHAR},
+      customerPhone = #{customerphone,jdbcType=VARCHAR},
+      orderTime = #{ordertime,jdbcType=TIMESTAMP},
+      sendTime = #{sendtime,jdbcType=TIMESTAMP},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      companyName = #{companyname,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      wechart = #{wechart,jdbcType=VARCHAR},
+      customerSex = #{customersex,jdbcType=SMALLINT},
+      clothNo = #{clothno,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      orderAmount = #{orderamount,jdbcType=DECIMAL},
+      depositAmount = #{depositamount,jdbcType=DECIMAL},
+      clothDesc = #{clothdesc,jdbcType=VARCHAR},
+      bodyStatus = #{bodystatus,jdbcType=SMALLINT},
+      sendStatus = #{sendstatus,jdbcType=SMALLINT},
+      status = #{status,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

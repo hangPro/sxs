@@ -1,16 +1,18 @@
-package com.sxs.common.session;
+package com.sxs.common.bean;
 
-import com.sxs.common.constats.GlobConts;
+import java.io.Serializable;
 
 /**
- * Created by wonpera on 2017/1/6.
+ * Created by wangpeng on 2016/12/13.
  */
-public class WebPageParameter extends SessionParameter {
+public class PageObjectBase implements Serializable {
 
-    private Integer requestOffset;
-    private Integer requestCount;
+    private static final long serialVersionUID = 1L;
+    public Integer requestOffset;
+    public Integer requestCount;
+
     private Integer pageNo;
-    private Integer pageSize = GlobConts.DEFUALT_PAGE_SIZE;
+    private Integer pageSize;
 
     public Integer getRequestOffset() {
         return requestOffset;
@@ -42,19 +44,5 @@ public class WebPageParameter extends SessionParameter {
 
     public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
-    }
-
-    /**
-     * 计算分页起始行
-     */
-    public void calculatePageLimit() {
-        if (pageNo == null) {
-            pageNo = 1;
-        }
-        if (pageSize == null) {
-            pageSize = GlobConts.DEFUALT_PAGE_SIZE;
-        }
-        this.requestOffset = (pageNo - 1) * pageSize + 1;
-        this.requestCount = pageNo * pageSize;
     }
 }
