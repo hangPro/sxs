@@ -4,7 +4,7 @@ import com.sxs.common.base.BaseParameter;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
- * Created by wonpera on 2017/2/24.
+ * Created by hang on 2017/2/24.
  */
 public class AddFrontSuggestParam extends BaseParameter {
 

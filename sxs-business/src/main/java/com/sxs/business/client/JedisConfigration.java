@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * redis客户端
- * Created by wonpera on 2017/1/3.
+ * Created by hang on 2017/1/3.
  */
 @Component
 public class JedisConfigration {

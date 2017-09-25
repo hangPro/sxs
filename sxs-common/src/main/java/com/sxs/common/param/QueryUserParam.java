@@ -4,7 +4,7 @@ import com.sxs.common.base.WebPageParameter;
 
 
 /**
- * Created by wonpera on 2017/2/18.
+ * Created by hang on 2017/2/18.
  */
 public class QueryUserParam extends WebPageParameter {
 

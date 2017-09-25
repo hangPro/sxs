@@ -45,10 +45,11 @@
         </javaClientGenerator>
 
 
-        <table tableName="t_product" domainObjectName="Product"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
+        <table tableName="t_customer_product" domainObjectName="CustomerProduct"
+               enableCountByExample="false" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="true"/>
             <!--<columnRenamingRule searchString="^D_"
                                 replaceString=""/>-->
         </table>

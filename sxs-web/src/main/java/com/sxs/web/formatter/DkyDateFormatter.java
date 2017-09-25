@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Created by wonpera on 2017/1/7.
+ * Created by hang on 2017/1/7.
  */
 public class DkyDateFormatter implements Formatter<Date> {
     @Override

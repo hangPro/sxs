@@ -31,11 +31,24 @@
                 <div class="ibox-content">
                     <form role="form" class="form-inline" id="searchForm">
                         <div class="form-group">
-                            <label>产品类型:</label>
+                            <label>类型:</label>
                             <select name="type" id="searchType" class="form-control">
-                                <option value="">---请选择---</option>
+                                <option value="1">衬衫</option>
+                                <option value="2">西装</option>
+                                <option value="3">马甲</option>
                             </select>
-                        </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div class="form-group">
+                            <label>姓名:</label>
+                            <input type="text" class="form-control" id="customerName" placeholder="姓名">
+                        </div>
+                        <div class="form-group">
+                            <label>地址:</label>
+                            <input type="text" class="form-control" id="address" placeholder="地址">
+                        </div>
+                        <div class="form-group">
+                            <label>选择日期：</label>
+                        </div>
                         <div class="form-group">
                             <label>季节:</label>
                             <select name="season" id="searchSeason" class="form-control">
@@ -44,19 +57,15 @@
                         </div>&nbsp;&nbsp;&nbsp;&nbsp;
                         <button type="button" class="btn btn-w-m btn-primary" id="searchBth" >查询</button>
                         <button type="button" class="btn btn-w-m btn-success" id="resetBtn">重置</button>
+                        <button type="button" class="btn btn-w-m btn-info" id="addBtn">新增</button>
                     </form>
                 </div>
-                <div class="ibox-content">
-                    <button type="button" class="btn btn-w-m btn-success" id="addBtn">新增</button>
-                </div>
-                <div class="ibox-content">
                     <!-- <h4>用户列表</h4> -->
                     <div class="jqGrid_wrapper">
                         <table id="table_list"></table>
                         <div id="pager_list"></div>
                     </div>
                     <p>&nbsp;</p>
-                </div>
             </div>
         </div>
     </div>
@@ -118,22 +127,13 @@
     var seasonList;
     var typeList;
     $(document).ready(function () {
-        postAsync('${ctx}/season/getSeanList',{type:'1'},function(result){seasonList=result.data;})
-        $.each(seasonList,function(){
-            seasons[this.id] = this.name;
-        });
-        postAsync('${ctx}/fmenu/getProductType',{},function(result){typeList=result.data;})
-        $.each(typeList,function(){
-            types[this.id] = this.menuName;
-        });
-        $.each(typeList,function(){
-            var me = this;
-            $("<option value='"+me.id+"'>"+me.menuName+"</option>").appendTo("#searchType");
-        });
-        $.each(seasonList,function(){
-            var me = this;
-            $("<option value='"+me.id+"'>"+me.name+"</option>").appendTo("#searchSeason");
-        });
+         $('#datetimepicker1').datepicker({
+                format: 'YYYY-MM-DD'
+            });
+        var types = new Array();
+        $("#searchType option").each(function(){  //遍历所有option
+              types[$(this).val()] = $(this).html();
+         })
         $.jgrid.defaults.styleUI = 'Bootstrap';
         $("#table_list").jqGrid({
             datatype: "json",
@@ -144,7 +144,7 @@
             shrinkToFit: true,
             rowNum: 14,
             rowList: [10, 20, 30],
-            colNames: ['id', '类型', '季节','图片','排序','创建时间', '操作'],
+            colNames: ['id', '姓名', '类型', '订单日期','公司','区域','送货时间', '操作'],
             colModel: [
                 {
                     name: 'id',
@@ -153,38 +153,37 @@
                     sorttype: "int"
                 },
                 {
+                    name: 'customerName',
+                    index: 'customerName',
+                    width: 90
+                },
+                {
                     name: 'type',
                     index: 'type',
                     width: 90,
                     formatter : function(cellvalue, options, rowObject){
-                        return types[cellvalue];
+                       return types[cellvalue];
                     }
                 },
                 {
-                    name:'season',
-                    index:'season',
-                    width : 100,
-                    formatter : function(cellvalue, options, rowObject){
-                        return seasons[cellvalue];
-                    }
+                    name: 'orderTime',
+                    index: 'orderTime',
+                    width: 90
                 },
                 {
-                    name:'imgUrl',
-                    index:'imgUrl',
-                    width : 200,
-                    formatter : function(cellvalue, options, rowObject){
-                        return '<span ><img src="${ctx}/'+cellvalue+'" width="100px" height="100px" /></span>';
-                    }
+                    name:'companyName',
+                    index:'companyName',
+                    width : 100
                 },
                 {
-                    name:'ordered',
-                    index:'ordered',
-                    width : 90
+                    name:'address',
+                    index:'address',
+                    width : 100
                 },
                 {
-                    name: 'createTime',
-                    index: 'createTime',
-                    width: 150
+                    name:'sendTime',
+                    index:'sendTime',
+                    width : 200
                 },
                 {
                     name: 'id',

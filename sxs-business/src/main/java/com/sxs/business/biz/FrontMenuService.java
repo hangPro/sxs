@@ -10,7 +10,7 @@ import com.sxs.common.response.ReturnT;
 import java.util.List;
 
 /**
- * Created by wonpera on 2017/2/25.
+ * Created by hang on 2017/2/25.
  */
 public interface FrontMenuService {
 

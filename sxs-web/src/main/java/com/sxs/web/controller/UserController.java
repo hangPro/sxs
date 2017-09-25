@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by wonpera on 2017/2/18.
+ * Created by hang on 2017/2/18.
  */
 @RestController
 @RequestMapping("user")

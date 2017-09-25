@@ -3,7 +3,7 @@ package com.sxs.common.session;
 import com.sxs.common.constats.GlobConts;
 
 /**
- * Created by wonpera on 2017/1/6.
+ * Created by hang on 2017/1/6.
  */
 public class WebPageParameter extends SessionParameter {
 

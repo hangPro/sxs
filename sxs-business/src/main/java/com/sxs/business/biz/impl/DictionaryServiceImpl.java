@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 数据字典
- * Created by wonpera on 2017/2/25.
+ * Created by hang on 2017/2/25.
  */
 @Service
 public class DictionaryServiceImpl implements DictionaryService {

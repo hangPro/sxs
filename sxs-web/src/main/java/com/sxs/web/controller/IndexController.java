@@ -1,10 +1,10 @@
 package com.sxs.web.controller;
 
 import com.sxs.business.biz.MenuService;
-import com.sxs.common.bean.User;
-import com.sxs.common.constats.GlobConts;
+import com.sxs.common.bean.SessionUser;
 import com.sxs.common.param.QueryMenuParameter;
 import com.sxs.common.response.ReturnT;
+import com.sxs.common.utils.DkyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by wonpera on 2017/2/18.
+ * Created by hang on 2017/2/18.
  */
 @RestController
 public class IndexController {
@@ -43,8 +43,7 @@ public class IndexController {
 
     @RequestMapping("/index/getSessionUser")
     public ReturnT getSessionUser(HttpServletRequest request){
-        User user = (User)
-                request.getSession().getAttribute(GlobConts.CURRENT_SESSION_KEY);
+        SessionUser user = DkyUtils.getCurrentUser();
         if(user == null){
             return new ReturnT().failureData("用户未登录");
         }

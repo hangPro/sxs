@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * Created by wonpera on 2017/2/25.
+ * Created by hang on 2017/2/25.
  */
 @RestController
 @RequestMapping(value = "dic")

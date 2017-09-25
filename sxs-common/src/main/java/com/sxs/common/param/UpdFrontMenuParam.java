@@ -4,7 +4,7 @@ import com.sxs.common.base.BaseParameter;
 
 
 /**
- * Created by wonpera on 2017/2/25.
+ * Created by hang on 2017/2/25.
  */
 public class UpdFrontMenuParam extends BaseParameter {
 

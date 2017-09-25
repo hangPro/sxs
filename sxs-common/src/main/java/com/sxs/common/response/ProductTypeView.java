@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by wonpera on 2017/3/5.
+ * Created by hang on 2017/3/5.
  */
 public class ProductTypeView extends BaseParameter {
 

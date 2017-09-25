@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 校验切面类
- * Created by wonpera on 2017/1/4.
+ * Created by hang on 2017/1/4.
  */
 @Aspect
 @Component

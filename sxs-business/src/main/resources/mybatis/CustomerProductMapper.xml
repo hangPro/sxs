@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxs.business.mapper.CustomerProductMapper">
+  <resultMap id="BaseResultMap" type="com.sxs.common.bean.CustomerProduct">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="customerName" jdbcType="VARCHAR" property="customerName" />
+    <result column="customerPhone" jdbcType="VARCHAR" property="customerPhone" />
+    <result column="orderTime" jdbcType="TIMESTAMP" property="orderTime" />
+    <result column="sendTime" jdbcType="TIMESTAMP" property="sendTime" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="companyName" jdbcType="VARCHAR" property="companyName" />
+    <result column="tbAccNo" jdbcType="VARCHAR" property="tbAccNo" />
+    <result column="tbOrderNo" jdbcType="VARCHAR" property="tbOrderNo" />
+    <result column="orderNo" jdbcType="VARCHAR" property="orderNo" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="wechart" jdbcType="VARCHAR" property="wechart" />
+    <result column="customerSex" jdbcType="SMALLINT" property="customerSex" />
+    <result column="clothNo" jdbcType="VARCHAR" property="clothNo" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="orderAmount" jdbcType="DECIMAL" property="orderAmount" />
+    <result column="depositAmount" jdbcType="DECIMAL" property="depositAmount" />
+    <result column="clothDesc" jdbcType="VARCHAR" property="clothDesc" />
+    <result column="bodyStatus" jdbcType="SMALLINT" property="bodyStatus" />
+    <result column="sendStatus" jdbcType="SMALLINT" property="sendStatus" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="qycNum" jdbcType="INTEGER" property="qycNum" />
+    <result column="hycNum" jdbcType="INTEGER" property="hycNum" />
+    <result column="kcNum" jdbcType="INTEGER" property="kcNum" />
+    <result column="qcNum" jdbcType="INTEGER" property="qcNum" />
+    <result column="xwNum" jdbcType="INTEGER" property="xwNum" />
+    <result column="ywNum" jdbcType="INTEGER" property="ywNum" />
+    <result column="xbNum" jdbcType="INTEGER" property="xbNum" />
+    <result column="twNum" jdbcType="INTEGER" property="twNum" />
+    <result column="jkNum" jdbcType="INTEGER" property="jkNum" />
+    <result column="hdNum" jdbcType="INTEGER" property="hdNum" />
+    <result column="xcNum" jdbcType="INTEGER" property="xcNum" />
+    <result column="zdNum" jdbcType="INTEGER" property="zdNum" />
+    <result column="xkNum" jdbcType="INTEGER" property="xkNum" />
+    <result column="kjkNum" jdbcType="INTEGER" property="kjkNum" />
+    <result column="sxfNum" jdbcType="INTEGER" property="sxfNum" />
+    <result column="zhidNum" jdbcType="INTEGER" property="zhidNum" />
+    <result column="xxfNum" jdbcType="INTEGER" property="xxfNum" />
+    <result column="qxkNum" jdbcType="INTEGER" property="qxkNum" />
+    <result column="hbkNum" jdbcType="INTEGER" property="hbkNum" />
+    <result column="xjNum" jdbcType="INTEGER" property="xjNum" />
+    <result column="xgNum" jdbcType="INTEGER" property="xgNum" />
+    <result column="lwNum" jdbcType="INTEGER" property="lwNum" />
+    <result column="tbActive" jdbcType="SMALLINT" property="tbActive" />
+    <result column="ljActive" jdbcType="SMALLINT" property="ljActive" />
+    <result column="pjActive" jdbcType="SMALLINT" property="pjActive" />
+    <result column="txActive" jdbcType="SMALLINT" property="txActive" />
+    <result column="lk1Active" jdbcType="SMALLINT" property="lk1Active" />
+    <result column="lk2Active" jdbcType="SMALLINT" property="lk2Active" />
+    <result column="lk3Active" jdbcType="SMALLINT" property="lk3Active" />
+    <result column="hzkcActive" jdbcType="SMALLINT" property="hzkcActive" />
+    <result column="lbkcActive" jdbcType="SMALLINT" property="lbkcActive" />
+    <result column="orderStatus" jdbcType="SMALLINT" property="orderStatus" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, type, customerName, customerPhone, orderTime, sendTime, createTime, updateTime, 
+    companyName, tbAccNo, tbOrderNo, orderNo, address, wechart, customerSex, clothNo, 
+    price, orderAmount, depositAmount, clothDesc, bodyStatus, sendStatus, status, qycNum, 
+    hycNum, kcNum, qcNum, xwNum, ywNum, xbNum, twNum, jkNum, hdNum, xcNum, zdNum, xkNum, 
+    kjkNum, sxfNum, zhidNum, xxfNum, qxkNum, hbkNum, xjNum, xgNum, lwNum, tbActive, ljActive, 
+    pjActive, txActive, lk1Active, lk2Active, lk3Active, hzkcActive, lbkcActive, orderStatus
+  </sql>
+
+  <sql id="whereClause">
+    <where>
+      <if test="id != null">and id = #{id}</if>
+      <if test="customerName != null and ''!= customerName">and customerName = #{customerName}</if>
+      <if test="address != null and ''!= address">and address = #{address}</if>
+      <if test="orderTime != null and ''!= orderTime">and orderTime = #{orderTime}</if>
+      <if test="companyName != null and ''!= companyName">and companyName = #{companyName}</if>
+      <if test="orderNo != null and ''!= orderNo">and orderNo = #{orderNo}</if>
+      <if test="wechart != null and ''!= wechart">and wechart = #{wechart}</if>
+      <if test="tbAccNo != null and ''!= tbAccNo">and tbAccNo = #{tbAccNo}</if>
+      <if test="tbOrderNo != null and ''!= tbOrderNo">and tbOrderNo = #{tbOrderNo}</if>
+      <if test="orderStatus != null and ''!= orderStatus">and orderStatus = #{orderStatus}</if>
+    </where>
+  </sql>
+
+  <select id="query" resultMap="BaseResultMap" parameterType="com.sxs.common.bean.CustomerProduct" >
+    select <include refid="Base_Column_List" />
+    from t_customer_product
+    <include refid="whereClause" />
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_customer_product
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_customer_product
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" parameterType="com.sxs.common.bean.CustomerProduct">
+    insert into t_customer_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="customerName != null">
+        customerName,
+      </if>
+      <if test="customerPhone != null">
+        customerPhone,
+      </if>
+      <if test="orderTime != null">
+        orderTime,
+      </if>
+      <if test="sendTime != null">
+        sendTime,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+      <if test="companyName != null">
+        companyName,
+      </if>
+      <if test="tbAccNo != null">
+        tbAccNo,
+      </if>
+      <if test="tbOrderNo != null">
+        tbOrderNo,
+      </if>
+      <if test="orderNo != null">
+        orderNo,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="wechart != null">
+        wechart,
+      </if>
+      <if test="customerSex != null">
+        customerSex,
+      </if>
+      <if test="clothNo != null">
+        clothNo,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="orderAmount != null">
+        orderAmount,
+      </if>
+      <if test="depositAmount != null">
+        depositAmount,
+      </if>
+      <if test="clothDesc != null">
+        clothDesc,
+      </if>
+      <if test="bodyStatus != null">
+        bodyStatus,
+      </if>
+      <if test="sendStatus != null">
+        sendStatus,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="qycNum != null">
+        qycNum,
+      </if>
+      <if test="hycNum != null">
+        hycNum,
+      </if>
+      <if test="kcNum != null">
+        kcNum,
+      </if>
+      <if test="qcNum != null">
+        qcNum,
+      </if>
+      <if test="xwNum != null">
+        xwNum,
+      </if>
+      <if test="ywNum != null">
+        ywNum,
+      </if>
+      <if test="xbNum != null">
+        xbNum,
+      </if>
+      <if test="twNum != null">
+        twNum,
+      </if>
+      <if test="jkNum != null">
+        jkNum,
+      </if>
+      <if test="hdNum != null">
+        hdNum,
+      </if>
+      <if test="xcNum != null">
+        xcNum,
+      </if>
+      <if test="zdNum != null">
+        zdNum,
+      </if>
+      <if test="xkNum != null">
+        xkNum,
+      </if>
+      <if test="kjkNum != null">
+        kjkNum,
+      </if>
+      <if test="sxfNum != null">
+        sxfNum,
+      </if>
+      <if test="zhidNum != null">
+        zhidNum,
+      </if>
+      <if test="xxfNum != null">
+        xxfNum,
+      </if>
+      <if test="qxkNum != null">
+        qxkNum,
+      </if>
+      <if test="hbkNum != null">
+        hbkNum,
+      </if>
+      <if test="xjNum != null">
+        xjNum,
+      </if>
+      <if test="xgNum != null">
+        xgNum,
+      </if>
+      <if test="lwNum != null">
+        lwNum,
+      </if>
+      <if test="tbActive != null">
+        tbActive,
+      </if>
+      <if test="ljActive != null">
+        ljActive,
+      </if>
+      <if test="pjActive != null">
+        pjActive,
+      </if>
+      <if test="txActive != null">
+        txActive,
+      </if>
+      <if test="lk1Active != null">
+        lk1Active,
+      </if>
+      <if test="lk2Active != null">
+        lk2Active,
+      </if>
+      <if test="lk3Active != null">
+        lk3Active,
+      </if>
+      <if test="hzkcActive != null">
+        hzkcActive,
+      </if>
+      <if test="lbkcActive != null">
+        lbkcActive,
+      </if>
+      <if test="orderStatus != null">
+        orderStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendTime != null">
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="tbAccNo != null">
+        #{tbAccNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tbOrderNo != null">
+        #{tbOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="wechart != null">
+        #{wechart,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSex != null">
+        #{customerSex,jdbcType=SMALLINT},
+      </if>
+      <if test="clothNo != null">
+        #{clothNo,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAmount != null">
+        #{orderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="depositAmount != null">
+        #{depositAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="clothDesc != null">
+        #{clothDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyStatus != null">
+        #{bodyStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="sendStatus != null">
+        #{sendStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="qycNum != null">
+        #{qycNum,jdbcType=INTEGER},
+      </if>
+      <if test="hycNum != null">
+        #{hycNum,jdbcType=INTEGER},
+      </if>
+      <if test="kcNum != null">
+        #{kcNum,jdbcType=INTEGER},
+      </if>
+      <if test="qcNum != null">
+        #{qcNum,jdbcType=INTEGER},
+      </if>
+      <if test="xwNum != null">
+        #{xwNum,jdbcType=INTEGER},
+      </if>
+      <if test="ywNum != null">
+        #{ywNum,jdbcType=INTEGER},
+      </if>
+      <if test="xbNum != null">
+        #{xbNum,jdbcType=INTEGER},
+      </if>
+      <if test="twNum != null">
+        #{twNum,jdbcType=INTEGER},
+      </if>
+      <if test="jkNum != null">
+        #{jkNum,jdbcType=INTEGER},
+      </if>
+      <if test="hdNum != null">
+        #{hdNum,jdbcType=INTEGER},
+      </if>
+      <if test="xcNum != null">
+        #{xcNum,jdbcType=INTEGER},
+      </if>
+      <if test="zdNum != null">
+        #{zdNum,jdbcType=INTEGER},
+      </if>
+      <if test="xkNum != null">
+        #{xkNum,jdbcType=INTEGER},
+      </if>
+      <if test="kjkNum != null">
+        #{kjkNum,jdbcType=INTEGER},
+      </if>
+      <if test="sxfNum != null">
+        #{sxfNum,jdbcType=INTEGER},
+      </if>
+      <if test="zhidNum != null">
+        #{zhidNum,jdbcType=INTEGER},
+      </if>
+      <if test="xxfNum != null">
+        #{xxfNum,jdbcType=INTEGER},
+      </if>
+      <if test="qxkNum != null">
+        #{qxkNum,jdbcType=INTEGER},
+      </if>
+      <if test="hbkNum != null">
+        #{hbkNum,jdbcType=INTEGER},
+      </if>
+      <if test="xjNum != null">
+        #{xjNum,jdbcType=INTEGER},
+      </if>
+      <if test="xgNum != null">
+        #{xgNum,jdbcType=INTEGER},
+      </if>
+      <if test="lwNum != null">
+        #{lwNum,jdbcType=INTEGER},
+      </if>
+      <if test="tbActive != null">
+        #{tbActive,jdbcType=SMALLINT},
+      </if>
+      <if test="ljActive != null">
+        #{ljActive,jdbcType=SMALLINT},
+      </if>
+      <if test="pjActive != null">
+        #{pjActive,jdbcType=SMALLINT},
+      </if>
+      <if test="txActive != null">
+        #{txActive,jdbcType=SMALLINT},
+      </if>
+      <if test="lk1Active != null">
+        #{lk1Active,jdbcType=SMALLINT},
+      </if>
+      <if test="lk2Active != null">
+        #{lk2Active,jdbcType=SMALLINT},
+      </if>
+      <if test="lk3Active != null">
+        #{lk3Active,jdbcType=SMALLINT},
+      </if>
+      <if test="hzkcActive != null">
+        #{hzkcActive,jdbcType=SMALLINT},
+      </if>
+      <if test="lbkcActive != null">
+        #{lbkcActive,jdbcType=SMALLINT},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com.sxs.common.bean.CustomerProduct">
+    update t_customer_product
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        customerName = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        customerPhone = #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        orderTime = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendTime != null">
+        sendTime = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyName != null">
+        companyName = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="tbAccNo != null">
+        tbAccNo = #{tbAccNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tbOrderNo != null">
+        tbOrderNo = #{tbOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        orderNo = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="wechart != null">
+        wechart = #{wechart,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSex != null">
+        customerSex = #{customerSex,jdbcType=SMALLINT},
+      </if>
+      <if test="clothNo != null">
+        clothNo = #{clothNo,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAmount != null">
+        orderAmount = #{orderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="depositAmount != null">
+        depositAmount = #{depositAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="clothDesc != null">
+        clothDesc = #{clothDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyStatus != null">
+        bodyStatus = #{bodyStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="sendStatus != null">
+        sendStatus = #{sendStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="qycNum != null">
+        qycNum = #{qycNum,jdbcType=INTEGER},
+      </if>
+      <if test="hycNum != null">
+        hycNum = #{hycNum,jdbcType=INTEGER},
+      </if>
+      <if test="kcNum != null">
+        kcNum = #{kcNum,jdbcType=INTEGER},
+      </if>
+      <if test="qcNum != null">
+        qcNum = #{qcNum,jdbcType=INTEGER},
+      </if>
+      <if test="xwNum != null">
+        xwNum = #{xwNum,jdbcType=INTEGER},
+      </if>
+      <if test="ywNum != null">
+        ywNum = #{ywNum,jdbcType=INTEGER},
+      </if>
+      <if test="xbNum != null">
+        xbNum = #{xbNum,jdbcType=INTEGER},
+      </if>
+      <if test="twNum != null">
+        twNum = #{twNum,jdbcType=INTEGER},
+      </if>
+      <if test="jkNum != null">
+        jkNum = #{jkNum,jdbcType=INTEGER},
+      </if>
+      <if test="hdNum != null">
+        hdNum = #{hdNum,jdbcType=INTEGER},
+      </if>
+      <if test="xcNum != null">
+        xcNum = #{xcNum,jdbcType=INTEGER},
+      </if>
+      <if test="zdNum != null">
+        zdNum = #{zdNum,jdbcType=INTEGER},
+      </if>
+      <if test="xkNum != null">
+        xkNum = #{xkNum,jdbcType=INTEGER},
+      </if>
+      <if test="kjkNum != null">
+        kjkNum = #{kjkNum,jdbcType=INTEGER},
+      </if>
+      <if test="sxfNum != null">
+        sxfNum = #{sxfNum,jdbcType=INTEGER},
+      </if>
+      <if test="zhidNum != null">
+        zhidNum = #{zhidNum,jdbcType=INTEGER},
+      </if>
+      <if test="xxfNum != null">
+        xxfNum = #{xxfNum,jdbcType=INTEGER},
+      </if>
+      <if test="qxkNum != null">
+        qxkNum = #{qxkNum,jdbcType=INTEGER},
+      </if>
+      <if test="hbkNum != null">
+        hbkNum = #{hbkNum,jdbcType=INTEGER},
+      </if>
+      <if test="xjNum != null">
+        xjNum = #{xjNum,jdbcType=INTEGER},
+      </if>
+      <if test="xgNum != null">
+        xgNum = #{xgNum,jdbcType=INTEGER},
+      </if>
+      <if test="lwNum != null">
+        lwNum = #{lwNum,jdbcType=INTEGER},
+      </if>
+      <if test="tbActive != null">
+        tbActive = #{tbActive,jdbcType=SMALLINT},
+      </if>
+      <if test="ljActive != null">
+        ljActive = #{ljActive,jdbcType=SMALLINT},
+      </if>
+      <if test="pjActive != null">
+        pjActive = #{pjActive,jdbcType=SMALLINT},
+      </if>
+      <if test="txActive != null">
+        txActive = #{txActive,jdbcType=SMALLINT},
+      </if>
+      <if test="lk1Active != null">
+        lk1Active = #{lk1Active,jdbcType=SMALLINT},
+      </if>
+      <if test="lk2Active != null">
+        lk2Active = #{lk2Active,jdbcType=SMALLINT},
+      </if>
+      <if test="lk3Active != null">
+        lk3Active = #{lk3Active,jdbcType=SMALLINT},
+      </if>
+      <if test="hzkcActive != null">
+        hzkcActive = #{hzkcActive,jdbcType=SMALLINT},
+      </if>
+      <if test="lbkcActive != null">
+        lbkcActive = #{lbkcActive,jdbcType=SMALLINT},
+      </if>
+      <if test="orderStatus != null">
+        orderStatus = #{orderStatus,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+</mapper>

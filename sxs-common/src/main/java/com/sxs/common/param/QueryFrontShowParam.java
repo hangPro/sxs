@@ -3,7 +3,7 @@ package com.sxs.common.param;
 import com.sxs.common.base.WebPageParameter;
 
 /**
- * Created by wonpera on 2017/2/24.
+ * Created by hang on 2017/2/24.
  */
 public class QueryFrontShowParam extends WebPageParameter {
 

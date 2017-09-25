@@ -3,7 +3,7 @@ package com.sxs.common.bean;
 import com.sxs.common.base.BaseParameter;
 
 /**
- * Created by wonpera on 2017/3/11.
+ * Created by hang on 2017/3/11.
  */
 public class QuerySeasonWithProduct extends BaseParameter {
 

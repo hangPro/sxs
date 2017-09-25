@@ -1,15 +1,13 @@
 package com.sxs.common.enums;
 
 /**
- * Created by wonpera on 2017/2/27.
+ * Created by hang on 2017/2/27.
  */
 public enum ProductTypeEnum {
 
-    ABOUT_US("1","关于我们"),
-    PRODUCT("2","产品"),
-    SHOW("3","SHOW"),
-    SERVICE("4","服务"),
-    CONTACT("5","联络"),
+    SHIRT("1","衬衫"),
+    SUITS("2","西装"),
+    MAJIA("3","马甲"),
     ;
 
     private String code;

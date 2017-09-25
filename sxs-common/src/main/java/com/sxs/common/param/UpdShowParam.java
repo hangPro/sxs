@@ -4,7 +4,7 @@ import com.sxs.common.base.BaseParameter;
 
 
 /**
- * Created by wonpera on 2017/3/6.
+ * Created by hang on 2017/3/6.
  */
 public class UpdShowParam extends BaseParameter {
 

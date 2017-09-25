@@ -1,7 +1,7 @@
 package com.sxs.common.exception;
 
 /**
- * Created by wonpera on 2017/1/4.
+ * Created by hang on 2017/1/4.
  */
 public class ValidatorException extends RuntimeException {
 
