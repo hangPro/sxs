@@ -1,6 +1,6 @@
 package com.sxs.common.response;
 
-import com.sxs.common.base.BaseParameter;
+import com.sxs.common.session.BaseParameter;
 import com.sxs.common.bean.FrontMenu;
 
 import java.util.ArrayList;

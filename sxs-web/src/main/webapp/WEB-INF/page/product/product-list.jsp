@@ -3,9 +3,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
-
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> - jqGird</title>
@@ -29,48 +27,89 @@
                     <h5>产品管理</h5>
                 </div>
                 <div class="ibox-content">
-                    <form role="form" class="form-inline" id="searchForm">
-                        <div class="form-group">
-                            <label>类型:</label>
-                            <select name="type" id="searchType" class="form-control">
-                                <option value="1">衬衫</option>
-                                <option value="2">西装</option>
-                                <option value="3">马甲</option>
-                            </select>
+                    <form role="form" class="form-horizontal" id="searchForm">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">姓名</label>
+                                <div class="col-sm-6"><input type="text" class="form-control" id="customerName" placeholder="姓名"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">日期</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="datepicker" placeholder="请输入日期" />
+                                    <!--<input type="text" class="datepicker" placeholder="结束日期" />-->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">微信号</label>
+                                <div class="col-sm-6"><input type="text" class="form-control" id="wechart" placeholder="微信号"></div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>姓名:</label>
-                            <input type="text" class="form-control" id="customerName" placeholder="姓名">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">地址</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="address" placeholder="地址">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">类型</label>
+                                <div class="col-sm-4">
+                                    <select name="type" id="searchType" class="form-control">
+                                        <option value="">全部</option>
+                                        <option value="1">衬衫</option>
+                                        <option value="2">西装</option>
+                                        <option value="3">马甲</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">订单状态</label>
+                                <div class="col-sm-4">
+                                    <select name="type" id="searchStatus" class="form-control">
+                                        <option value="">全部</option>
+                                        <option value="1">未定金</option>
+                                        <option value="2">已定金</option>
+                                        <option value="3">已完结</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>地址:</label>
-                            <input type="text" class="form-control" id="address" placeholder="地址">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">订单编号</label>
+                                <div class="col-sm-6"><input type="text" class="form-control" id="orderNo"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">淘宝订单号</label>
+                                    <div class="col-sm-6"><input type="text" class="form-control" id="wechart">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">淘宝账号</label>
+                                <div class="col-sm-6"><input type="text" class="form-control" id="wechart"></div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>选择日期：</label>
-                        </div>
-                        <div class="form-group">
-                            <label>季节:</label>
-                            <select name="season" id="searchSeason" class="form-control">
-                                <option value="">---请选择---</option>
-                            </select>
-                        </div>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button type="button" class="btn btn-w-m btn-primary" id="searchBth" >查询</button>
-                        <button type="button" class="btn btn-w-m btn-success" id="resetBtn">重置</button>
-                        <button type="button" class="btn btn-w-m btn-info" id="addBtn">新增</button>
-                    </form>
+                    </from>
                 </div>
-                    <!-- <h4>用户列表</h4> -->
-                    <div class="jqGrid_wrapper">
-                        <table id="table_list"></table>
-                        <div id="pager_list"></div>
-                    </div>
-                    <p>&nbsp;</p>
+                <div class="ibox-content">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-w-m btn-primary" id="searchBth" >查询</button>
+                    <button type="button" class="btn btn-w-m btn-success" id="resetBtn">重置</button>
+                    <button type="button" class="btn btn-w-m btn-warning" id="addBtn">批量定金</button>
+                    <button type="button" class="btn btn-w-m btn-danger" id="addBtn">批量完结</button>
+                    <button type="button" class="btn btn-w-m btn-inverse" id="addBtn">批量打印</button>
+                </div>
+                <!-- <h4>用户列表</h4> -->
+                <div class="jqGrid_wrapper">
+                    <table id="table_list"></table>
+                    <div id="pager_list"></div>
+                </div>
+                <p>&nbsp;</p>
             </div>
         </div>
     </div>
 </div>
-
 
 
 <div id="add-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -126,10 +165,15 @@
     var types = {};//菜单显示分类
     var seasonList;
     var typeList;
-    $(document).ready(function () {
-         $('#datetimepicker1').datepicker({
-                format: 'YYYY-MM-DD'
-            });
+    $(function () {
+        $(".datepicker").datepicker({
+            language: "zh-CN",
+            autoclose: true,//选中之后自动隐藏日期选择框
+            clearBtn: true,//清除按钮
+            todayBtn: true,//今日按钮
+            setStartDate : '2012-01-01',
+            format: "yyyy-mm-dd"//日期格式，详见 http://bootstrap-datepicker.readthedocs.org/en/release/options.html#format
+        });
         var types = new Array();
         $("#searchType option").each(function(){  //遍历所有option
               types[$(this).val()] = $(this).html();

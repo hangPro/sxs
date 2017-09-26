@@ -1,6 +1,6 @@
 package com.sxs.common.bean;
 
-import com.sxs.common.base.BaseParameter;
+import com.sxs.common.session.BaseParameter;
 
 import java.util.Date;
 

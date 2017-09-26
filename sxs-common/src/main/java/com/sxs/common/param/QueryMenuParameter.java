@@ -1,6 +1,6 @@
 package com.sxs.common.param;
 
-import com.sxs.common.base.SessionParameter;
+import com.sxs.common.session.SessionParameter;
 
 /**
  * Created by wangpeng on 2016/11/7.

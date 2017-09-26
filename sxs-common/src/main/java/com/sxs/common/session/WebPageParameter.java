@@ -9,7 +9,7 @@ public class WebPageParameter extends SessionParameter {
 
     private Integer requestOffset;
     private Integer requestCount;
-    private Integer pageNo;
+    private Integer page;
     private Integer pageSize = GlobConts.DEFUALT_PAGE_SIZE;
 
     public Integer getRequestOffset() {
@@ -28,12 +28,12 @@ public class WebPageParameter extends SessionParameter {
         this.requestCount = requestCount;
     }
 
-    public Integer getPageNo() {
-        return pageNo;
+    public Integer getPage() {
+        return page;
     }
 
-    public void setPageNo(Integer pageNo) {
-        this.pageNo = pageNo;
+    public void setPage(Integer page) {
+        this.page = page;
     }
 
     public Integer getPageSize() {
@@ -48,13 +48,13 @@ public class WebPageParameter extends SessionParameter {
      * 计算分页起始行
      */
     public void calculatePageLimit() {
-        if (pageNo == null) {
-            pageNo = 1;
+        if (page == null) {
+            page = 1;
         }
         if (pageSize == null) {
             pageSize = GlobConts.DEFUALT_PAGE_SIZE;
         }
-        this.requestOffset = (pageNo - 1) * pageSize + 1;
-        this.requestCount = pageNo * pageSize;
+        this.requestOffset = (page - 1) * pageSize + 1;
+        this.requestCount = page * pageSize;
     }
 }

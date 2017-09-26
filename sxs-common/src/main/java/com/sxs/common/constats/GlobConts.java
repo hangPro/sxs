@@ -28,7 +28,7 @@ public class GlobConts {
     /**
      * cookie前缀
      */
-    public static final String COOKIE_PREFIX = "Bearer ";
+    public static final String COOKIE_PREFIX = "Bearer";
 
 
     public static final String SESSION_COOKIE_KEY = "Authorization";

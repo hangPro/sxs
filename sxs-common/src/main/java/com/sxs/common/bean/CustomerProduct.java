@@ -1,6 +1,6 @@
 package com.sxs.common.bean;
 
-import com.sxs.common.base.BaseParameter;
+import com.sxs.common.session.BaseParameter;
 import com.sxs.common.enums.ProductTypeEnum;
 
 import java.math.BigDecimal;
@@ -9,113 +9,218 @@ import java.util.Date;
 public class CustomerProduct  extends BaseParameter{
     private Long id;
 
+    /**
+     * 类型：衬衫:1、西装:2、马甲:3
+     */
     private String type;
-
+    /**
+     * 姓名
+     */
     private String customerName;
-
+    /**
+     * 手机号
+     */
     private String customerPhone;
-
+    /**
+     * 订单日期
+     */
     private Date orderTime;
-
+    /**
+     * 交货日期
+     */
     private Date sendTime;
 
     private Date createTime;
 
     private Date updateTime;
-
+    /**
+     * 公司名
+     */
     private String companyName;
-
+    /**
+     * 淘宝账号
+     */
     private String tbAccNo;
-
+    /**
+     * 淘宝订单号
+     */
     private String tbOrderNo;
-
+    /**
+     * 订单编号
+     */
     private String orderNo;
-
+    /**
+     * 地址
+     */
     private String address;
-
+    /**
+     * 微信号
+     */
     private String wechart;
-
-    private Short customerSex;
-
+    /**
+     * 性别：1：男，2：女
+     */
+    private Integer customerSex;
+    /**
+     * 物料编号
+     */
     private String clothNo;
-
+    /**
+     * 单价
+     */
     private BigDecimal price;
-
+    /**
+     * 订单金额
+     */
     private BigDecimal orderAmount;
-
+    /**
+     * 定金金额
+     */
     private BigDecimal depositAmount;
-
+    /**
+     * 备注
+     */
     private String clothDesc;
+    /**
+     * 是否试身：1：否 2：是
+     */
+    private Integer bodyStatus;
+    /**
+     * 是否交货：1：否 2：是
+     */
+    private Integer sendStatus;
 
-    private Short bodyStatus;
-
-    private Short sendStatus;
-
-    private Short status;
-
+    private Integer status;
+    /**
+     * 前衣长
+     */
     private Integer qycNum;
-
+    /**
+     * 后衣长
+     */
     private Integer hycNum;
-
+    /**
+     * 裤长
+     */
     private Integer kcNum;
-
+    /**
+     * 裙长
+     */
     private Integer qcNum;
-
+    /**
+     * 胸围
+     */
     private Integer xwNum;
-
+    /**
+     * 腰围
+     */
     private Integer ywNum;
-
+    /**
+     * 下摆
+     */
     private Integer xbNum;
-
+    /**
+     * 臀围
+     */
     private Integer twNum;
-
+    /**
+     * 肩宽
+     */
     private Integer jkNum;
-
+    /**
+     * 横档
+     */
     private Integer hdNum;
-
+    /**
+     * 袖长
+     */
     private Integer xcNum;
-
+    /**
+     * 中档
+     */
     private Integer zdNum;
-
+    /**
+     * 袖口
+     */
     private Integer xkNum;
-
+    /**
+     * 裤脚口
+     */
     private Integer kjkNum;
-
+    /**
+     * 上袖肥
+     */
     private Integer sxfNum;
-
+    /**
+     * 直档
+     */
     private Integer zhidNum;
-
+    /**
+     * 下袖肥
+     */
     private Integer xxfNum;
-
+    /**
+     * 前胸宽
+     */
     private Integer qxkNum;
-
+    /**
+     * 后背宽
+     */
     private Integer hbkNum;
-
+    /**
+     * 胸距
+     */
     private Integer xjNum;
-
+    /**
+     * 胸高
+     */
     private Integer xgNum;
-
+    /**
+     * 领围
+     */
     private Integer lwNum;
+    /**
+     * 驼背：1：未选择 2：已选择
+     */
+    private Integer tbActive;
+    /**
+     * 有肚：1：未选择 2：已选择
+     */
+    private Integer ydActive;
+    /**
+     * 溜肩：1：未选择 2：已选择
+     */
+    private Integer ljActive;
+    /**
+     * 平肩：1：未选择 2：已选择
+     */
+    private Integer pjActive;
+    /**
+     * 挺胸：1：未选择 2：已选择
+     */
+    private Integer txActive;
+    /**
+     * 1颗扣：1：未选择 2：已选择
+     */
+    private Integer lk1Active;
+    /**
+     * 2颗扣：1：未选择 2：已选择
+     */
+    private Integer lk2Active;
+    /**
+     * 3颗扣：1：未选择 2：已选择
+     */
+    private Integer lk3Active;
+    /**
+     * 后中开叉：1：未选择 2：已选择
+     */
+    private Integer hzkcActive;
+    /**
+     * 俩边开叉：1：未选择 2：已选择
+     */
+    private Integer lbkcActive;
 
-    private Short tbActive;
-
-    private Short ljActive;
-
-    private Short pjActive;
-
-    private Short txActive;
-
-    private Short lk1Active;
-
-    private Short lk2Active;
-
-    private Short lk3Active;
-
-    private Short hzkcActive;
-
-    private Short lbkcActive;
-
-    private Short orderStatus;
+    private Integer orderStatus;
 
     public Long getId() {
         return id;
@@ -233,11 +338,11 @@ public class CustomerProduct  extends BaseParameter{
         this.wechart = wechart == null ? null : wechart.trim();
     }
 
-    public Short getCustomerSex() {
+    public Integer getCustomerSex() {
         return customerSex;
     }
 
-    public void setCustomerSex(Short customerSex) {
+    public void setCustomerSex(Integer customerSex) {
         this.customerSex = customerSex;
     }
 
@@ -281,27 +386,27 @@ public class CustomerProduct  extends BaseParameter{
         this.clothDesc = clothDesc == null ? null : clothDesc.trim();
     }
 
-    public Short getBodyStatus() {
+    public Integer getBodyStatus() {
         return bodyStatus;
     }
 
-    public void setBodyStatus(Short bodyStatus) {
+    public void setBodyStatus(Integer bodyStatus) {
         this.bodyStatus = bodyStatus;
     }
 
-    public Short getSendStatus() {
+    public Integer getSendStatus() {
         return sendStatus;
     }
 
-    public void setSendStatus(Short sendStatus) {
+    public void setSendStatus(Integer sendStatus) {
         this.sendStatus = sendStatus;
     }
 
-    public Short getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Short status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -481,83 +586,91 @@ public class CustomerProduct  extends BaseParameter{
         this.lwNum = lwNum;
     }
 
-    public Short getTbActive() {
+    public Integer getTbActive() {
         return tbActive;
     }
 
-    public void setTbActive(Short tbActive) {
+    public void setTbActive(Integer tbActive) {
         this.tbActive = tbActive;
     }
 
-    public Short getLjActive() {
+    public Integer getYdActive() {
+        return ydActive;
+    }
+
+    public void setYdActive(Integer ydActive) {
+        this.ydActive = ydActive;
+    }
+
+    public Integer getLjActive() {
         return ljActive;
     }
 
-    public void setLjActive(Short ljActive) {
+    public void setLjActive(Integer ljActive) {
         this.ljActive = ljActive;
     }
 
-    public Short getPjActive() {
+    public Integer getPjActive() {
         return pjActive;
     }
 
-    public void setPjActive(Short pjActive) {
+    public void setPjActive(Integer pjActive) {
         this.pjActive = pjActive;
     }
 
-    public Short getTxActive() {
+    public Integer getTxActive() {
         return txActive;
     }
 
-    public void setTxActive(Short txActive) {
+    public void setTxActive(Integer txActive) {
         this.txActive = txActive;
     }
 
-    public Short getLk1Active() {
+    public Integer getLk1Active() {
         return lk1Active;
     }
 
-    public void setLk1Active(Short lk1Active) {
+    public void setLk1Active(Integer lk1Active) {
         this.lk1Active = lk1Active;
     }
 
-    public Short getLk2Active() {
+    public Integer getLk2Active() {
         return lk2Active;
     }
 
-    public void setLk2Active(Short lk2Active) {
+    public void setLk2Active(Integer lk2Active) {
         this.lk2Active = lk2Active;
     }
 
-    public Short getLk3Active() {
+    public Integer getLk3Active() {
         return lk3Active;
     }
 
-    public void setLk3Active(Short lk3Active) {
+    public void setLk3Active(Integer lk3Active) {
         this.lk3Active = lk3Active;
     }
 
-    public Short getHzkcActive() {
+    public Integer getHzkcActive() {
         return hzkcActive;
     }
 
-    public void setHzkcActive(Short hzkcActive) {
+    public void setHzkcActive(Integer hzkcActive) {
         this.hzkcActive = hzkcActive;
     }
 
-    public Short getLbkcActive() {
+    public Integer getLbkcActive() {
         return lbkcActive;
     }
 
-    public void setLbkcActive(Short lbkcActive) {
+    public void setLbkcActive(Integer lbkcActive) {
         this.lbkcActive = lbkcActive;
     }
 
-    public Short getOrderStatus() {
+    public Integer getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(Short orderStatus) {
+    public void setOrderStatus(Integer orderStatus) {
         this.orderStatus = orderStatus;
     }
 }

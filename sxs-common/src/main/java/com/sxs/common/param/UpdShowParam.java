@@ -1,6 +1,6 @@
 package com.sxs.common.param;
 
-import com.sxs.common.base.BaseParameter;
+import com.sxs.common.session.BaseParameter;
 
 
 /**

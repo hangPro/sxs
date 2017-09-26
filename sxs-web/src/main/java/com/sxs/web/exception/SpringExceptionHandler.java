@@ -1,11 +1,10 @@
-package com.sxs.web.controller;
+package com.sxs.web.exception;
 
 import com.sxs.common.bean.SessionUser;
 import com.sxs.common.enums.ResultCodeEnum;
 import com.sxs.common.exception.ValidatorException;
 import com.sxs.common.response.ReturnT;
 import com.sxs.common.utils.DkyUtils;
-import com.sxs.web.exception.NoLoginException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

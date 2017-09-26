@@ -1,6 +1,6 @@
 package com.sxs.common.param;
 
-import com.sxs.common.base.WebPageParameter;
+import com.sxs.common.session.WebPageParameter;
 
 
 /**

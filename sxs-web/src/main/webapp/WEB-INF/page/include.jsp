@@ -13,11 +13,6 @@
 <!-- Sweet Alert -->
 <link href="${ctx}/assets/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
 
-<!-- datapicker -->
-<link href="${ctx}/assets/css/plugins/datapicker/datepicker3.css" rel="stylesheet" />
-<script src="${ctx}/assets/js/plugins/fullcalendar/moment.min.js"></script>
-<script src="${ctx}/assets/js/plugins/datapicker/bootstrap-datepicker.js"></script>
-
 <!-- 全局js -->
 <script src="${ctx}/assets/js/jquery.min.js?v=2.1.4"></script>
 <script src="${ctx}/assets/js/bootstrap.min.js?v=3.3.6"></script>
@@ -53,4 +48,9 @@
 
 <script src="${ctx}/assets/js/namespace.js"></script>
 <script src="${ctx}/assets/js/config.js"></script>
+
+<!-- datapicker -->
+<link href="${ctx}/assets/css/plugins/datapicker/datepicker3.css" rel="stylesheet" />
+<script src="${ctx}/assets/js/plugins/fullcalendar/moment.min.js"></script>
+<script src="${ctx}/assets/js/plugins/datapicker/bootstrap-datepicker.js"></script>
 
