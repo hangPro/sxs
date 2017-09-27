@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by hang on 2017/9/25 0025.
@@ -55,6 +56,7 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         PageHelper.startPage(param.getPage(),param.getPageSize());
         CustomerProduct customerProduct = new CustomerProduct();
         BeanUtils.copyProperties(param,customerProduct);
+        customerProduct.setStatus(StatusEnum.ENABLE.getCode());
         mapper.query(customerProduct);
         return PageHelper.endPage();
     }
@@ -64,6 +66,7 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         ReturnT returnT = new ReturnT();
         CustomerProduct customerProduct = new CustomerProduct();
         BeanUtils.copyProperties(param,customerProduct);
+        customerProduct.setStatus(StatusEnum.ENABLE.getCode());
         returnT.setData(new PageList<CustomerProduct>(mapper.queryByPage(customerProduct),mapper.count(customerProduct),param.getPage(),param.getPageSize()));
         return returnT.successDefault();
     }
@@ -73,6 +76,11 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         CustomerProduct customerProduct = new CustomerProduct();
         BeanUtils.copyProperties(param,customerProduct);
         return new ReturnT<>(mapper.get(customerProduct));
+    }
+
+    @Override
+    public List<CustomerProduct> printList(Long[] ids) {
+        return mapper.queryByIds(ids);
     }
 }
 

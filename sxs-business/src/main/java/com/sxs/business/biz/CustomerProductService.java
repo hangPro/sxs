@@ -9,6 +9,8 @@ import com.sxs.common.param.UpdateProductParam;
 import com.sxs.common.response.PageList;
 import com.sxs.common.response.ReturnT;
 
+import java.util.List;
+
 /**
  * Created by hang on 2017/9/25 0025.
  */
@@ -23,4 +25,6 @@ public interface CustomerProductService {
     ReturnT<PageList> queryByPage(QueryCustomerProductParam param);
 
     ReturnT<CustomerProduct> getProductInfo(GetCustomerProductParam param);
+
+    List<CustomerProduct> printList(Long[] ids);
 }
