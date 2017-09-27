@@ -8,6 +8,7 @@ import com.sxs.common.enums.OrderStatusEnum;
 import com.sxs.common.enums.StatusEnum;
 import com.sxs.common.param.AddProductParam;
 import com.sxs.common.param.QueryCustomerProductParam;
+import com.sxs.common.param.UpdateProductParam;
 import com.sxs.common.response.ReturnT;
 import com.sxs.common.utils.DateUtils;
 import org.springframework.beans.BeanUtils;
@@ -40,7 +41,9 @@ public class CustomerProductServiceImpl implements CustomerProductService {
     }
 
     @Override
-    public ReturnT update(CustomerProduct customerProduct) {
+    public ReturnT update(UpdateProductParam param) {
+        CustomerProduct customerProduct = new CustomerProduct();
+        BeanUtils.copyProperties(param,customerProduct);
         mapper.updateById(customerProduct);
         return new ReturnT().successDefault();
     }

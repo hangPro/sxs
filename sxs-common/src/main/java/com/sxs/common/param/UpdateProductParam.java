@@ -1,9 +1,7 @@
 package com.sxs.common.param;
 
 import com.sxs.common.session.SessionParameter;
-import org.hibernate.validator.constraints.NotBlank;
 
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -11,27 +9,25 @@ import java.util.Date;
 /**
  * Created by hang on 2017/2/27.
  */
-public class AddProductParam extends SessionParameter {
+public class UpdateProductParam extends SessionParameter {
+
+    private Long id;
 
     /**
      * 类型：衬衫:1、西装:2、马甲:3
      */
-    @NotBlank(message = "类型不能为空！")
     private String type;
     /**
      * 姓名
      */
-    @NotBlank(message = "客户姓名不能为空！")
     private String customerName;
     /**
      * 手机号
      */
-    @NotBlank(message = "客户手机号不能为空！")
     private String customerPhone;
     /**
      * 订单日期
      */
-    @NotNull(message = "订单日期不能为空！")
     private Date orderTime;
     /**
      * 交货日期
@@ -40,7 +36,6 @@ public class AddProductParam extends SessionParameter {
     /**
      * 公司名
      */
-    @NotBlank(message = "公司名不能为空！")
     private String companyName;
     /**
      * 淘宝账号
@@ -83,7 +78,7 @@ public class AddProductParam extends SessionParameter {
      */
     private BigDecimal depositAmount;
     /**
-     * 物料用料
+     * 备注
      */
     private String clothDesc;
     /**
@@ -94,6 +89,10 @@ public class AddProductParam extends SessionParameter {
      * 是否交货：1：否 2：是
      */
     private Integer sendStatus;
+    /**
+     * 删除状态： 0：正常 1：删除
+     */
+    private Integer status;
     /**
      * 前衣长
      */
@@ -223,9 +222,20 @@ public class AddProductParam extends SessionParameter {
      */
     private Integer lbkcActive;
     /**
-     * 备注
+     * 订单状态
+     ONE(1,"未定金"),
+     TWO(2,"已定金"),
+     THREE(3,"已完结"),
      */
-    private String remark;
+    private Integer orderStatus;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getType() {
         return type;
@@ -377,6 +387,14 @@ public class AddProductParam extends SessionParameter {
 
     public void setSendStatus(Integer sendStatus) {
         this.sendStatus = sendStatus;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Double getQycNum() {
@@ -635,11 +653,11 @@ public class AddProductParam extends SessionParameter {
         this.lbkcActive = lbkcActive;
     }
 
-    public String getRemark() {
-        return remark;
+    public Integer getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setOrderStatus(Integer orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }

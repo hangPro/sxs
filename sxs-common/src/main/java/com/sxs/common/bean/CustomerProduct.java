@@ -94,91 +94,91 @@ public class CustomerProduct  extends BaseParameter{
     /**
      * 前衣长
      */
-    private Integer qycNum;
+    private Double qycNum;
     /**
      * 后衣长
      */
-    private Integer hycNum;
+    private Double hycNum;
     /**
      * 裤长
      */
-    private Integer kcNum;
+    private Double kcNum;
     /**
      * 裙长
      */
-    private Integer qcNum;
+    private Double qcNum;
     /**
      * 胸围
      */
-    private Integer xwNum;
+    private Double xwNum;
     /**
      * 腰围
      */
-    private Integer ywNum;
+    private Double ywNum;
     /**
      * 下摆
      */
-    private Integer xbNum;
+    private Double xbNum;
     /**
      * 臀围
      */
-    private Integer twNum;
+    private Double twNum;
     /**
      * 肩宽
      */
-    private Integer jkNum;
+    private Double jkNum;
     /**
      * 横档
      */
-    private Integer hdNum;
+    private Double hdNum;
     /**
      * 袖长
      */
-    private Integer xcNum;
+    private Double xcNum;
     /**
      * 中档
      */
-    private Integer zdNum;
+    private Double zdNum;
     /**
      * 袖口
      */
-    private Integer xkNum;
+    private Double xkNum;
     /**
      * 裤脚口
      */
-    private Integer kjkNum;
+    private Double kjkNum;
     /**
      * 上袖肥
      */
-    private Integer sxfNum;
+    private Double sxfNum;
     /**
      * 直档
      */
-    private Integer zhidNum;
+    private Double zhidNum;
     /**
      * 下袖肥
      */
-    private Integer xxfNum;
+    private Double xxfNum;
     /**
      * 前胸宽
      */
-    private Integer qxkNum;
+    private Double qxkNum;
     /**
      * 后背宽
      */
-    private Integer hbkNum;
+    private Double hbkNum;
     /**
      * 胸距
      */
-    private Integer xjNum;
+    private Double xjNum;
     /**
      * 胸高
      */
-    private Integer xgNum;
+    private Double xgNum;
     /**
      * 领围
      */
-    private Integer lwNum;
+    private Double lwNum;
     /**
      * 驼背：1：未选择 2：已选择
      */
@@ -221,6 +221,8 @@ public class CustomerProduct  extends BaseParameter{
     private Integer lbkcActive;
 
     private Integer orderStatus;
+
+    private String remark;
 
     public Long getId() {
         return id;
@@ -410,179 +412,179 @@ public class CustomerProduct  extends BaseParameter{
         this.status = status;
     }
 
-    public Integer getQycNum() {
+    public Double getQycNum() {
         return qycNum;
     }
 
-    public void setQycNum(Integer qycNum) {
+    public void setQycNum(Double qycNum) {
         this.qycNum = qycNum;
     }
 
-    public Integer getHycNum() {
+    public Double getHycNum() {
         return hycNum;
     }
 
-    public void setHycNum(Integer hycNum) {
+    public void setHycNum(Double hycNum) {
         this.hycNum = hycNum;
     }
 
-    public Integer getKcNum() {
+    public Double getKcNum() {
         return kcNum;
     }
 
-    public void setKcNum(Integer kcNum) {
+    public void setKcNum(Double kcNum) {
         this.kcNum = kcNum;
     }
 
-    public Integer getQcNum() {
+    public Double getQcNum() {
         return qcNum;
     }
 
-    public void setQcNum(Integer qcNum) {
+    public void setQcNum(Double qcNum) {
         this.qcNum = qcNum;
     }
 
-    public Integer getXwNum() {
+    public Double getXwNum() {
         return xwNum;
     }
 
-    public void setXwNum(Integer xwNum) {
+    public void setXwNum(Double xwNum) {
         this.xwNum = xwNum;
     }
 
-    public Integer getYwNum() {
+    public Double getYwNum() {
         return ywNum;
     }
 
-    public void setYwNum(Integer ywNum) {
+    public void setYwNum(Double ywNum) {
         this.ywNum = ywNum;
     }
 
-    public Integer getXbNum() {
+    public Double getXbNum() {
         return xbNum;
     }
 
-    public void setXbNum(Integer xbNum) {
+    public void setXbNum(Double xbNum) {
         this.xbNum = xbNum;
     }
 
-    public Integer getTwNum() {
+    public Double getTwNum() {
         return twNum;
     }
 
-    public void setTwNum(Integer twNum) {
+    public void setTwNum(Double twNum) {
         this.twNum = twNum;
     }
 
-    public Integer getJkNum() {
+    public Double getJkNum() {
         return jkNum;
     }
 
-    public void setJkNum(Integer jkNum) {
+    public void setJkNum(Double jkNum) {
         this.jkNum = jkNum;
     }
 
-    public Integer getHdNum() {
+    public Double getHdNum() {
         return hdNum;
     }
 
-    public void setHdNum(Integer hdNum) {
+    public void setHdNum(Double hdNum) {
         this.hdNum = hdNum;
     }
 
-    public Integer getXcNum() {
+    public Double getXcNum() {
         return xcNum;
     }
 
-    public void setXcNum(Integer xcNum) {
+    public void setXcNum(Double xcNum) {
         this.xcNum = xcNum;
     }
 
-    public Integer getZdNum() {
+    public Double getZdNum() {
         return zdNum;
     }
 
-    public void setZdNum(Integer zdNum) {
+    public void setZdNum(Double zdNum) {
         this.zdNum = zdNum;
     }
 
-    public Integer getXkNum() {
+    public Double getXkNum() {
         return xkNum;
     }
 
-    public void setXkNum(Integer xkNum) {
+    public void setXkNum(Double xkNum) {
         this.xkNum = xkNum;
     }
 
-    public Integer getKjkNum() {
+    public Double getKjkNum() {
         return kjkNum;
     }
 
-    public void setKjkNum(Integer kjkNum) {
+    public void setKjkNum(Double kjkNum) {
         this.kjkNum = kjkNum;
     }
 
-    public Integer getSxfNum() {
+    public Double getSxfNum() {
         return sxfNum;
     }
 
-    public void setSxfNum(Integer sxfNum) {
+    public void setSxfNum(Double sxfNum) {
         this.sxfNum = sxfNum;
     }
 
-    public Integer getZhidNum() {
+    public Double getZhidNum() {
         return zhidNum;
     }
 
-    public void setZhidNum(Integer zhidNum) {
+    public void setZhidNum(Double zhidNum) {
         this.zhidNum = zhidNum;
     }
 
-    public Integer getXxfNum() {
+    public Double getXxfNum() {
         return xxfNum;
     }
 
-    public void setXxfNum(Integer xxfNum) {
+    public void setXxfNum(Double xxfNum) {
         this.xxfNum = xxfNum;
     }
 
-    public Integer getQxkNum() {
+    public Double getQxkNum() {
         return qxkNum;
     }
 
-    public void setQxkNum(Integer qxkNum) {
+    public void setQxkNum(Double qxkNum) {
         this.qxkNum = qxkNum;
     }
 
-    public Integer getHbkNum() {
+    public Double getHbkNum() {
         return hbkNum;
     }
 
-    public void setHbkNum(Integer hbkNum) {
+    public void setHbkNum(Double hbkNum) {
         this.hbkNum = hbkNum;
     }
 
-    public Integer getXjNum() {
+    public Double getXjNum() {
         return xjNum;
     }
 
-    public void setXjNum(Integer xjNum) {
+    public void setXjNum(Double xjNum) {
         this.xjNum = xjNum;
     }
 
-    public Integer getXgNum() {
+    public Double getXgNum() {
         return xgNum;
     }
 
-    public void setXgNum(Integer xgNum) {
+    public void setXgNum(Double xgNum) {
         this.xgNum = xgNum;
     }
 
-    public Integer getLwNum() {
+    public Double getLwNum() {
         return lwNum;
     }
 
-    public void setLwNum(Integer lwNum) {
+    public void setLwNum(Double lwNum) {
         this.lwNum = lwNum;
     }
 
@@ -672,5 +674,13 @@ public class CustomerProduct  extends BaseParameter{
 
     public void setOrderStatus(Integer orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

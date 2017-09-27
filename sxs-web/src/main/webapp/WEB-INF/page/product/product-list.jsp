@@ -9,6 +9,7 @@
     <title> - jqGird</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
+    <base target="_blank">
     <link rel="shortcut icon" href="favicon.ico">
     <style>
         #alertmod_table_list_2 {
@@ -24,10 +25,10 @@
         <div class="col-sm-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <h5>产品管理</h5>
+                    <h5>资料管理</h5>
                 </div>
                 <div class="ibox-content">
-                    <form role="form" class="form-horizontal" id="searchForm">
+                    <form role="form" class="form-horizontal" id="addForm">
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">姓名</label>
@@ -94,11 +95,11 @@
                 </div>
                 <div class="ibox-content">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button" class="btn btn-w-m btn-primary" id="searchBth" >查询</button>
-                    <button type="button" class="btn btn-w-m btn-success" id="resetBtn">重置</button>
-                    <button type="button" class="btn btn-w-m btn-warning" id="addBtn">批量定金</button>
-                    <button type="button" class="btn btn-w-m btn-danger" id="addBtn">批量完结</button>
-                    <button type="button" class="btn btn-w-m btn-inverse" id="addBtn">批量打印</button>
+                    <button type="button" class="btn btn-primary" id="searchBth" >查询</button>
+                    <button type="button" class="btn btn-success" id="resetBtn">重置</button>
+                    <button type="button" class="btn btn-warning" id="addBtn">批量定金</button>
+                    <button type="button" class="btn btn-danger" id="addBtn">批量完结</button>
+                    <button type="button" class="btn btn-inverse" id="addBtn">批量打印</button>
                 </div>
                 <!-- <h4>用户列表</h4> -->
                 <div class="jqGrid_wrapper">
@@ -236,7 +237,8 @@
                     sortable: false,
                     formatter: function(cellvalue, options, rowObject){
                         var html = '<button class="btn btn-info" name="edit-btn" onClick="goUpdate('+cellvalue+')" data-key="'+cellvalue+'" type="button"><i class="fa fa-paste"></i> 编辑</button>&nbsp;&nbsp;';
-                        html += '<button class="btn btn-warning" onClick="deleteRow('+cellvalue+')"  type="button"><i class="fa fa-warning"></i> <span class="bold">删除</span> </button>';
+                        html += '<button class="btn btn-warning" onClick="deleteRow('+cellvalue+')"  type="button"><i class="fa fa-warning"></i> <span class="bold">删除</span> </button>&nbsp;&nbsp;';
+                        html += '<button class="btn btn-inverse" onClick="printRow('+cellvalue+')"  type="button"><i class="fa fa-warning"></i> <span class="bold">打印</span> </button>';
                         return html;
                     }
                 }
@@ -367,8 +369,7 @@
         });
 
     }
-
-
+    //删除记录
     function deleteRow(id){
         swal({
             title:"",
@@ -390,7 +391,22 @@
             });
         });
     }
-
+    //打印记录
+    function printRow(id){
+        swal({
+            title:"",
+            text:"确定打印吗？",
+            type:"warning",
+            showCancelButton:"true",
+            showConfirmButton:"true",
+            confirmButtonText:"确定",
+            cancelButtonText:"取消",
+            animation:"slide-from-top"
+        }, function() {
+            window.open("${ctx}/test/report","_blank");
+            //window.location.href = "${ctx}/test/report";
+        });
+    }
 
     function validate(param){
         if (!param['type']) {

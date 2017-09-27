@@ -5,6 +5,7 @@ import com.sxs.business.plugin.PageHelper;
 import com.sxs.common.bean.CustomerProduct;
 import com.sxs.common.param.AddProductParam;
 import com.sxs.common.param.QueryCustomerProductParam;
+import com.sxs.common.param.UpdateProductParam;
 import com.sxs.common.response.ReturnT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,19 +31,28 @@ public class ProductController {
         return new ModelAndView("product/product-list");
     }
 
+    /**
+     * 跳转到新增页面
+     * @return
+     */
+    @RequestMapping("addPage")
+    public ModelAndView addPage(){
+        return new ModelAndView("product/product-add");
+    }
+
     @RequestMapping("add")
     public ReturnT add(AddProductParam param){
         return customerProductService.add(param);
     }
 
     @RequestMapping("update")
-    public ReturnT update(CustomerProduct customerProduct){
-        return customerProductService.update(customerProduct);
+    public ReturnT update(UpdateProductParam param){
+        return customerProductService.update(param);
     }
 
     @RequestMapping("updateOrders")
     public ReturnT updateOrders(CustomerProduct customerProduct){
-        return customerProductService.update(customerProduct);
+        return null;
     }
 
     @RequestMapping("page")

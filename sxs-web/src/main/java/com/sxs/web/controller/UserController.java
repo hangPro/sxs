@@ -6,6 +6,7 @@ import com.sxs.business.session.SessionProcess;
 import com.sxs.common.bean.SessionUser;
 import com.sxs.common.bean.User;
 import com.sxs.common.param.AddUserParam;
+import com.sxs.common.param.LoginUserParam;
 import com.sxs.common.param.QueryUserParam;
 import com.sxs.common.param.UpdUserParam;
 import com.sxs.common.response.ReturnT;
@@ -87,15 +88,13 @@ public class UserController {
 
     /**
      * 登陆
-     * @param username
-     * @param password
+     * @param param
      * @param response
      * @return
      */
     @RequestMapping("login")
-    public ReturnT login(@RequestParam(value = "username")String username,
-                         @RequestParam(value = "password")String password, HttpServletResponse response){
-        ReturnT returnT = userService.login(username,password);
+    public ReturnT login(LoginUserParam param,HttpServletResponse response){
+        ReturnT returnT = userService.login(param.getUsername(),param.getPassword());
         if (!returnT.isSuccess()) {
             return returnT;
         }

@@ -20,7 +20,7 @@ public class ValidatorAspect implements Ordered {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ValidatorAspect.class);
 
-    @Around("execution(* com.dky.web.controller..*.*(..))")
+    @Around("execution(* com.sxs.web.controller..*.*(..))")
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
         //校验
         Object[] parameters = pjp.getArgs();
