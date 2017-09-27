@@ -4,6 +4,7 @@ import com.sxs.business.biz.CustomerProductService;
 import com.sxs.business.plugin.PageHelper;
 import com.sxs.common.bean.CustomerProduct;
 import com.sxs.common.param.AddProductParam;
+import com.sxs.common.param.GetCustomerProductParam;
 import com.sxs.common.param.QueryCustomerProductParam;
 import com.sxs.common.param.UpdateProductParam;
 import com.sxs.common.response.PageList;
@@ -74,5 +75,15 @@ public class ProductController {
     @RequestMapping("queryByPage")
     public ReturnT<PageList> queryByPage(QueryCustomerProductParam param){
         return customerProductService.queryByPage(param);
+    }
+
+    /**
+     * android获取详情
+     * @param param
+     * @return
+     */
+    @RequestMapping("getProductInfo")
+    public ReturnT<CustomerProduct> getProductInfo(GetCustomerProductParam param){
+        return customerProductService.getProductInfo(param);
     }
 }

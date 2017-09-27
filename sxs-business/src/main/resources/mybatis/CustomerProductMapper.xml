@@ -632,4 +632,11 @@
     from t_customer_product
     <include refid="whereClause" />
   </select>
+
+  <select id="get" resultMap="BaseResultMap" parameterType="com.sxs.common.bean.CustomerProduct">
+    select <include refid="Base_Column_List" />
+    from t_customer_product
+    <include refid="whereClause" />
+    limit 1
+  </select>
 </mapper>

@@ -3,6 +3,7 @@ package com.sxs.business.biz;
 import com.sxs.business.plugin.PageHelper;
 import com.sxs.common.bean.CustomerProduct;
 import com.sxs.common.param.AddProductParam;
+import com.sxs.common.param.GetCustomerProductParam;
 import com.sxs.common.param.QueryCustomerProductParam;
 import com.sxs.common.param.UpdateProductParam;
 import com.sxs.common.response.PageList;
@@ -20,4 +21,6 @@ public interface CustomerProductService {
     PageHelper.Page<CustomerProduct> queryPage(QueryCustomerProductParam param);
 
     ReturnT<PageList> queryByPage(QueryCustomerProductParam param);
+
+    ReturnT<CustomerProduct> getProductInfo(GetCustomerProductParam param);
 }

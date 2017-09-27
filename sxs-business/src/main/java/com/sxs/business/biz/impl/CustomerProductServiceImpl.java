@@ -7,6 +7,7 @@ import com.sxs.common.bean.CustomerProduct;
 import com.sxs.common.enums.OrderStatusEnum;
 import com.sxs.common.enums.StatusEnum;
 import com.sxs.common.param.AddProductParam;
+import com.sxs.common.param.GetCustomerProductParam;
 import com.sxs.common.param.QueryCustomerProductParam;
 import com.sxs.common.param.UpdateProductParam;
 import com.sxs.common.response.PageList;
@@ -65,6 +66,13 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         BeanUtils.copyProperties(param,customerProduct);
         returnT.setData(new PageList<CustomerProduct>(mapper.queryByPage(customerProduct),mapper.count(customerProduct),param.getPage(),param.getPageSize()));
         return returnT.successDefault();
+    }
+
+    @Override
+    public ReturnT<CustomerProduct> getProductInfo(GetCustomerProductParam param) {
+        CustomerProduct customerProduct = new CustomerProduct();
+        BeanUtils.copyProperties(param,customerProduct);
+        return new ReturnT<>(mapper.get(customerProduct));
     }
 }
 

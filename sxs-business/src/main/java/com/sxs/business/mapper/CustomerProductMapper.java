@@ -12,7 +12,7 @@ public interface CustomerProductMapper {
 
     CustomerProduct selectByPrimaryKey(Long id);
 
-    //CustomerProduct get(CustomerProduct record);
+    CustomerProduct get(CustomerProduct record);
 
     int updateById(CustomerProduct record);
 

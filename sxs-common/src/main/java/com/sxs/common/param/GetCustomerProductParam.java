@@ -1,0 +1,29 @@
+package com.sxs.common.param;
+
+import com.sxs.common.session.WebPageParameter;
+
+
+/**
+ * Created by hang on 2017/2/18.
+ */
+public class GetCustomerProductParam extends WebPageParameter {
+
+    private String customerName;
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+}
