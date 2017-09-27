@@ -1,5 +1,7 @@
 package com.sxs.common.session;
 
+import com.sxs.common.bean.PageObjectBase;
+
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -7,7 +9,7 @@ import java.util.Map;
 /**
  * Created by wangpeng on 2016/11/7.
  */
-public class BaseParameter implements Serializable {
+public class BaseParameter extends PageObjectBase implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

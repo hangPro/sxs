@@ -6,7 +6,7 @@ import com.sxs.common.enums.ProductTypeEnum;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class CustomerProduct  extends BaseParameter{
+public class CustomerProduct extends BaseParameter{
     private Long id;
 
     /**

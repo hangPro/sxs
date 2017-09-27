@@ -6,6 +6,7 @@ import com.sxs.common.bean.CustomerProduct;
 import com.sxs.common.param.AddProductParam;
 import com.sxs.common.param.QueryCustomerProductParam;
 import com.sxs.common.param.UpdateProductParam;
+import com.sxs.common.response.PageList;
 import com.sxs.common.response.ReturnT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,8 +56,23 @@ public class ProductController {
         return null;
     }
 
+    /**
+     * 后台管理分页
+     * @param param
+     * @return
+     */
     @RequestMapping("page")
     public PageHelper.Page<CustomerProduct> queryUserPage(QueryCustomerProductParam param){
         return customerProductService.queryPage(param);
+    }
+
+    /**
+     * android分页
+     * @param param
+     * @return
+     */
+    @RequestMapping("queryByPage")
+    public ReturnT<PageList> queryByPage(QueryCustomerProductParam param){
+        return customerProductService.queryByPage(param);
     }
 }

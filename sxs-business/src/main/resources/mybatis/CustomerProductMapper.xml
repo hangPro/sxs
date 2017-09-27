@@ -618,4 +618,18 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
+  <select id="queryByPage" resultMap="BaseResultMap" parameterType="com.sxs.common.bean.CustomerProduct">
+    select <include refid="Base_Column_List" />
+    from t_customer_product
+    <include refid="whereClause" />
+    <if test="null!=requestOffset">
+      limit #{requestOffset},#{requestCount}
+    </if>
+  </select>
+
+  <select id="count" resultType="int" parameterType="com.sxs.common.bean.CustomerProduct">
+    select count(1)
+    from t_customer_product
+    <include refid="whereClause" />
+  </select>
 </mapper>

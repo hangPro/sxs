@@ -9,6 +9,7 @@ import com.sxs.common.enums.StatusEnum;
 import com.sxs.common.param.AddProductParam;
 import com.sxs.common.param.QueryCustomerProductParam;
 import com.sxs.common.param.UpdateProductParam;
+import com.sxs.common.response.PageList;
 import com.sxs.common.response.ReturnT;
 import com.sxs.common.utils.DateUtils;
 import org.springframework.beans.BeanUtils;
@@ -55,6 +56,15 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         BeanUtils.copyProperties(param,customerProduct);
         mapper.query(customerProduct);
         return PageHelper.endPage();
+    }
+
+    @Override
+    public ReturnT<PageList> queryByPage(QueryCustomerProductParam param) {
+        ReturnT returnT = new ReturnT();
+        CustomerProduct customerProduct = new CustomerProduct();
+        BeanUtils.copyProperties(param,customerProduct);
+        returnT.setData(new PageList<CustomerProduct>(mapper.queryByPage(customerProduct),mapper.count(customerProduct),param.getPage(),param.getPageSize()));
+        return returnT.successDefault();
     }
 }
 

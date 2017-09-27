@@ -5,6 +5,7 @@ import com.sxs.common.bean.CustomerProduct;
 import com.sxs.common.param.AddProductParam;
 import com.sxs.common.param.QueryCustomerProductParam;
 import com.sxs.common.param.UpdateProductParam;
+import com.sxs.common.response.PageList;
 import com.sxs.common.response.ReturnT;
 
 /**
@@ -17,4 +18,6 @@ public interface CustomerProductService {
     ReturnT update(UpdateProductParam param);
 
     PageHelper.Page<CustomerProduct> queryPage(QueryCustomerProductParam param);
+
+    ReturnT<PageList> queryByPage(QueryCustomerProductParam param);
 }

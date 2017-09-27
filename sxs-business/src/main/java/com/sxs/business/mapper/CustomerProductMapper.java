@@ -17,4 +17,8 @@ public interface CustomerProductMapper {
     int updateById(CustomerProduct record);
 
     List<CustomerProduct> query(CustomerProduct record);
+
+    List<CustomerProduct> queryByPage(CustomerProduct record);
+
+    int count(CustomerProduct record);
 }
