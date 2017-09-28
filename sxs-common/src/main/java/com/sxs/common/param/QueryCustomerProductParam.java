@@ -8,14 +8,41 @@ import com.sxs.common.session.WebPageParameter;
  */
 public class QueryCustomerProductParam extends WebPageParameter {
 
+    /**
+     * 姓名
+     */
     private String customerName;
+    /**
+     * 地址（所属区域）
+     */
     private String address;
+    /**
+     * 订单日期
+     */
     private String orderTime;
+    /**
+     * 所属公司
+     */
     private String companyName;
+    /**
+     * 订单编号
+     */
     private String orderNo;
+    /**
+     * 微信号
+     */
     private String wechart;
+    /**
+     * 淘宝账号
+     */
     private String tbAccNo;
+    /**
+     * 淘宝订单号
+     */
     private String tbOrderNo;
+    /**
+     * 订单状态 状态 1：未定金  2：已定金 3：已完结
+     */
     private Integer orderStatus;
 
     public String getCustomerName() {

@@ -48,6 +48,7 @@
     <result column="xgNum" jdbcType="DECIMAL" property="xgNum" />
     <result column="lwNum" jdbcType="DECIMAL" property="lwNum" />
     <result column="tbActive" jdbcType="SMALLINT" property="tbActive" />
+    <result column="ydActive" jdbcType="SMALLINT" property="ydActive" />
     <result column="ljActive" jdbcType="SMALLINT" property="ljActive" />
     <result column="pjActive" jdbcType="SMALLINT" property="pjActive" />
     <result column="txActive" jdbcType="SMALLINT" property="txActive" />
@@ -65,7 +66,7 @@
     companyName, tbAccNo, tbOrderNo, orderNo, address, wechart, customerSex, clothNo, 
     price, orderAmount, depositAmount, clothDesc, bodyStatus, sendStatus, status, qycNum, 
     hycNum, kcNum, qcNum, xwNum, ywNum, xbNum, twNum, jkNum, hdNum, xcNum, zdNum, xkNum, 
-    kjkNum, sxfNum, zhidNum, xxfNum, qxkNum, hbkNum, xjNum, xgNum, lwNum, tbActive, ljActive, 
+    kjkNum, sxfNum, zhidNum, xxfNum, qxkNum, hbkNum, xjNum, xgNum, lwNum, tbActive, ydActive, ljActive,
     pjActive, txActive, lk1Active, lk2Active, lk3Active, hzkcActive, lbkcActive, orderStatus, remark
   </sql>
 
@@ -244,6 +245,9 @@
       <if test="tbActive != null">
         tbActive,
       </if>
+      <if test="ydActive != null">
+        ydActive,
+      </if>
       <if test="ljActive != null">
         ljActive,
       </if>
@@ -413,6 +417,9 @@
       </if>
       <if test="tbActive != null">
         #{tbActive,jdbcType=SMALLINT},
+      </if>
+      <if test="ydActive != null">
+        #{ydActive,jdbcType=SMALLINT},
       </if>
       <if test="ljActive != null">
         #{ljActive,jdbcType=SMALLINT},
@@ -584,6 +591,9 @@
       </if>
       <if test="tbActive != null">
         tbActive = #{tbActive,jdbcType=SMALLINT},
+      </if>
+      <if test="ydActive != null">
+        ydActive = #{ydActive,jdbcType=SMALLINT},
       </if>
       <if test="ljActive != null">
         ljActive = #{ljActive,jdbcType=SMALLINT},

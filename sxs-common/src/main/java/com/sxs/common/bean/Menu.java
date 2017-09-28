@@ -1,10 +1,8 @@
 package com.sxs.common.bean;
 
-import com.sxs.common.session.BaseParameter;
-
 import java.util.Date;
 
-public class Menu extends BaseParameter {
+public class Menu extends PageObjectBase {
     private Long id;
 
     private Long menuid;

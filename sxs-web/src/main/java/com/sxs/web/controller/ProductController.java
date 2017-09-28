@@ -14,7 +14,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -79,6 +79,7 @@ public class ProductController {
      * @return
      */
     @RequestMapping("queryByPage")
+    @ResponseBody
     public ReturnT<PageList> queryByPage(QueryCustomerProductParam param){
         return customerProductService.queryByPage(param);
     }
@@ -102,7 +103,7 @@ public class ProductController {
     public ModelAndView print(Model model,Long[] ids){
         List<CustomerProduct> list = customerProductService.printList(ids);
         // 报表数据源
-        JRDataSource jrDataSource = new JRBeanCollectionDataSource(JavaBeanPerson.getList());
+        JRDataSource jrDataSource = new JRBeanCollectionDataSource(list);
         // 动态指定报表模板url
         model.addAttribute("url", "/WEB-INF/jasper/MvcIReportExample.jasper");
         model.addAttribute("format", "pdf"); // 报表格式

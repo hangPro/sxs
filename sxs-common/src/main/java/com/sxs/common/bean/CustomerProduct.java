@@ -1,12 +1,11 @@
 package com.sxs.common.bean;
 
-import com.sxs.common.session.BaseParameter;
 import com.sxs.common.enums.ProductTypeEnum;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class CustomerProduct extends BaseParameter{
+public class CustomerProduct extends PageObjectBase{
     private Long id;
 
     /**

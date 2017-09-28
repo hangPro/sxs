@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by wangpeng on 2016/12/13.
  */
-public class PageObjectBase implements Serializable {
+public class PageObjectBase extends PojoObjectBase implements Serializable {
 
     private static final long serialVersionUID = 1L;
     public Integer requestOffset;

@@ -3,11 +3,11 @@
 	<property name="ireport.zoom" value="1.1"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<field name="name" class="java.lang.String"/>
-	<field name="sex" class="java.lang.String"/>
-	<field name="age" class="java.lang.Integer"/>
-	<field name="hometown" class="java.lang.String"/>
-	<field name="phone" class="java.lang.String"/>
+	<field name="customerName" class="java.lang.String"/>
+	<field name="customerPhone" class="java.lang.String"/>
+	<field name="orderTime" class="java.lang.String"/>
+	<field name="companyName" class="java.lang.String"/>
+	<field name="orderNo" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -83,7 +83,7 @@
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="0" y="0" width="111" height="20" uuid="ff1f5807-7ca0-40d0-8dc1-24aa9bfcfcb0"/>
 				<box>
 					<topPen lineWidth="0.5"/>
@@ -91,10 +91,12 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="111" y="0" width="111" height="20" uuid="461fc451-d6f0-4b05-8c5f-b1533a3a0fcd"/>
 				<box>
 					<topPen lineWidth="0.5"/>
@@ -102,10 +104,12 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{sex}]]></textFieldExpression>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customerPhone}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="222" y="0" width="111" height="20" uuid="b5eb353f-77da-4bf8-8fd6-5a5ee877d4aa"/>
 				<box>
 					<topPen lineWidth="0.5"/>
@@ -113,10 +117,12 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{age}]]></textFieldExpression>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{orderTime}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="333" y="0" width="111" height="20" uuid="79833268-1830-47b8-b276-baaccd5c4715"/>
 				<box>
 					<topPen lineWidth="0.5"/>
@@ -124,10 +130,12 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{hometown}]]></textFieldExpression>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{companyName}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="444" y="0" width="111" height="20" uuid="56b2dd64-c530-4d6d-8fb0-3a2738a20a97"/>
 				<box>
 					<topPen lineWidth="0.5"/>
@@ -135,8 +143,10 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{phone}]]></textFieldExpression>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{orderNo}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

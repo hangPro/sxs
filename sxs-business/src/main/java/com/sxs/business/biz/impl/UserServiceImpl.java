@@ -5,6 +5,7 @@ import com.sxs.business.mapper.UserMapper;
 import com.sxs.business.plugin.PageHelper;
 import com.sxs.common.bean.User;
 import com.sxs.common.constats.GlobConts;
+import com.sxs.common.enums.ResultCodeEnum;
 import com.sxs.common.enums.StatusEnum;
 import com.sxs.common.param.AddUserParam;
 import com.sxs.common.param.QueryUserParam;
@@ -42,12 +43,12 @@ public class UserServiceImpl implements UserService {
         user.setUsername(username);
         List<User> userList = userMapper.query(user);
         if(userList.isEmpty()){
-            return new ReturnT().failureData("用户不存在");
+            return new ReturnT().failureData(ResultCodeEnum.USER_LOGIN_ERROR);
         }
         User u = userList.get(0);
         String encodePwd = Base64Util.encodePassWord(password);
         if(!encodePwd.equals(u.getPassword())){
-            return new ReturnT().failureData("用户密码错误");
+            return new ReturnT().failureData(ResultCodeEnum.LOGIN_PASSWORD_ERROR);
         }
         //登录成功
         return new ReturnT().sucessData(u);

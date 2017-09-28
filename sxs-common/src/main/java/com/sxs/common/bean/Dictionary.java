@@ -1,10 +1,8 @@
 package com.sxs.common.bean;
 
-import com.sxs.common.session.BaseParameter;
-
 import java.util.Date;
 
-public class Dictionary extends BaseParameter {
+public class Dictionary extends PageObjectBase {
     private Long id;
 
     private String dicType;
