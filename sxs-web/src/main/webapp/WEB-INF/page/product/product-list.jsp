@@ -166,6 +166,24 @@
     var types = {};//菜单显示分类
     var seasonList;
     var typeList;
+    function UnixToDate(unixTime, isFull, timeZone) {
+        if (typeof (timeZone) == 'number')
+        {
+          unixTime = parseInt(unixTime) + parseInt(timeZone) * 60 * 60;
+        }
+        var time = new Date(unixTime);
+        var ymdhis = "";
+        ymdhis += time.getUTCFullYear() + "-";
+        ymdhis += (time.getUTCMonth()+1) + "-";
+        ymdhis += time.getUTCDate();
+        if (isFull === true)
+        {
+          ymdhis += " " + time.getUTCHours() + ":";
+          ymdhis += time.getUTCMinutes() + ":";
+          ymdhis += time.getUTCSeconds();
+        }
+        return ymdhis;
+      }
     $(function () {
         $(".datepicker").datepicker({
             language: "zh-CN",
@@ -213,6 +231,12 @@
                 {
                     name: 'orderTime',
                     index: 'orderTime',
+                    formatter:'date',
+                    formatter: function(cellValue, options, rowObject) {
+                        //return  new Date(parseInt(cellValue)).toLocaleString().replace('/:\d{1,2}$/',' ');
+                        //return new Date(parseInt(cellValue)).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+                        return UnixToDate(cellValue)
+                    },//jqgrid自定义格式化
                     width: 90
                 },
                 {

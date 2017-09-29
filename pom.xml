@@ -390,6 +390,12 @@
 				<version>2.1.7</version>
 			</dependency>
 
+			<dependency>
+				<groupId>com.itextpdf</groupId>
+				<artifactId>itext-asian</artifactId>
+				<version>5.2.0</version>
+			</dependency>
+
 			<!-- Interior jar -->
 			<dependency>
 				<groupId>com.sxs</groupId>

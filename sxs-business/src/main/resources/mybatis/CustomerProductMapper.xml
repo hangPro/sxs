@@ -104,7 +104,7 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
 
-  <insert id="insert" parameterType="com.sxs.common.bean.CustomerProduct">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.sxs.common.bean.CustomerProduct">
     insert into t_customer_product
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

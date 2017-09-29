@@ -39,8 +39,8 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         customerProduct.setUpdateTime(now);
         customerProduct.setStatus(StatusEnum.ENABLE.getCode());
         customerProduct.setOrderNo(DateUtils.formatNowDate(DateUtils.FORMAT_YYYYMMDDHHMMSS));
-        mapper.insert(customerProduct);
-        return new ReturnT().successDefault();
+        int id = mapper.insert(customerProduct);
+        return new ReturnT().sucessData(id);
     }
 
     @Override
