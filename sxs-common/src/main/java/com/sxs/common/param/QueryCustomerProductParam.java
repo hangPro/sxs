@@ -8,6 +8,7 @@ import com.sxs.common.session.WebPageParameter;
  */
 public class QueryCustomerProductParam extends WebPageParameter {
 
+    private String type;
     /**
      * 姓名
      */
@@ -44,6 +45,14 @@ public class QueryCustomerProductParam extends WebPageParameter {
      * 订单状态 状态 1：未定金  2：已定金 3：已完结
      */
     private Integer orderStatus;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getCustomerName() {
         return customerName;

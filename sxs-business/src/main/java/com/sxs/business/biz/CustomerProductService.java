@@ -20,7 +20,9 @@ public interface CustomerProductService {
 
     ReturnT update(UpdateProductParam param);
 
-    PageHelper.Page<CustomerProduct> queryPage(QueryCustomerProductParam param);
+    ReturnT updateOrders(Long[] ids,Integer orderStatus);
+
+    PageHelper.Page<CustomerProduct> queryPcPage(QueryCustomerProductParam param);
 
     ReturnT<PageList> queryByPage(QueryCustomerProductParam param);
 

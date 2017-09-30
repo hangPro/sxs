@@ -73,6 +73,7 @@
   <sql id="whereClause">
     <where>
       <if test="id != null">and id = #{id}</if>
+      <if test="type != null and ''!= type">and type = #{type}</if>
       <if test="customerName != null and ''!= customerName">and customerName = #{customerName}</if>
       <if test="address != null and ''!= address">and address = #{address}</if>
       <if test="orderTime != null and ''!= orderTime">and orderTime = #{orderTime}</if>
@@ -659,4 +660,12 @@
       #{item}
     </foreach>
   </select>
+
+  <update id="updateByIds">
+    update t_customer_product set orderStatus = #{orderStatus,jdbcType=SMALLINT}
+    where id in
+    <foreach collection="ids" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
 </mapper>

@@ -25,4 +25,6 @@ public interface CustomerProductMapper {
     int count(CustomerProduct record);
 
     List<CustomerProduct> queryByIds(@Param("ids")Long[] ids);
+
+    int updateByIds(@Param("ids")Long[] ids,@Param("orderStatus")Integer orderStatus);
 }

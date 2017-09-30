@@ -28,35 +28,35 @@
                     <h5>资料管理</h5>
                 </div>
                 <div class="ibox-content">
-                    <form role="form" class="form-horizontal" id="addForm">
+                    <form role="form" class="form-horizontal" id="searchForm">
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">姓名</label>
-                                <div class="col-sm-6"><input type="text" class="form-control" id="customerName" placeholder="姓名"></div>
+                                <div class="col-sm-6"><input type="text" class="form-control" name="customerName" id="customerName" placeholder="姓名"></div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">日期</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="datepicker" placeholder="请输入日期" />
+                                    <input type="text" name="orderTime" id="orderTime" class="datepicker" placeholder="请输入日期" />
                                     <!--<input type="text" class="datepicker" placeholder="结束日期" />-->
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">微信号</label>
-                                <div class="col-sm-6"><input type="text" class="form-control" id="wechart" placeholder="微信号"></div>
+                                <div class="col-sm-6"><input type="text" class="form-control" name="wechart" id="wechart" placeholder="微信号"></div>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">地址</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="address" placeholder="地址">
+                                    <input type="text" class="form-control" name="address" id="address" placeholder="地址">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">类型</label>
                                 <div class="col-sm-4">
-                                    <select name="type" id="searchType" class="form-control">
+                                    <select name="type" id="type" name="type" class="form-control">
                                         <option value="">全部</option>
                                         <option value="1">衬衫</option>
                                         <option value="2">西装</option>
@@ -67,7 +67,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">订单状态</label>
                                 <div class="col-sm-4">
-                                    <select name="type" id="searchStatus" class="form-control">
+                                    <select name="type" id="orderStatus" name="orderStatus" class="form-control">
                                         <option value="">全部</option>
                                         <option value="1">未定金</option>
                                         <option value="2">已定金</option>
@@ -79,16 +79,16 @@
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">订单编号</label>
-                                <div class="col-sm-6"><input type="text" class="form-control" id="orderNo"></div>
+                                <div class="col-sm-6"><input type="text" class="form-control" name="orderNo" id="orderNo"></div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">淘宝订单号</label>
-                                    <div class="col-sm-6"><input type="text" class="form-control" id="wechart">
+                                    <div class="col-sm-6"><input type="text" class="form-control" name="tbOrderNo" id="tbOrderNo">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">淘宝账号</label>
-                                <div class="col-sm-6"><input type="text" class="form-control" id="wechart"></div>
+                                <div class="col-sm-6"><input type="text" class="form-control" name="tbAccNo" id="tbAccNo"></div>
                             </div>
                         </div>
                     </from>
@@ -97,9 +97,9 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" class="btn btn-primary" id="searchBth" >查询</button>
                     <button type="button" class="btn btn-success" id="resetBtn">重置</button>
-                    <button type="button" class="btn btn-warning" id="addBtn">批量定金</button>
-                    <button type="button" class="btn btn-danger" id="addBtn">批量完结</button>
-                    <button type="button" class="btn btn-inverse" id="addBtn">批量打印</button>
+                    <button type="button" class="btn btn-warning" id="priceBtn">批量定金</button>
+                    <button type="button" class="btn btn-danger" id="finishBtn">批量完结</button>
+                    <button type="button" class="btn btn-inverse" id="printBtn">批量打印</button>
                 </div>
                 <!-- <h4>用户列表</h4> -->
                 <div class="jqGrid_wrapper">
@@ -108,54 +108,6 @@
                 </div>
                 <p>&nbsp;</p>
             </div>
-        </div>
-    </div>
-</div>
-
-
-<div id="add-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-info">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">
-                    <i class="icon-pencil"></i>
-                    <span  style="font-weight:bold">菜单新增</span>
-                </h4>
-            </div>
-            <form class="form-horizontal form-bordered form-row-strippe" id="addForm" action="" data-toggle="validator">
-                <div class="modal-body" id="add-data">
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm" data-dismiss="modal">取消</button>
-                    <button type="button" id="save-btn" class="btn btn-sm btn-success">确定</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-<div id="upd-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-info">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">
-                    <i class="icon-pencil"></i>
-                    <span  style="font-weight:bold">菜单修改</span>
-                </h4>
-            </div>
-            <form class="form-horizontal form-bordered form-row-strippe" id="updForm" action="" data-toggle="validator">
-                <div class="modal-body" id="upd-data">
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm" data-dismiss="modal">取消</button>
-                    <button type="button" id="upd-btn" class="btn btn-sm btn-success">确定</button>
-                </div>
-            </form>
         </div>
     </div>
 </div>
@@ -194,13 +146,13 @@
             format: "yyyy-mm-dd"//日期格式，详见 http://bootstrap-datepicker.readthedocs.org/en/release/options.html#format
         });
         var types = new Array();
-        $("#searchType option").each(function(){  //遍历所有option
+        $("#type option").each(function(){  //遍历所有option
               types[$(this).val()] = $(this).html();
          })
         $.jgrid.defaults.styleUI = 'Bootstrap';
         $("#table_list").jqGrid({
             datatype: "json",
-            url: '${ctx}/product/page',
+            url: '${ctx}/product/queryPcPage',
             mtype : 'POST',
             height: 300,
             autowidth: true,
@@ -233,9 +185,11 @@
                     index: 'orderTime',
                     formatter:'date',
                     formatter: function(cellValue, options, rowObject) {
-                        //return  new Date(parseInt(cellValue)).toLocaleString().replace('/:\d{1,2}$/',' ');
-                        //return new Date(parseInt(cellValue)).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
-                        return UnixToDate(cellValue)
+                        if(cellValue != ''){
+                            return UnixToDate(cellValue)
+                        }else{
+                            return '';
+                        }
                     },//jqgrid自定义格式化
                     width: 90
                 },
@@ -252,6 +206,13 @@
                 {
                     name:'sendTime',
                     index:'sendTime',
+                    formatter: function(cellValue, options, rowObject) {
+                        if(cellValue != ''){
+                            return UnixToDate(cellValue)
+                        }else{
+                            return '';
+                        }
+                    },
                     width : 200
                 },
                 {
@@ -283,66 +244,61 @@
             viewrecords: true,
             sortorder: "desc"
         });
-
-
-
-        $('#addBtn').bind('click',function(){
-            var fmenuList;
-            postAsync('${ctx}/fmenu/getFMenuList',{'parentId':0},function(result){fmenuList=result.data;});
-            $('#add-data').html(template('add-tmpl',{
-                'typeList':typeList,
-                'seasonList':seasonList
-            }));
-            initImageUpload('add_path');
-            $("#add-modal").modal({backdrop: 'static', keyboard: false});
-        });
-
-
-        $('#save-btn').bind('click',function(){
-            save();
-        });
-
         $('#searchBth').bind('click',function(){
             search();
         });
-
         $('#resetBtn').bind('click',function(){
             $('#searchForm')[0].reset();
         });
-
-        $('#upd-btn').bind('click',function(){
-            update();
+        $('#priceBtn').bind('click',function(){
+            var arrayObj = new Array();
+            $("input[type='checkbox']").each(function(){
+                if($(this)[0].checked){
+                    arrayObj.push($(this).val());
+                }
+            });
+            var grid = $('#table_list');
+            var rowKey = grid.getGridParam("selrow");
+            var orderStatus = 2;
+            if (rowKey) {
+                var selectedIDs = grid.getGridParam("selarrrow");
+                update(selectedIDs,orderStatus);
+                console.log(selectedIDs);
+            }else{
+                swal("提示！", "请选择记录！!", "error");
+                return;
+            }
         });
-
-
-
+        $('#finishBtn').bind('click',function(){
+            var arrayObj = new Array();
+            $("input[type='checkbox']").each(function(){
+                if($(this).attr('checked')){
+                    arrayObj.push($(this).val());
+                }
+            });
+            if(arrayObj.length == 0){
+                swal("提示！", "请选择记录！!", "error");
+                return;
+            }
+            var grid = $('#table_list');
+            var rowKey = grid.getGridParam("selrow");
+            if (rowKey) {
+                var selectedIDs = grid.getGridParam("selarrrow");
+                for (var i = 0; i < selectedIDs.length; i++) {
+                    console.log(selectedIDs[i]);
+                }
+            }
+            return
+            var orderStatus = 3;
+            update(arrayObj,orderStatus);
+        });
+        $('#printBtn').bind('click',function(){
+            //update();
+        });
     });
 
-   
-
-    function goUpdate(id){
-        var data;
-        postAsync('${ctx}/product/getProduct',{'id':id},function(result){data=result.data});
-        $('#upd-data').html(template('upd-tmpl',{
-                'data':data,
-                'seasonList':seasonList,
-                'typeList':typeList
-            }));
-        initImageUpload('upd_path');
-        $("#upd-modal").modal({backdrop: 'static', keyboard: false});
-    }
-
-    function update(){
-        var param = {};
-        $('#updForm .form-control').each(function(){
-            var name = $(this).attr('name');
-            var value = $(this).val();
-            param[name] = value;
-        });
-        if(!validate(param)){
-            return;
-        }
-        postAjax('${ctx}/product/update',param,function(result){
+    function update(arrayObj,orderStatus){
+        postAjax('${ctx}/product/updateOrders',{'ids[]':arrayObj,'orderStatus':orderStatus},function(result){
             if(result.success){
                 $("#table_list").trigger("reloadGrid");
                 swal("提示！", "修改成功!", "success");
@@ -353,13 +309,9 @@
         });
     }
 
-
-
-
-
     function search(){
         var param = {};
-        $('#searchForm .form-control').each(function(){
+        $('#searchForm input').each(function(){
             var name = $(this).attr('name');
             var value = $(this).val();
             param[name] = value;
@@ -371,28 +323,6 @@
         }).trigger("reloadGrid"); //重新载入
     }
 
-
-    function save(){
-        var param = {};
-        $('#addForm .form-control').each(function(){
-            var name = $(this).attr('name');
-            var value = $(this).val();
-            param[name] = value;
-        });
-        if(!validate(param)){
-            return;
-        }
-        postAjax('${ctx}/product/add',param,function(result){
-            if(result.success){
-                $("#table_list").trigger("reloadGrid");
-                swal("提示！", "新增成功!", "success");
-                $("#add-modal").modal("hide");
-            }else{
-                swal("提示！", result.msg, "error");
-            }
-        });
-
-    }
     //删除记录
     function deleteRow(id){
         swal({
@@ -450,136 +380,6 @@
 </script>
 </body>
 
-
-
-<!-- script templcate -->
-<script id="add-tmpl" type="text/html">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                <label class="control-label col-md-2">类型:</label>
-                <div class="col-md-10">
-                    <select name="type" class="form-control" placeholder="类型">
-                    <option value="">---请选择---</option>
-                        {{each typeList as value i}}
-                            <option value="{{value.id}}">{{value.menuName}}</option>
-                        {{/each}}
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">季节:</label>
-                <div class="col-md-10">
-                    <select name="season" class="form-control" placeholder="季节">
-                    <option value="">---请选择---</option>
-                        {{each seasonList as value i}}
-                            <option value="{{value.id}}">{{value.name}}</option>
-                        {{/each}}
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-             <label class="control-label col-md-2">排序:</label>
-                 <div class="col-md-10">
-                       <input name="ordered" type="text"  class="form-control" placeholder="排序" />                 
-                 </div>          
-            </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-2">图片:</label>
-                    <div class="col-md-10">
-                        <div class="demo l_f">
-                            <div class="logobox"><div class="resizebox"><img src="${ctx}/assets/img/upload.png" width="100px" alt="" height="100px"/></div></div>
-                            <div class="logoupload">
-                                <input type="hidden" name="imgUrl" id="add_path" class="form-control"   />
-                                <div class="btnbox"><a id="uploadBtnHolder" class="uploadbtn" href="javascript:;">上传替换</a></div>
-                                <div style="clear:both;height:0;overflow:hidden;"></div>
-                                <div class="progress-box" style="display:none;">
-                                    <div class="progress-num">上传进度：<b>0%</b></div>
-                                    <div class="progress-bar"><div style="width:0%;" class="bar-line"></div></div>
-                                </div>
-                            </div>
-
-                        </div> <div class="prompt"><p>图片大小<b>120px*60px</b>图片大小小于5MB,</p><p>支持.jpg;.gif;.png;.jpeg格式的图片</p></div>
-                    </div>
-                </div>
-
-            
-        </div>
-    </div>
-</script>
-
-
-<script id="upd-tmpl" type="text/html">
-<input type="hidden" name="id" class="form-control" value="{{data.id}}" />
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                <label class="control-label col-md-2">类型:</label>
-                <div class="col-md-10">
-                    <select name="type" class="form-control" placeholder="类型">
-                    <option value="">---请选择---</option>
-                        {{each typeList as value i}}
-                            {{if data.type == value.id}}
-                            <option value="{{value.id}}" selected >{{value.menuName}}</option>
-                                {{else}}
-                                <option value="{{value.id}}" >{{value.menuName}}</option>
-                            {{/if}}
-                        {{/each}}
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">季节:</label>
-                <div class="col-md-10">
-                    <select name="season" class="form-control" placeholder="季节">
-                    <option value="">---请选择---</option>
-                        {{each seasonList as value i}}
-                            {{if data.season==value.id}}
-                            <option value="{{value.id}}" selected>{{value.name}}</option>
-                            {{else}}
-                            <option value="{{value.id}}">{{value.name}}</option>
-                            {{/if}}
-                        {{/each}}
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-             <label class="control-label col-md-2">排序:</label>
-                 <div class="col-md-10">
-                       <input name="ordered" type="text" value="{{data.ordered}}"  class="form-control" placeholder="排序" />                 
-                 </div>          
-            </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-2">图片:</label>
-                    <div class="col-md-10">
-                        <div class="demo l_f">
-                            <div class="logobox"><div class="resizebox"><img src="${ctx}/{{data.imgUrl}}" width="100px" alt="" height="100px"/></div></div>
-                            <div class="logoupload">
-                                <input type="hidden" name="imgUrl" value="{{data.imgUrl}}" id="upd_path" class="form-control"   />
-                                <div class="btnbox"><a id="uploadBtnHolder" class="uploadbtn" href="javascript:;">上传替换</a></div>
-                                <div style="clear:both;height:0;overflow:hidden;"></div>
-                                <div class="progress-box" style="display:none;">
-                                    <div class="progress-num">上传进度：<b>0%</b></div>
-                                    <div class="progress-bar"><div style="width:0%;" class="bar-line"></div></div>
-                                </div>
-                            </div>
-
-                        </div> <div class="prompt"><p>图片大小<b>120px*60px</b>图片大小小于5MB,</p><p>支持.jpg;.gif;.png;.jpeg格式的图片</p></div>
-                    </div>
-                </div>
-
-            
-        </div>
-    </div>
-</script>
-
-
 <script type="text/javascript">
     function updateProgress(file) {
         $('.progress-box .progress-bar > div').css('width', parseInt(file.percentUploaded) + '%');
@@ -610,60 +410,6 @@
         $(".logobox .resizebox > img").attr('width', _up_width);
         $(".logobox .resizebox > img").attr('height', _up_height);
         $('#'+imgId).val(up_path);
-    }
-
-    var swfImageUpload;
-
-    function initImageUpload(imgId){
-        var settings = {
-            flash_url : "${ctx}/assets/js/plugins/swfupload/swfupload.swf",
-            flash9_url : "${ctx}/assets/js/plugins/swfupload/swfupload_fp9.swf",
-            upload_url: "${ctx}/upload/file",// 接受上传的地址
-            file_size_limit : "15MB",// 文件大小限制
-            file_types : "*.jpg;*.gif;*.png;*.jpeg;",// 限制文件类型
-            file_types_description : "图片",// 说明，自己定义
-            file_upload_limit : 100,
-            file_queue_limit : 0,
-            custom_settings : {},
-            debug: false,
-            // Button settings
-            button_image_url: "${ctx}/assets/js/plugins/swfupload/upload-btn.png",
-            button_width: "95",
-            button_height: "30 ",
-            button_placeholder_id: 'uploadBtnHolder',
-            button_window_mode : SWFUpload.WINDOW_MODE.TRANSPARENT,
-            button_cursor : SWFUpload.CURSOR.HAND,
-            button_action: SWFUpload.BUTTON_ACTION.SELECT_FILE,
-
-            moving_average_history_size: 40,
-
-            // The event handler functions are defined in handlers.js
-            swfupload_preload_handler : preLoad,
-            swfupload_load_failed_handler : loadFailed,
-            file_queued_handler : fileQueued,
-            file_dialog_complete_handler: fileDialogComplete,
-            upload_start_handler : function (file) {
-                initProgress();
-                updateProgress(file);
-            },
-            upload_progress_handler : function(file, bytesComplete, bytesTotal) {
-                updateProgress(file);
-            },
-            upload_success_handler : function(file, data, response) {
-                // 上传成功后处理函数
-                var fileInfo = eval("(" + data + ")");
-                successAction(fileInfo,imgId);
-            },
-            upload_error_handler : function(file, errorCode, message) {
-                alert('上传发生了错误！');
-            },
-            file_queue_error_handler : function(file, errorCode, message) {
-                if(errorCode == -110) {
-                    alert('您选择的文件太大了。');
-                }
-            }
-        };
-        swfImageUpload = new SWFUpload(settings);
     }
 
 

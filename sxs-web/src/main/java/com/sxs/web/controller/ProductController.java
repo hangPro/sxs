@@ -14,6 +14,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -58,8 +59,8 @@ public class ProductController {
     }
 
     @RequestMapping("updateOrders")
-    public ReturnT updateOrders(CustomerProduct customerProduct){
-        return null;
+    public ReturnT updateOrders(@RequestParam(value = "ids[]", required = false) Long[] ids, @RequestParam(value = "orderStatus", required = false) Integer orderStatus){
+        return customerProductService.updateOrders(ids,orderStatus);
     }
 
     /**
@@ -67,9 +68,9 @@ public class ProductController {
      * @param param
      * @return
      */
-    @RequestMapping("page")
-    public PageHelper.Page<CustomerProduct> queryUserPage(QueryCustomerProductParam param){
-        return customerProductService.queryPage(param);
+    @RequestMapping("queryPcPage")
+    public PageHelper.Page<CustomerProduct> queryPcPage(QueryCustomerProductParam param){
+        return customerProductService.queryPcPage(param);
     }
 
     /**

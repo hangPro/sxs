@@ -2,6 +2,7 @@ package com.sxs.common.utils;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -17,6 +18,18 @@ public class DateUtils {
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         Date now = new Date();
         return sdf.format(now);
+    }
+
+    public static Date formatDate(String dateStr, String format){
+        if (StringUtils.isBlank(dateStr)) {
+            return null;
+        }
+        SimpleDateFormat dateformat = new SimpleDateFormat(format);
+        try {
+            return dateformat.parse(dateStr);
+        } catch (ParseException e) {
+            return null;
+        }
     }
 
     public static Date parseDate(String timeText, String pattern) {

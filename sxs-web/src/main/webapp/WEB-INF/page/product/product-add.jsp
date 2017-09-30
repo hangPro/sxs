@@ -37,27 +37,27 @@
                         </div>
                       </div>
                       <div class="form-group form-group-sm">
-                        <label class="col-sm-2 control-label" for="customerName">电话</label>
+                        <label class="col-sm-2 control-label" for="customerPhone">电话</label>
                         <div class="col-sm-5">
-                          <input class="form-control" type="text" id="customerName" placeholder="请输入电话">
+                          <input class="form-control" type="text" id="customerPhone" placeholder="请输入电话">
                         </div>
                       </div>
                       <div class="form-group form-group-sm">
-                        <label class="col-sm-2 control-label" for="customerName">微信号</label>
+                        <label class="col-sm-2 control-label" for="wechart">微信号</label>
                         <div class="col-sm-5">
-                          <input class="form-control" type="text" id="customerName" placeholder="请输入微信号">
+                          <input class="form-control" type="text" id="wechart" placeholder="请输入微信号">
                         </div>
                       </div>
                       <div class="form-group form-group-sm">
-                        <label class="col-sm-2 control-label" for="customerName">淘宝账号</label>
+                        <label class="col-sm-2 control-label" for="tbAccNo">淘宝账号</label>
                         <div class="col-sm-5">
-                          <input class="form-control" type="text" id="customerName" placeholder="请输入淘宝账号">
+                          <input class="form-control" type="text" id="tbAccNo" placeholder="请输入淘宝账号">
                         </div>
                       </div>
                       <div class="form-group form-group-sm">
-                        <label class="col-sm-2 control-label" for="customerName">淘宝订单号</label>
+                        <label class="col-sm-2 control-label" for="tbOrderNo">淘宝订单号</label>
                         <div class="col-sm-5">
-                          <input class="form-control" type="text" id="customerName" placeholder="请输入淘宝订单号">
+                          <input class="form-control" type="text" id="tbOrderNo" placeholder="请输入淘宝订单号">
                         </div>
                       </div>
                       <div class="form-group form-group-sm">
@@ -87,11 +87,11 @@
                       <div class="form-group form-group-sm">
                           <label class="col-sm-2 control-label">性别</label>
                           <div class="col-sm-5">
-                              <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" id="customerSex" value="1"> 男
+                              <label class="checkbox-inline">
+                                <input type="checkbox" name="customerSex" id="customerSex1" value="1"> 男
                               </label>
-                              <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" id="customerSex" value="2"> 女
+                              <label class="checkbox-inline">
+                                <input type="checkbox" name="customerSex" id="customerSex2" value="2"> 女
                               </label>
                           </div>
                       </div>
@@ -104,13 +104,13 @@
                       <div class="form-group form-group-sm">
                           <label class="col-sm-2 control-label">布料用料</label>
                           <div class="col-sm-5">
-                              <input type="text" class="form-control" id="companyName" placeholder="请输入布料用料" />
+                              <input type="text" class="form-control" id="clothDesc" placeholder="请输入布料用料" />
                           </div>
                       </div>
                       <div class="form-group form-group-sm">
                           <label class="col-sm-2 control-label">单价</label>
                           <div class="col-sm-5">
-                              <input type="number" class="form-control" id="companyName" placeholder="请输入单价" />
+                              <input type="number" class="form-control" id="price" placeholder="请输入单价" />
                           </div>
                       </div>
                       <div class="form-group form-group-sm">
@@ -128,22 +128,22 @@
                       <div class="form-group form-group-sm">
                         <label class="col-sm-2 control-label">是否试身</label>
                         <div class="col-sm-5">
-                            <label class="radio-inline">
-                              <input type="radio" name="inlineRadioOptions" id="bodyStatus" value="1"> 否
+                            <label class="checkbox-inline">
+                              <input type="checkbox" name="bodyStatus" id="bodyStatus1" value="1" checked> 否
                             </label>
-                            <label class="radio-inline">
-                              <input type="radio" name="inlineRadioOptions" id="bodyStatus" value="2"> 是
+                            <label class="checkbox-inline">
+                              <input type="checkbox" name="bodyStatus" id="bodyStatus2" value="2"> 是
                             </label>
                         </div>
                       </div>
                       <div class="form-group form-group-sm">
                         <label class="col-sm-2 control-label">是否交货</label>
                         <div class="col-sm-5">
-                            <label class="radio-inline">
-                              <input type="radio" name="inlineRadioOptions" id="sendStatus" value="1"> 否
+                            <label class="checkbox-inline">
+                              <input type="checkbox" name="sendStatus" id="sendStatus1" value="1" checked> 否
                             </label>
-                            <label class="radio-inline">
-                              <input type="radio" name="inlineRadioOptions" id="sendStatus" value="2"> 是
+                            <label class="checkbox-inline">
+                              <input type="checkbox" name="sendStatus" id="sendStatus2" value="2"> 是
                             </label>
                         </div>
                       </div>
@@ -159,21 +159,21 @@
                       <div class="form-group form-group-sm">
                           <label class="col-sm-2 control-label">前衣长</label>
                           <div class="col-sm-2">
-                              <input type="number" class="form-control" id="hycNum" placeholder="前衣长" />
+                              <input type="number" class="form-control" id="qycNum" placeholder="前衣长" />
                           </div>
                           <label class="col-sm-1 control-label">裤长</label>
                           <div class="col-sm-2">
-                              <input type="number" class="form-control" id="qcNum" placeholder="裤长" />
+                              <input type="number" class="form-control" id="kcNum" placeholder="裤长" />
                           </div>
                       </div>
                       <div class="form-group form-group-sm">
                           <label class="col-sm-2 control-label">后衣长</label>
                           <div class="col-sm-2">
-                              <input type="number" class="form-control" id="qycNum" placeholder="后衣长" />
+                              <input type="number" class="form-control" id="hycNum" placeholder="后衣长" />
                           </div>
                           <label class="col-sm-1 control-label">裙长</label>
                           <div class="col-sm-2">
-                              <input type="number" class="form-control" id="hycNum" placeholder="裙长" />
+                              <input type="number" class="form-control" id="qcNum" placeholder="裙长" />
                           </div>
                       </div>
                       <div class="form-group form-group-sm">
@@ -296,12 +296,31 @@ $(function () {
         $("a").attr("class","btn btn-default");
         $(this).attr("class","btn btn-primary");
     });
-
+    $('#customerSex1').click(function(){
+        $('#customerSex2').prop("checked",false);
+    });
+    $('#bodyStatus1').click(function(){
+        $('#bodyStatus2').prop("checked",false);
+    });
+    $('#sendStatus2').click(function(){
+        $('#bodyStatus1').prop("checked",false);
+    });
     $('#formSubmit').bind('click', function(){
-        alert($("#productForm").serialize());
-        return;
-        var type = $(".btn btn-primary").attr("data");
-        postAsync('${ctx}/product/add',$("form").serialize(),function(result){
+        var data = eval('({})');
+        $("input").each(function(){
+            if($(this).attr('type') == 'checkbox' && $(this).attr('checked')){
+                var key = $(this).attr('name');
+                data[key] = $(this).val();
+                return true;
+            }else {
+                var key = $(this).attr('id');
+                data[key] = $(this).val();
+            }
+        });
+        var typeVal = $("a[class='btn btn-primary']").attr("data");
+        data['type'] = typeVal;
+        console.log(data);
+        postAsync('${ctx}/product/add',data,function(result){
             console.log(result);
             if(result.success){
                 swal("提示！", "下单成功!", "success");

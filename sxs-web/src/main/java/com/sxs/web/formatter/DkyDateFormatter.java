@@ -1,5 +1,8 @@
 package com.sxs.web.formatter;
 
+import com.sxs.common.utils.DateUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.format.Formatter;
 
 import java.text.ParseException;
@@ -12,11 +15,21 @@ import java.util.Locale;
  */
 public class DkyDateFormatter implements Formatter<Date> {
 
+    Logger logger = LoggerFactory.getLogger(DkyDateFormatter.class);
+
     @Override
-    public Date parse(String s, Locale locale) throws ParseException {
+    public Date parse(String s, Locale locale){
         //SimpleDateFormat sdf = new SimpleDateFormat(GlobConts.DEFAULT_FORMATTER_YYYY_MM_DD,Locale.US);
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy",Locale.US);
-        return sdf.parse(s);
+        Date date = null;
+        try {
+            date = sdf.parse(s);
+        }catch (ParseException e){
+            logger.error("time parse error",e.getMessage());
+        }finally {
+            date = DateUtils.parseDate(s);
+        }
+        return date;
     }
 
     @Override

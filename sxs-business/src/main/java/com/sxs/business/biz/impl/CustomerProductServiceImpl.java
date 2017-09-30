@@ -52,10 +52,11 @@ public class CustomerProductServiceImpl implements CustomerProductService {
     }
 
     @Override
-    public PageHelper.Page<CustomerProduct> queryPage(QueryCustomerProductParam param) {
+    public PageHelper.Page<CustomerProduct> queryPcPage(QueryCustomerProductParam param) {
         PageHelper.startPage(param.getPage(),param.getPageSize());
         CustomerProduct customerProduct = new CustomerProduct();
         BeanUtils.copyProperties(param,customerProduct);
+        customerProduct.setOrderTime(DateUtils.formatDate(param.getOrderTime(),DateUtils.FORMAT_YYYYMMDD));
         customerProduct.setStatus(StatusEnum.ENABLE.getCode());
         mapper.query(customerProduct);
         return PageHelper.endPage();
@@ -81,6 +82,12 @@ public class CustomerProductServiceImpl implements CustomerProductService {
     @Override
     public List<CustomerProduct> printList(Long[] ids) {
         return mapper.queryByIds(ids);
+    }
+
+    @Override
+    public ReturnT updateOrders(Long[] ids,Integer orderStatus) {
+        mapper.updateByIds(ids,orderStatus);
+        return new ReturnT().successDefault();
     }
 }
 
