@@ -26,7 +26,6 @@ public class DkyDateFormatter implements Formatter<Date> {
             date = sdf.parse(s);
         }catch (ParseException e){
             logger.error("time parse error",e.getMessage());
-        }finally {
             date = DateUtils.parseDate(s);
         }
         return date;

@@ -83,7 +83,7 @@
       <if test="tbAccNo != null and ''!= tbAccNo">and tbAccNo = #{tbAccNo}</if>
       <if test="tbOrderNo != null and ''!= tbOrderNo">and tbOrderNo = #{tbOrderNo}</if>
       <if test="orderStatus != null and ''!= orderStatus">and orderStatus = #{orderStatus}</if>
-      <if test="status != null and ''!= status">and status = #{status}</if>
+      <if test="status != null">and status = #{status}</if>
     </where>
   </sql>
 
@@ -91,6 +91,7 @@
     select <include refid="Base_Column_List" />
     from t_customer_product
     <include refid="whereClause" />
+    order by orderStatus asc,orderTime desc
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -634,6 +635,7 @@
     select <include refid="Base_Column_List" />
     from t_customer_product
     <include refid="whereClause" />
+    order by orderStatus asc,orderTime desc
     <if test="null!=requestOffset">
       limit #{requestOffset},#{requestCount}
     </if>

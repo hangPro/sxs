@@ -47,6 +47,9 @@ public class CustomerProductServiceImpl implements CustomerProductService {
     public ReturnT update(UpdateProductParam param) {
         CustomerProduct customerProduct = new CustomerProduct();
         BeanUtils.copyProperties(param,customerProduct);
+        Date now = new Date();
+        customerProduct.setCreateTime(now);
+        customerProduct.setUpdateTime(now);
         mapper.updateById(customerProduct);
         return new ReturnT().successDefault();
     }
@@ -56,7 +59,7 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         PageHelper.startPage(param.getPage(),param.getPageSize());
         CustomerProduct customerProduct = new CustomerProduct();
         BeanUtils.copyProperties(param,customerProduct);
-        customerProduct.setOrderTime(DateUtils.formatDate(param.getOrderTime(),DateUtils.FORMAT_YYYYMMDD));
+        //customerProduct.setOrderTime(DateUtils.formatDate(param.getOrderTime(),DateUtils.FORMAT_YYYYMMDD));
         customerProduct.setStatus(StatusEnum.ENABLE.getCode());
         mapper.query(customerProduct);
         return PageHelper.endPage();

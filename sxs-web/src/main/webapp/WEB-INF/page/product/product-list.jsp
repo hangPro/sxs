@@ -114,10 +114,6 @@
 
 <!-- Page-Level Scripts -->
 <script>
-    var seasons = {};//类型
-    var types = {};//菜单显示分类
-    var seasonList;
-    var typeList;
     function UnixToDate(unixTime, isFull, timeZone) {
         if (typeof (timeZone) == 'number')
         {
@@ -126,8 +122,8 @@
         var time = new Date(unixTime);
         var ymdhis = "";
         ymdhis += time.getUTCFullYear() + "-";
-        ymdhis += (time.getUTCMonth()+1) + "-";
-        ymdhis += time.getUTCDate();
+        ymdhis += (time.getMonth()+1) + "-";
+        ymdhis += time.getDate();
         if (isFull === true)
         {
           ymdhis += " " + time.getUTCHours() + ":";
@@ -149,6 +145,10 @@
         $("#type option").each(function(){  //遍历所有option
               types[$(this).val()] = $(this).html();
          })
+        var orderStatusList = new Array();
+        $("#orderStatus option").each(function(){  //遍历所有option
+              orderStatusList[$(this).val()] = $(this).html();
+         })
         $.jgrid.defaults.styleUI = 'Bootstrap';
         $("#table_list").jqGrid({
             datatype: "json",
@@ -159,7 +159,7 @@
             shrinkToFit: true,
             rowNum: 14,
             rowList: [10, 20, 30],
-            colNames: ['id', '姓名', '类型', '订单日期','公司','区域','送货时间', '操作'],
+            colNames: ['id', '姓名', '类型', '订单日期','公司','区域','送货时间','状态', '操作'],
             colModel: [
                 {
                     name: 'id',
@@ -216,6 +216,14 @@
                     width : 200
                 },
                 {
+                    name:'orderStatus',
+                    index:'orderStatus',
+                    width : 100,
+                    formatter : function(cellvalue, options, rowObject){
+                       return orderStatusList[cellvalue];
+                    }
+                },
+                {
                     name: 'id',
                     index: 'id',
                     width: 200,
@@ -251,53 +259,35 @@
             $('#searchForm')[0].reset();
         });
         $('#priceBtn').bind('click',function(){
-            var arrayObj = new Array();
-            $("input[type='checkbox']").each(function(){
-                if($(this)[0].checked){
-                    arrayObj.push($(this).val());
-                }
-            });
             var grid = $('#table_list');
             var rowKey = grid.getGridParam("selrow");
             var orderStatus = 2;
             if (rowKey) {
                 var selectedIDs = grid.getGridParam("selarrrow");
-                update(selectedIDs,orderStatus);
-                console.log(selectedIDs);
+                updateOrders(selectedIDs,orderStatus);
             }else{
                 swal("提示！", "请选择记录！!", "error");
                 return;
             }
         });
         $('#finishBtn').bind('click',function(){
-            var arrayObj = new Array();
-            $("input[type='checkbox']").each(function(){
-                if($(this).attr('checked')){
-                    arrayObj.push($(this).val());
-                }
-            });
-            if(arrayObj.length == 0){
+            var grid = $('#table_list');
+            var rowKey = grid.getGridParam("selrow");
+            var orderStatus = 3;
+            if (rowKey) {
+                var selectedIDs = grid.getGridParam("selarrrow");
+                updateOrders(selectedIDs,orderStatus);
+            }else{
                 swal("提示！", "请选择记录！!", "error");
                 return;
             }
-            var grid = $('#table_list');
-            var rowKey = grid.getGridParam("selrow");
-            if (rowKey) {
-                var selectedIDs = grid.getGridParam("selarrrow");
-                for (var i = 0; i < selectedIDs.length; i++) {
-                    console.log(selectedIDs[i]);
-                }
-            }
-            return
-            var orderStatus = 3;
-            update(arrayObj,orderStatus);
         });
         $('#printBtn').bind('click',function(){
             //update();
         });
     });
 
-    function update(arrayObj,orderStatus){
+    function updateOrders(arrayObj,orderStatus){
         postAjax('${ctx}/product/updateOrders',{'ids[]':arrayObj,'orderStatus':orderStatus},function(result){
             if(result.success){
                 $("#table_list").trigger("reloadGrid");
@@ -316,6 +306,8 @@
             var value = $(this).val();
             param[name] = value;
         });
+        param['orderStatus'] = $('#orderStatus').val();
+        param['type'] = $('#type').val();
         $('#table_list').jqGrid('setGridParam',{
             postData : param,
             //查询重载第一页
@@ -335,7 +327,7 @@
             cancelButtonText:"取消",
             animation:"slide-from-top"
         }, function() {
-            postAjax('${ctx}/product/delete',{'id':id},function(result){
+            postAjax('${ctx}/product/delete',{'id':id,'status':1},function(result){
                 if(result.success){
                     $("#table_list").trigger("reloadGrid");
                     swal("操作成功!", "已成功删除数据！", "success");
@@ -360,22 +352,6 @@
             window.open("${ctx}/test/report","_blank");
             //window.location.href = "${ctx}/test/report";
         });
-    }
-
-    function validate(param){
-        if (!param['type']) {
-            swal("提示信息", "类型不能为空", "error");
-            return false;
-        }
-        if (!param['season']) {
-            swal("提示信息", "季节不能为空", "error");
-            return false;
-        }
-        if (!param['imgUrl']) {
-            swal("提示信息", "图片不能为空", "error");
-            return false;
-        }
-        return true;
     }
 </script>
 </body>

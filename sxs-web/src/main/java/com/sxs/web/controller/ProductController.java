@@ -58,6 +58,16 @@ public class ProductController {
         return customerProductService.update(param);
     }
 
+    @RequestMapping("delete")
+    public ReturnT delete(UpdateProductParam param){
+        return customerProductService.update(param);
+    }
+
+    @RequestMapping("updateById")
+    public ReturnT updateById(UpdateProductParam param){
+        return customerProductService.update(param);
+    }
+
     @RequestMapping("updateOrders")
     public ReturnT updateOrders(@RequestParam(value = "ids[]", required = false) Long[] ids, @RequestParam(value = "orderStatus", required = false) Integer orderStatus){
         return customerProductService.updateOrders(ids,orderStatus);

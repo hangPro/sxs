@@ -2,6 +2,8 @@ package com.sxs.common.param;
 
 import com.sxs.common.session.WebPageParameter;
 
+import java.util.Date;
+
 
 /**
  * Created by hang on 2017/2/18.
@@ -20,7 +22,7 @@ public class QueryCustomerProductParam extends WebPageParameter {
     /**
      * 订单日期
      */
-    private String orderTime;
+    private Date orderTime;
     /**
      * 所属公司
      */
@@ -70,11 +72,11 @@ public class QueryCustomerProductParam extends WebPageParameter {
         this.address = address;
     }
 
-    public String getOrderTime() {
+    public Date getOrderTime() {
         return orderTime;
     }
 
-    public void setOrderTime(String orderTime) {
+    public void setOrderTime(Date orderTime) {
         this.orderTime = orderTime;
     }
 

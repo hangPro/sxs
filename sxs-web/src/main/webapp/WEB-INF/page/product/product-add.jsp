@@ -88,7 +88,7 @@
                           <label class="col-sm-2 control-label">性别</label>
                           <div class="col-sm-5">
                               <label class="checkbox-inline">
-                                <input type="checkbox" name="customerSex" id="customerSex1" value="1"> 男
+                                <input type="checkbox" name="customerSex" id="customerSex1" value="1" checked> 男
                               </label>
                               <label class="checkbox-inline">
                                 <input type="checkbox" name="customerSex" id="customerSex2" value="2"> 女
@@ -266,6 +266,36 @@
                               <input type="number" class="form-control" id="lwNum" placeholder="领围" />
                           </div>
                       </div>
+                      <div class="form-group form-group-sm">
+                            <label class="col-sm-2 control-label"></label>
+                              <div class="panel panel-default">
+                                <div class="panel-body">
+                                  Basic panel example
+                                </div>
+                              </div>
+                        </div>
+                      </div>
+                      <div class="alert alert-success" role="alert">信息</div>
+                      <div class="form-group form-group-sm">
+                          <label class="col-sm-2 control-label"></label>
+                          <div class="col-sm-5">
+                              <label class="checkbox-inline">
+                                <input type="checkbox" name="sendStatus" id="sendStatus1" value="1" checked> 驼背
+                              </label>
+                              <label class="checkbox-inline">
+                                <input type="checkbox" name="sendStatus" id="sendStatus2" value="2"> 有肚
+                              </label>
+                              <label class="checkbox-inline">
+                                <input type="checkbox" name="sendStatus" id="sendStatus1" value="1" checked> 驼背
+                              </label>
+                              <label class="checkbox-inline">
+                                <input type="checkbox" name="sendStatus" id="sendStatus2" value="2"> 有肚
+                              </label>
+                              <label class="checkbox-inline">
+                                <input type="checkbox" name="sendStatus" id="sendStatus1" value="1" checked> 驼背
+                              </label>
+                          </div>
+                      </div>
                       <div class="form-group">
                           <label class="col-sm-2 control-label" for="formGroupInputSmall"></label>
                           <div class="col-sm-5"><button type="button" id="formSubmit" class="btn btn-success btn-lg">提交</button></div>
@@ -299,10 +329,19 @@ $(function () {
     $('#customerSex1').click(function(){
         $('#customerSex2').prop("checked",false);
     });
+    $('#customerSex2').click(function(){
+        $('#customerSex1').prop("checked",false);
+    });
+    $('#sendStatus1').click(function(){
+        $('#sendStatus2').prop("checked",false);
+    });
+    $('#sendStatus2').click(function(){
+        $('#sendStatus1').prop("checked",false);
+    });
     $('#bodyStatus1').click(function(){
         $('#bodyStatus2').prop("checked",false);
     });
-    $('#sendStatus2').click(function(){
+    $('#bodyStatus2').click(function(){
         $('#bodyStatus1').prop("checked",false);
     });
     $('#formSubmit').bind('click', function(){

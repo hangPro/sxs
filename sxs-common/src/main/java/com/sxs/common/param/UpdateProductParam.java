@@ -2,6 +2,7 @@ package com.sxs.common.param;
 
 import com.sxs.common.session.SessionParameter;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import java.util.Date;
  */
 public class UpdateProductParam extends SessionParameter {
 
+    @NotNull(message = "ID不能为空！")
     private Long id;
 
     /**
