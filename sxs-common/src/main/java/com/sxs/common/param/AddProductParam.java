@@ -3,7 +3,6 @@ package com.sxs.common.param;
 import com.sxs.common.session.SessionParameter;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -31,7 +30,7 @@ public class AddProductParam extends SessionParameter {
     /**
      * 订单日期
      */
-    @NotNull(message = "订单日期不能为空！")
+    //@NotNull(message = "订单日期不能为空！")
     private Date orderTime;
     /**
      * 交货日期
@@ -223,9 +222,23 @@ public class AddProductParam extends SessionParameter {
      */
     private Integer lbkcActive;
     /**
+     * 平驳领：1：未选择 2：已选择
+     */
+    private Integer pblActive;
+    /**
+     * 枪驳领：1：未选择 2：已选择
+     */
+    private Integer qblActive;
+    /**
      * 备注
      */
     private String remark;
+    /**
+     * 图片地址
+     */
+    private String imgUrl;
+
+    private String fileStr;
 
     public String getType() {
         return type;
@@ -641,5 +654,37 @@ public class AddProductParam extends SessionParameter {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getFileStr() {
+        return fileStr;
+    }
+
+    public void setFileStr(String fileStr) {
+        this.fileStr = fileStr;
+    }
+
+    public Integer getPblActive() {
+        return pblActive;
+    }
+
+    public void setPblActive(Integer pblActive) {
+        this.pblActive = pblActive;
+    }
+
+    public Integer getQblActive() {
+        return qblActive;
+    }
+
+    public void setQblActive(Integer qblActive) {
+        this.qblActive = qblActive;
     }
 }

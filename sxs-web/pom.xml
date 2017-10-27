@@ -58,8 +58,8 @@
             <artifactId>itext</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itext-asian</artifactId>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itextasian</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

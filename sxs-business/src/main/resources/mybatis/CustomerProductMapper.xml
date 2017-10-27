@@ -59,6 +59,7 @@
     <result column="lbkcActive" jdbcType="SMALLINT" property="lbkcActive" />
     <result column="orderStatus" jdbcType="SMALLINT" property="orderStatus" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="imgUrl" jdbcType="VARCHAR" property="imgUrl" />
   </resultMap>
 
   <sql id="Base_Column_List">
@@ -67,7 +68,8 @@
     price, orderAmount, depositAmount, clothDesc, bodyStatus, sendStatus, status, qycNum, 
     hycNum, kcNum, qcNum, xwNum, ywNum, xbNum, twNum, jkNum, hdNum, xcNum, zdNum, xkNum, 
     kjkNum, sxfNum, zhidNum, xxfNum, qxkNum, hbkNum, xjNum, xgNum, lwNum, tbActive, ydActive, ljActive,
-    pjActive, txActive, lk1Active, lk2Active, lk3Active, hzkcActive, lbkcActive, orderStatus, remark
+    pjActive, txActive, lk1Active, lk2Active, lk3Active, hzkcActive, lbkcActive, pblActive, qblActive,
+    orderStatus, remark, imgUrl
   </sql>
 
   <sql id="whereClause">
@@ -274,11 +276,20 @@
       <if test="lbkcActive != null">
         lbkcActive,
       </if>
+      <if test="pblActive != null">
+        pblActive,
+      </if>
+      <if test="qblActive != null">
+        qblActive,
+      </if>
       <if test="orderStatus != null">
         orderStatus,
       </if>
       <if test="remark != null">
         remark,
+      </if>
+      <if test="imgUrl != null">
+        imgUrl,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -447,11 +458,20 @@
       <if test="lbkcActive != null">
         #{lbkcActive,jdbcType=SMALLINT},
       </if>
+      <if test="pblActive != null">
+        #{pblActive,jdbcType=SMALLINT},
+      </if>
+      <if test="qblActive != null">
+        #{qblActive,jdbcType=SMALLINT},
+      </if>
       <if test="orderStatus != null">
         #{orderStatus,jdbcType=SMALLINT},
       </if>
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -621,11 +641,20 @@
       <if test="lbkcActive != null">
         lbkcActive = #{lbkcActive,jdbcType=SMALLINT},
       </if>
+      <if test="pblActive != null">
+        pblActive = #{pblActive,jdbcType=SMALLINT},
+      </if>
+      <if test="qblActive != null">
+        qblActive = #{qblActive,jdbcType=SMALLINT},
+      </if>
       <if test="orderStatus != null">
         orderStatus = #{orderStatus,jdbcType=SMALLINT},
       </if>
       <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null">
+        imgUrl = #{imgUrl,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}

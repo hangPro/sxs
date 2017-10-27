@@ -283,54 +283,57 @@
                             </div>
                       </div>
                       <div id="lkCount" hidden="true">
-                          <hr>
-                          <div class="form-group form-group-sm">
-                              <label class="col-sm-2 control-label">扣数</label>
-                              <div class="col-sm-5">
-                                  <label class="checkbox-inline">
-                                    <input type="checkbox" name="lk1Active" id="lk1Active" value="2"> 一颗扣
-                                  </label>
-                                  <label class="checkbox-inline">
-                                    <input type="checkbox" name="lk2Active" id="lk2Active" value="2"> 二颗扣
-                                  </label>
-                                  <label class="checkbox-inline">
-                                    <input type="checkbox" name="lk3Active" id="lk3Active" value="2"> 三颗扣
-                                  </label>
-                              </div>
-                          </div>
-                      </div>
-                      <div id="kcCount" hidden="true">
-                          <hr>
-                          <div class="form-group form-group-sm">
-                              <label class="col-sm-2 control-label">开叉</label>
-                              <div class="col-sm-5">
-                                  <label class="checkbox-inline">
-                                    <input type="checkbox" name="hzkcActive" id="hzkcActive" value="2"> 后中开叉
-                                  </label>
-                                  <label class="checkbox-inline">
-                                    <input type="checkbox" name="lbkcActive" id="lbkcActive" value="2"> 俩边开叉
-                                  </label>
-                              </div>
-                          </div>
-                      </div>
-                      <div id="lxCount" hidden="true">
-                          <hr>
-                          <div class="form-group form-group-sm">
-                              <label class="col-sm-2 control-label">领型</label>
-                              <div class="col-sm-5">
-                                  <label class="checkbox-inline">
-                                    <input type="checkbox" name="pblActive" id="pblActive" value="2"> 平驳领
-                                  </label>
-                                  <label class="checkbox-inline">
-                                    <input type="checkbox" name="qblActive" id="qblActive" value="2"> 枪驳领
-                                  </label>
-                              </div>
-                          </div>
-                      </div>
-                      <hr>
+                        <hr>
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-2 control-label">扣数</label>
+                            <div class="col-sm-5">
+                                <label class="checkbox-inline">
+                                  <input type="checkbox" name="lk1Active" id="lk1Active" value="2"> 一颗扣
+                                </label>
+                                <label class="checkbox-inline">
+                                  <input type="checkbox" name="lk2Active" id="lk2Active" value="2"> 二颗扣
+                                </label>
+                                <label class="checkbox-inline">
+                                  <input type="checkbox" name="lk3Active" id="lk3Active" value="2"> 三颗扣
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="kcCount" hidden="true">
+                        <hr>
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-2 control-label">开叉</label>
+                            <div class="col-sm-5">
+                                <label class="checkbox-inline">
+                                  <input type="checkbox" name="hzkcActive" id="hzkcActive" value="2"> 后中开叉
+                                </label>
+                                <label class="checkbox-inline">
+                                  <input type="checkbox" name="lbkcActive" id="lbkcActive" value="2"> 俩边开叉
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="lxCount" hidden="true">
+                        <hr>
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-2 control-label">领型</label>
+                            <div class="col-sm-5">
+                                <label class="checkbox-inline">
+                                  <input type="checkbox" name="pblActive" id="pblActive" value="2"> 平驳领
+                                </label>
+                                <label class="checkbox-inline">
+                                  <input type="checkbox" name="qblActive" id="qblActive" value="2"> 枪驳领
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
                       <div class="form-group">
                           <label class="col-sm-2 control-label" for="formGroupInputSmall"></label>
-                          <div class="col-sm-5"><button type="button" id="formSubmit" class="btn btn-success btn-lg">提交</button></div>
+                          <div class="col-sm-5">
+                            <button type="button" id="formSubmit" class="btn btn-success btn-lg">保存</button>
+                            <a class="btn btn-success btn-lg" id="printBtn" role="button" href="${ctx}/product/print?ids=${id}" target="_blank">打印</a>
+                          </div>
                        </div>
                     </form>
                 </div>
@@ -340,6 +343,16 @@
 </div>
 <script>
 $(function () {
+    $(".datepicker").datepicker({
+        language: "zh-CN",
+        autoclose: true,//选中之后自动隐藏日期选择框
+        clearBtn: true,//清除按钮
+        todayBtn : "linked",//今日按钮
+        todayHighlight : true,
+        setStartDate : '2012-01-01',
+        startDate : new Date() ,
+        format: "yyyy-mm-dd"//日期格式，详见 http://bootstrap-datepicker.readthedocs.org/en/release/options.html#format
+    });
     function UnixToDate(unixTime, isFull, timeZone) {
         if (typeof (timeZone) == 'number')
         {
@@ -358,17 +371,58 @@ $(function () {
         }
         return ymdhis;
     }
-    $(".datepicker").datepicker({
-        language: "zh-CN",
-        autoclose: true,//选中之后自动隐藏日期选择框
-        clearBtn: true,//清除按钮
-        todayBtn : "linked",//今日按钮
-        todayHighlight : true,
-        setDate : '2017-09-28',
-        format: "yyyy-mm-dd"//日期格式，详见 http://bootstrap-datepicker.readthedocs.org/en/release/options.html#format
-    });
+    var recordId = $('#recordId').val();
+    var orderStatus = 1;
+    if(recordId != ""){
+        postAsync('${ctx}/product/getProductInfo',{'id':recordId},function(result){
+            //console.log(result);
+            var data = result.data;
+            if(result.success){
+                $("input").each(function(){
+                    var key = $(this).attr('name');
+                    if($(this).attr('type') == 'checkbox'){
+                        if(data[key] == 2){
+                            $(this).prop("checked",true);
+                            $("#"+key+"2").prop("checked",true);
+                            $("#"+key+"1").prop("checked",false);
+                        }
+                    }else {
+                        var key = $(this).attr('id');
+                        if($(this).attr('class') == "datepicker"){
+                            $(this).val(UnixToDate(data[key]));
+                            return;
+                        }
+                        $(this).val(data[key]);
+                    }
+                });
+                var type = data['type'];
+                $("a[class='btn btn-primary']").attr('class','btn btn-default');
+                $("#type"+type).attr('class','btn btn-primary');
+                if(type == 2){
+                    $("#lkCount").show();
+                    $("#kcCount").show();
+                    $("#lxCount").show();
+                }else {
+                    $("#lkCount").hide();
+                    $("#kcCount").hide();
+                    $("#lxCount").hide();
+                }
+                orderStatus = data.orderStatus;
+                if(data.orderStatus == 3){
+                    $("input").each(function(){
+                        $(this).attr("disabled",true);
+                    });
+                    $("a[class='btn btn-primary']").attr('disabled',true);
+                    $("a[class='btn btn-default']").attr('disabled',true);
+                    $("#formSubmit").hide();
+                }
+            }else{
+                swal("提示！", result.msg, "error");
+            }
+        });
+    }
     $('a').click(function(){
-        $("a").attr("class","btn btn-default");
+        $(".btn.btn-primary").attr("class","btn btn-default");
         $(this).attr("class","btn btn-primary");
         if($(this).attr('id') == 'type2'){
             $("#lkCount").show();
@@ -401,28 +455,26 @@ $(function () {
     $('#formSubmit').bind('click', function(){
         var data = eval('({})');
         $("input").each(function(){
-            if($(this).attr('type') == 'checkbox' && $(this).attr('checked')){
-                var key = $(this).attr('name');
-                data[key] = $(this).val();
-                return true;
-            }else {
+            if($(this).attr('type') == 'checkbox'){
+                if($(this).prop('checked')){
+                    var key = $(this).attr('name');
+                    data[key] = $(this).val();
+                }else{
+                    var key = $(this).attr('name');
+                    data[key] = 1;
+                }
+            }else{
                 var key = $(this).attr('id');
                 data[key] = $(this).val();
             }
         });
         var typeVal = $("a[class='btn btn-primary']").attr("data");
         data['type'] = typeVal;
+        data['id'] = recordId;
         //console.log(data);
-        postAsync('${ctx}/product/add',data,function(result){
-            console.log(result);
+        postAsync('${ctx}/product/update',data,function(result){
             if(result.success){
-                swal("提示！", "下单成功!", "success");
-                $("input").each(function(){
-                    $(this).val("");
-                    if($(this).attr('type') == 'checkbox' && $(this).attr('checked')){
-                        $(this).prop("checked",false);
-                    }
-                });
+                swal("提示！", "保存成功!", "success");
             }else{
                 swal("提示！", result.msg, "error");
             }

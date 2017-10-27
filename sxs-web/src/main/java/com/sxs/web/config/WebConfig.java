@@ -2,10 +2,7 @@ package com.sxs.web.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.sxs.web.formatter.BigDecimalNullAdapter;
-import com.sxs.web.formatter.DateAdapter;
-import com.sxs.web.formatter.DoubleNullAdapter;
-import com.sxs.web.formatter.StringNullAdapter;
+import com.sxs.web.formatter.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,6 +22,7 @@ public class WebConfig {
         gsonBuilder.registerTypeAdapter(String.class,new StringNullAdapter());
         gsonBuilder.registerTypeAdapter(Double.class,new DoubleNullAdapter());
         gsonBuilder.registerTypeAdapter(BigDecimal.class,new BigDecimalNullAdapter());
+        gsonBuilder.registerTypeAdapter(Integer.class,new NumberNullAdapter());
         return gsonBuilder.create();
     }
 }

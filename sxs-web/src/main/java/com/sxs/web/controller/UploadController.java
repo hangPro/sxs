@@ -1,8 +1,9 @@
 package com.sxs.web.controller;
 
-import com.sxs.common.constats.GlobConts;
-import com.sxs.common.utils.DateUtils;
 import com.google.common.collect.Maps;
+import com.sxs.common.constats.GlobConts;
+import com.sxs.common.response.ReturnT;
+import com.sxs.common.utils.DateUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import sun.misc.BASE64Decoder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -43,6 +45,27 @@ public class UploadController {
         }
         map.put("path",filePath);
         return map;
+    }
+
+    @RequestMapping(value = "uploadImg")
+    public ReturnT uploadImg(@RequestParam(value = "fileStr",required = false) String fileStr, HttpServletRequest request){
+        ReturnT returnT = new ReturnT();
+        try {
+            String path = request.getSession().getServletContext().getRealPath("/");
+            BASE64Decoder decoder = new BASE64Decoder();
+            byte[] bytes = decoder.decodeBuffer(fileStr);
+            if (bytes.length > Integer.MAX_VALUE){
+                return returnT.failureData("图片过大，请重新上传！！！");
+            }
+            String rootPath =  GlobConts.UPLOAD_IMAGE_FATH.concat(DateUtils.formatNowDate("yyyyMMdd")).concat("/");
+            String filePath = rootPath.concat(String.valueOf(System.currentTimeMillis()));
+            String uploadPath = path.concat(File.separator).concat(filePath);
+            returnT.setData(filePath);
+            FileUtils.writeByteArrayToFile(new File(uploadPath),bytes);
+        } catch (IOException e) {
+            LOGGER.error("文件上传失败");
+        }
+        return returnT.successDefault();
     }
 
     private String getFilePrefix(String fileName){

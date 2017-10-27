@@ -9,7 +9,6 @@
     <title> - jqGird</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <base target="_blank">
     <link rel="shortcut icon" href="favicon.ico">
     <style>
         #alertmod_table_list_2 {
@@ -229,9 +228,9 @@
                     width: 200,
                     sortable: false,
                     formatter: function(cellvalue, options, rowObject){
-                        var html = '<button class="btn btn-info" name="edit-btn" onClick="goUpdate('+cellvalue+')" data-key="'+cellvalue+'" type="button"><i class="fa fa-paste"></i> 编辑</button>&nbsp;&nbsp;';
+                        var html = '<a class="btn btn-info" name="edit-btn" href="${ctx}/product/infoPage?id='+cellvalue+'" data-key="'+cellvalue+'" type="button"><i class="fa fa-paste"></i> 编辑</a>&nbsp;&nbsp;';
                         html += '<button class="btn btn-warning" onClick="deleteRow('+cellvalue+')"  type="button"><i class="fa fa-warning"></i> <span class="bold">删除</span> </button>&nbsp;&nbsp;';
-                        html += '<button class="btn btn-inverse" onClick="printRow('+cellvalue+')"  type="button"><i class="fa fa-warning"></i> <span class="bold">打印</span> </button>';
+                        html += '<a class="btn btn-primary" href="${ctx}/product/print?ids='+cellvalue+'" target="_blank"  role="button"><i class="fa fa-warning"></i> <span class="bold">打印</span> </a>';
                         return html;
                     }
                 }
@@ -314,7 +313,6 @@
             page : 1
         }).trigger("reloadGrid"); //重新载入
     }
-
     //删除记录
     function deleteRow(id){
         swal({

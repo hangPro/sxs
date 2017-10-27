@@ -3,17 +3,17 @@ package com.sxs.common.enums;
 /**
  * Created by hang on 2017/2/27.
  */
-public enum BodyStatusEnum {
+public enum SexEnum {
 
-    NO(1,"否"),
-    YES(2,"是"),
+    MAN(1,"男"),
+    WOMAN(2,"女"),
     ;
 
     private Integer code;
 
     private String message;
 
-    BodyStatusEnum(Integer code, String message) {
+    SexEnum(Integer code, String message) {
         this.code = code;
         this.message = message;
     }
@@ -35,7 +35,7 @@ public enum BodyStatusEnum {
     }
 
     public static String getEnumMessageByCode(Integer code){
-        for(BodyStatusEnum productTypeEnum : values()){
+        for(SexEnum productTypeEnum : values()){
             if(productTypeEnum.getCode().equals(code)){
                 return productTypeEnum.getMessage();
             }

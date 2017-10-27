@@ -224,12 +224,24 @@ public class UpdateProductParam extends SessionParameter {
      */
     private Integer lbkcActive;
     /**
+     * 平驳领：1：未选择 2：已选择
+     */
+    private Integer pblActive;
+    /**
+     * 枪驳领：1：未选择 2：已选择
+     */
+    private Integer qblActive;
+    /**
      * 订单状态
      ONE(1,"未定金"),
      TWO(2,"已定金"),
      THREE(3,"已完结"),
      */
     private Integer orderStatus;
+    /**
+     * 图片地址
+     */
+    private String imgUrl;
 
     public Long getId() {
         return id;
@@ -661,5 +673,29 @@ public class UpdateProductParam extends SessionParameter {
 
     public void setOrderStatus(Integer orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public Integer getPblActive() {
+        return pblActive;
+    }
+
+    public void setPblActive(Integer pblActive) {
+        this.pblActive = pblActive;
+    }
+
+    public Integer getQblActive() {
+        return qblActive;
+    }
+
+    public void setQblActive(Integer qblActive) {
+        this.qblActive = qblActive;
     }
 }

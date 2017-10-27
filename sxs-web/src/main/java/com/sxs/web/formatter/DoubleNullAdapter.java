@@ -6,6 +6,7 @@ import com.google.gson.stream.JsonWriter;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 /**
  * Created by hang on 2017/9/28 0028.
@@ -13,6 +14,7 @@ import java.text.DecimalFormat;
 public class DoubleNullAdapter extends TypeAdapter<Double> {
 
     private DecimalFormat df = new DecimalFormat("#.00");
+    private NumberFormat nf = NumberFormat.getInstance();
 
     @Override
     public Double read(JsonReader reader) throws IOException {
@@ -26,6 +28,6 @@ public class DoubleNullAdapter extends TypeAdapter<Double> {
             writer.value("");
             return;
         }
-        writer.value(df.format(value));
+        writer.value(nf.format(value));
     }
 }

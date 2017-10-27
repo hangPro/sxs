@@ -1,6 +1,8 @@
 package com.sxs.common.bean;
 
+import com.sxs.common.enums.BodyStatusEnum;
 import com.sxs.common.enums.ProductTypeEnum;
+import com.sxs.common.enums.SexEnum;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,6 +14,7 @@ public class CustomerProduct extends PageObjectBase{
      * 类型：衬衫:1、西装:2、马甲:3
      */
     private String type;
+    private String typeText = getTypeText();
     /**
      * 姓名
      */
@@ -61,6 +64,10 @@ public class CustomerProduct extends PageObjectBase{
      */
     private Integer customerSex;
     /**
+     * 性别：1：男，2：女
+     */
+    private String customerSexText = getCustomerSexText();
+    /**
      * 物料编号
      */
     private String clothNo;
@@ -84,10 +91,12 @@ public class CustomerProduct extends PageObjectBase{
      * 是否试身：1：否 2：是
      */
     private Integer bodyStatus;
+    private String bodyStatusText = getBodyStatusText();
     /**
      * 是否交货：1：否 2：是
      */
     private Integer sendStatus;
+    private String sendStatusText = getSendStatusText();
 
     private Integer status;
     /**
@@ -218,10 +227,20 @@ public class CustomerProduct extends PageObjectBase{
      * 俩边开叉：1：未选择 2：已选择
      */
     private Integer lbkcActive;
+    /**
+     * 平驳领：1：未选择 2：已选择
+     */
+    private Integer pblActive;
+    /**
+     * 枪驳领：1：未选择 2：已选择
+     */
+    private Integer qblActive;
 
     private Integer orderStatus;
 
     private String remark;
+
+    private String imgUrl;
 
     public Long getId() {
         return id;
@@ -343,6 +362,10 @@ public class CustomerProduct extends PageObjectBase{
         return customerSex;
     }
 
+    public String getCustomerSexText() {
+        return SexEnum.getEnumMessageByCode(customerSex);
+    }
+
     public void setCustomerSex(Integer customerSex) {
         this.customerSex = customerSex;
     }
@@ -391,12 +414,21 @@ public class CustomerProduct extends PageObjectBase{
         return bodyStatus;
     }
 
+
+    public String getBodyStatusText() {
+        return BodyStatusEnum.getEnumMessageByCode(bodyStatus);
+    }
+
     public void setBodyStatus(Integer bodyStatus) {
         this.bodyStatus = bodyStatus;
     }
 
     public Integer getSendStatus() {
         return sendStatus;
+    }
+
+    public String getSendStatusText() {
+        return BodyStatusEnum.getEnumMessageByCode(sendStatus);
     }
 
     public void setSendStatus(Integer sendStatus) {
@@ -681,5 +713,29 @@ public class CustomerProduct extends PageObjectBase{
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public Integer getPblActive() {
+        return pblActive;
+    }
+
+    public void setPblActive(Integer pblActive) {
+        this.pblActive = pblActive;
+    }
+
+    public Integer getQblActive() {
+        return qblActive;
+    }
+
+    public void setQblActive(Integer qblActive) {
+        this.qblActive = qblActive;
     }
 }

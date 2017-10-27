@@ -34,6 +34,9 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         CustomerProduct customerProduct = new CustomerProduct();
         BeanUtils.copyProperties(param,customerProduct);
         Date now = new Date();
+        if (customerProduct.getOrderTime() == null){
+            customerProduct.setOrderTime(DateUtils.formatDate(DateUtils.formatNowDate(DateUtils.FORMAT_YYYYMMDD),DateUtils.FORMAT_YYYYMMDD));
+        }
         customerProduct.setOrderStatus(OrderStatusEnum.ONE.getCode());
         customerProduct.setCreateTime(now);
         customerProduct.setUpdateTime(now);
@@ -79,7 +82,7 @@ public class CustomerProductServiceImpl implements CustomerProductService {
     public ReturnT<CustomerProduct> getProductInfo(GetCustomerProductParam param) {
         CustomerProduct customerProduct = new CustomerProduct();
         BeanUtils.copyProperties(param,customerProduct);
-        return new ReturnT<>(mapper.get(customerProduct));
+        return new ReturnT<>(mapper.get(customerProduct)).successDefault();
     }
 
     @Override
