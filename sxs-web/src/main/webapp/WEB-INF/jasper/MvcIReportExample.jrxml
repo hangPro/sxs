@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MvcIReportExample" language="groovy" pageWidth="595" pageHeight="1000" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9e89b7df-9b5d-4d02-80af-2b1fded595c9">
 	<property name="ireport.zoom" value="1.1"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="96"/>
 	<style name="style1" isDefault="true" fontName="宋体" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
 	<style name="table">
 		<box>
@@ -78,6 +78,8 @@
 	<field name="hzkcActive" class="java.lang.String"/>
 	<field name="lbkcActive" class="java.lang.String"/>
 	<field name="remark" class="java.lang.String"/>
+	<field name="pblActive" class="java.lang.String"/>
+	<field name="qblActive" class="java.lang.String"/>
 	<group name="Group1" isStartNewPage="true" isResetPageNumber="true" isReprintHeaderOnEachPage="true">
 		<groupExpression><![CDATA[$F{customerName}]]></groupExpression>
 		<groupHeader>
@@ -105,7 +107,7 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="777" splitType="Stretch">
+		<band height="787" splitType="Stretch">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="93" y="15" width="191" height="20" uuid="8b55fb5f-af8e-4018-a430-692a77554ac0"/>
 				<textElement verticalAlignment="Middle">
@@ -247,19 +249,19 @@
 				</textElement>
 				<text><![CDATA[订金金额：]]></text>
 			</staticText>
-			<textField pattern="###0.00" isBlankWhenNull="true">
+			<textField pattern="###0.0" isBlankWhenNull="true">
 				<reportElement x="93" y="115" width="191" height="20" uuid="748e7b44-989b-40b3-ace8-009e5f82cf1b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{orderAmount}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[NumberFormat.getInstance().format($F{orderAmount}.setScale(2,BigDecimal.ROUND_HALF_UP))]]></textFieldExpression>
 			</textField>
-			<textField pattern="###0.00" isBlankWhenNull="true">
+			<textField pattern="###0.0" isBlankWhenNull="true">
 				<reportElement x="365" y="95" width="190" height="20" uuid="8105c84f-2cf3-49b2-8ad3-d2f5ca2b040b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositAmount}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[NumberFormat.getInstance().format($F{depositAmount}.setScale(2,BigDecimal.ROUND_HALF_UP))]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Opaque" x="283" y="115" width="82" height="20" backcolor="#FFFFFF" uuid="56a86a39-31e4-461d-9d82-eaff238595b6"/>
@@ -276,7 +278,7 @@
 				<textFieldExpression><![CDATA[$F{bodyStatusText}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="1" y="163" width="554" height="1" uuid="8938b584-c5e6-409e-975a-a684dff266f9"/>
+				<reportElement x="1" y="147" width="554" height="1" uuid="8938b584-c5e6-409e-975a-a684dff266f9"/>
 			</line>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="173" y="165" width="187" height="50" uuid="9a1021b5-d28f-45d4-ba0c-0cedc57cbc4f"/>
@@ -286,217 +288,217 @@
 				<textFieldExpression><![CDATA[$F{typeText}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="93" y="316" width="92" height="20" backcolor="#FFFFFF" uuid="86b4fd91-fdeb-473b-8890-d34eddafb6fd"/>
+				<reportElement mode="Opaque" x="1" y="315" width="92" height="20" backcolor="#FFFFFF" uuid="86b4fd91-fdeb-473b-8890-d34eddafb6fd"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[袖长：]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="283" y="336" width="82" height="20" backcolor="#FFFFFF" uuid="d1e38b2b-cd16-41bf-9337-9cddc92770c4"/>
+				<reportElement mode="Opaque" x="172" y="335" width="46" height="20" backcolor="#FFFFFF" uuid="d1e38b2b-cd16-41bf-9337-9cddc92770c4"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[直档：]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="283" y="296" width="82" height="20" backcolor="#FFFFFF" uuid="b9d357b5-0f25-4386-ace7-cfa8ae446fc4"/>
+				<reportElement mode="Opaque" x="172" y="295" width="46" height="20" backcolor="#FFFFFF" uuid="b9d357b5-0f25-4386-ace7-cfa8ae446fc4"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[横档：]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="93" y="236" width="92" height="20" backcolor="#FFFFFF" uuid="2b5e81b0-7277-4063-bfd8-4977352deffb"/>
+				<reportElement mode="Opaque" x="1" y="235" width="92" height="20" backcolor="#FFFFFF" uuid="2b5e81b0-7277-4063-bfd8-4977352deffb"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[后衣长：]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="365" y="216" width="62" height="20" uuid="0537b9dc-354d-4e99-a509-1986babb17b6"/>
+				<reportElement x="218" y="215" width="62" height="20" uuid="0537b9dc-354d-4e99-a509-1986babb17b6"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{kcNum}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="185" y="356" width="80" height="20" uuid="4019846d-c428-457f-888f-40b81b10cc1a"/>
+				<reportElement x="93" y="355" width="61" height="20" uuid="4019846d-c428-457f-888f-40b81b10cc1a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{xxfNum}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="185" y="236" width="80" height="20" uuid="ba95059e-e1ca-4f4f-b33c-b202c018cea2"/>
+				<reportElement x="93" y="235" width="61" height="20" uuid="ba95059e-e1ca-4f4f-b33c-b202c018cea2"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{hycNum}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="365" y="356" width="62" height="20" uuid="596478c5-820c-4c16-b0e6-09247efe5598"/>
+				<reportElement x="93" y="415" width="61" height="20" uuid="596478c5-820c-4c16-b0e6-09247efe5598"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{qxkNum}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="93" y="296" width="92" height="20" backcolor="#FFFFFF" uuid="7c6abb4e-f447-4699-b7db-4542ceba9756"/>
+				<reportElement mode="Opaque" x="1" y="295" width="92" height="20" backcolor="#FFFFFF" uuid="7c6abb4e-f447-4699-b7db-4542ceba9756"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[肩宽：]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="283" y="236" width="82" height="20" backcolor="#FFFFFF" uuid="17fa85d4-5c29-4cc4-a16b-2fe86683cff1"/>
+				<reportElement mode="Opaque" x="172" y="235" width="46" height="20" backcolor="#FFFFFF" uuid="17fa85d4-5c29-4cc4-a16b-2fe86683cff1"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[群长：]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="365" y="236" width="62" height="20" uuid="6c1033ab-584d-448f-9351-7873f87c8280"/>
+				<reportElement x="218" y="235" width="62" height="20" uuid="6c1033ab-584d-448f-9351-7873f87c8280"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{qcNum}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="283" y="216" width="82" height="20" backcolor="#FFFFFF" uuid="d879bc59-5693-4dc4-b985-804baffbbfdf"/>
+				<reportElement mode="Opaque" x="172" y="215" width="46" height="20" backcolor="#FFFFFF" uuid="d879bc59-5693-4dc4-b985-804baffbbfdf"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[裤长：]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="185" y="256" width="80" height="20" uuid="fb7881e6-2bea-4ada-b9ce-92c1763896a7"/>
+				<reportElement x="93" y="255" width="61" height="20" uuid="fb7881e6-2bea-4ada-b9ce-92c1763896a7"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{xwNum}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="365" y="336" width="62" height="20" uuid="cebab701-859b-4883-bca7-2dc5d845a32f"/>
+				<reportElement x="218" y="335" width="62" height="20" uuid="cebab701-859b-4883-bca7-2dc5d845a32f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{zhidNum}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="283" y="256" width="82" height="20" backcolor="#FFFFFF" uuid="72b109de-d619-436e-926a-8300f376e8e6"/>
+				<reportElement mode="Opaque" x="172" y="255" width="46" height="20" backcolor="#FFFFFF" uuid="72b109de-d619-436e-926a-8300f376e8e6"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[腰围：]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement x="185" y="296" width="80" height="20" uuid="fab34c8b-bbaa-4a10-bfec-76808324a8fa"/>
+				<reportElement x="93" y="295" width="61" height="20" uuid="fab34c8b-bbaa-4a10-bfec-76808324a8fa"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jkNum}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="93" y="256" width="92" height="20" backcolor="#FFFFFF" uuid="2b665563-49b5-4d61-9cd8-00d8457f02b7"/>
+				<reportElement mode="Opaque" x="1" y="255" width="92" height="20" backcolor="#FFFFFF" uuid="2b665563-49b5-4d61-9cd8-00d8457f02b7"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[胸围：]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="93" y="356" width="92" height="20" backcolor="#FFFFFF" uuid="b148ef9e-7be8-4bc3-956a-a76873a629b9"/>
+				<reportElement mode="Opaque" x="1" y="355" width="92" height="20" backcolor="#FFFFFF" uuid="b148ef9e-7be8-4bc3-956a-a76873a629b9"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[下袖肥：]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="283" y="316" width="82" height="20" backcolor="#FFFFFF" uuid="4f25949b-5e6d-451d-9151-53c85d9bc6de"/>
+				<reportElement mode="Opaque" x="172" y="315" width="46" height="20" backcolor="#FFFFFF" uuid="4f25949b-5e6d-451d-9151-53c85d9bc6de"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[中档：]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="93" y="336" width="92" height="20" backcolor="#FFFFFF" uuid="4efdb8aa-2da0-49de-b553-57d8a3f21276"/>
+				<reportElement mode="Opaque" x="1" y="335" width="92" height="20" backcolor="#FFFFFF" uuid="4efdb8aa-2da0-49de-b553-57d8a3f21276"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[上袖肥：]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="185" y="316" width="80" height="20" uuid="f568b057-67da-4540-9e63-9916d750c2ed"/>
+				<reportElement x="93" y="315" width="61" height="20" uuid="f568b057-67da-4540-9e63-9916d750c2ed"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{xcNum}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="185" y="336" width="80" height="20" uuid="8c422e3d-8c19-4dda-ab49-8a9d3586211d"/>
+				<reportElement x="93" y="335" width="61" height="20" uuid="8c422e3d-8c19-4dda-ab49-8a9d3586211d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{sxfNum}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="283" y="356" width="82" height="20" backcolor="#FFFFFF" uuid="7c0a2864-57b6-4f91-a5b7-12f759d37301"/>
+				<reportElement mode="Opaque" x="47" y="415" width="46" height="20" backcolor="#FFFFFF" uuid="7c0a2864-57b6-4f91-a5b7-12f759d37301"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[前胸宽：]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="283" y="276" width="82" height="20" backcolor="#FFFFFF" uuid="17caa02b-dd46-4a2e-afe1-981864180d63"/>
+				<reportElement mode="Opaque" x="172" y="275" width="46" height="20" backcolor="#FFFFFF" uuid="17caa02b-dd46-4a2e-afe1-981864180d63"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[臀围：]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="93" y="276" width="92" height="20" backcolor="#FFFFFF" uuid="748165fa-6b76-4acf-b9db-477e5ad3314a"/>
+				<reportElement mode="Opaque" x="1" y="275" width="92" height="20" backcolor="#FFFFFF" uuid="748165fa-6b76-4acf-b9db-477e5ad3314a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="宋体" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[下摆：]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="185" y="276" width="80" height="20" uuid="cf8d66db-f7c9-498d-8310-1247e8af9ead"/>
+				<reportElement x="93" y="275" width="61" height="20" uuid="cf8d66db-f7c9-498d-8310-1247e8af9ead"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{xbNum}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="185" y="216" width="80" height="20" uuid="06bb5726-5c17-4cd2-8423-b5184abb19b3"/>
+				<reportElement x="93" y="215" width="61" height="20" uuid="06bb5726-5c17-4cd2-8423-b5184abb19b3"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{qycNum}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="365" y="276" width="62" height="20" uuid="98403234-2dab-46f8-a089-47b2290c9d7c"/>
+				<reportElement x="218" y="275" width="62" height="20" uuid="98403234-2dab-46f8-a089-47b2290c9d7c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{twNum}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="365" y="296" width="62" height="20" uuid="6ce1bcf2-f31d-4c28-8d10-a784e60a6b70"/>
+				<reportElement x="218" y="295" width="62" height="20" uuid="6ce1bcf2-f31d-4c28-8d10-a784e60a6b70"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{hdNum}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="365" y="256" width="62" height="20" uuid="b7ae0486-7873-4987-8c9c-8a718fab8a8c"/>
+				<reportElement x="218" y="255" width="62" height="20" uuid="b7ae0486-7873-4987-8c9c-8a718fab8a8c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ywNum}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="93" y="216" width="92" height="20" backcolor="#FFFFFF" uuid="6fd92e1a-9fbe-44ad-b9d0-fe0fffdadbb2"/>
+				<reportElement mode="Opaque" x="1" y="215" width="92" height="20" backcolor="#FFFFFF" uuid="6fd92e1a-9fbe-44ad-b9d0-fe0fffdadbb2"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="宋体" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 					<paragraph lineSpacing="Single"/>
@@ -504,80 +506,77 @@
 				<text><![CDATA[前衣长：]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="365" y="316" width="62" height="20" uuid="cdd430fb-74e5-4ca8-926a-a850bf5e45c5"/>
+				<reportElement x="218" y="315" width="62" height="20" uuid="cdd430fb-74e5-4ca8-926a-a850bf5e45c5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{zdNum}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="185" y="376" width="80" height="20" uuid="07ebc5e4-516e-4f29-8f80-86929143eadc"/>
+				<reportElement x="93" y="375" width="61" height="20" uuid="07ebc5e4-516e-4f29-8f80-86929143eadc"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{hbkNum}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="365" y="376" width="62" height="20" uuid="83e47e4f-b649-48bc-be1d-c36642e3b729"/>
+				<reportElement x="93" y="435" width="61" height="20" uuid="83e47e4f-b649-48bc-be1d-c36642e3b729"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{xjNum}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="283" y="376" width="82" height="20" backcolor="#FFFFFF" uuid="1a1aa482-db5d-4878-bd8e-7757c68a3494"/>
+				<reportElement mode="Opaque" x="47" y="435" width="46" height="20" backcolor="#FFFFFF" uuid="1a1aa482-db5d-4878-bd8e-7757c68a3494"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[胸距：]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="93" y="376" width="92" height="20" backcolor="#FFFFFF" uuid="58ca1840-ff0e-4c7b-b30e-499c812b47c5"/>
+				<reportElement mode="Opaque" x="1" y="375" width="92" height="20" backcolor="#FFFFFF" uuid="58ca1840-ff0e-4c7b-b30e-499c812b47c5"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[后背宽：]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="185" y="396" width="80" height="20" uuid="b3287272-97df-489c-83d6-a6319b1556ae"/>
+				<reportElement x="93" y="395" width="61" height="20" uuid="b3287272-97df-489c-83d6-a6319b1556ae"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{xgNum}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="365" y="396" width="62" height="20" uuid="6d005f9d-95a9-4506-9228-59ead22343ab"/>
+				<reportElement x="93" y="455" width="61" height="20" uuid="6d005f9d-95a9-4506-9228-59ead22343ab"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lwNum}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="283" y="396" width="82" height="20" backcolor="#FFFFFF" uuid="7ce41e17-7ba9-4843-a2f7-c6f169a69ba4"/>
+				<reportElement mode="Opaque" x="47" y="455" width="46" height="20" backcolor="#FFFFFF" uuid="7ce41e17-7ba9-4843-a2f7-c6f169a69ba4"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[领围：]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="93" y="396" width="92" height="20" backcolor="#FFFFFF" uuid="d3778220-fb94-4f0b-ad50-ec3a74116721"/>
+				<reportElement mode="Opaque" x="1" y="395" width="92" height="20" backcolor="#FFFFFF" uuid="d3778220-fb94-4f0b-ad50-ec3a74116721"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[胸高：]]></text>
 			</staticText>
-			<line>
-				<reportElement x="1" y="434" width="554" height="1" uuid="0aa20ec5-d607-470f-b508-60ac6cc869f4"/>
-			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="275" y="451" width="25" height="20" backcolor="#FFFFFF" uuid="6ae398c6-faaa-4bbe-b8ab-b489145ddfad"/>
+				<reportElement mode="Opaque" x="405" y="274" width="25" height="20" backcolor="#FFFFFF" uuid="6ae398c6-faaa-4bbe-b8ab-b489145ddfad"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[平肩]]></text>
 			</staticText>
 			<image>
-				<reportElement x="175" y="456" width="15" height="15" uuid="b3eaf55d-4f69-4936-9915-5a19974420a9">
+				<reportElement x="305" y="279" width="15" height="15" uuid="b3eaf55d-4f69-4936-9915-5a19974420a9">
 					<printWhenExpression><![CDATA[new java.lang.Boolean($F{tbActive}.equals("2"))]]></printWhenExpression>
 				</reportElement>
 				<box>
@@ -586,31 +585,31 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<imageExpression><![CDATA["http://127.0.0.1:8090/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["http://39.108.140.135/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement mode="Opaque" x="271" y="485" width="35" height="20" backcolor="#FFFFFF" uuid="d81c9f60-6f6c-498c-94e9-0e32c9ec1679"/>
+				<reportElement mode="Opaque" x="401" y="308" width="35" height="20" backcolor="#FFFFFF" uuid="d81c9f60-6f6c-498c-94e9-0e32c9ec1679"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[三颗扣]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="243" y="516" width="50" height="20" backcolor="#FFFFFF" uuid="44d3846a-f4d3-4ed6-86f8-91441b8429b5"/>
+				<reportElement mode="Opaque" x="373" y="339" width="50" height="20" backcolor="#FFFFFF" uuid="44d3846a-f4d3-4ed6-86f8-91441b8429b5"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[俩边开叉]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="190" y="451" width="25" height="20" backcolor="#FFFFFF" uuid="c2b16091-b527-4eed-b792-cbd4d20806b9"/>
+				<reportElement mode="Opaque" x="320" y="274" width="25" height="20" backcolor="#FFFFFF" uuid="c2b16091-b527-4eed-b792-cbd4d20806b9"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[有肚]]></text>
 			</staticText>
 			<image>
-				<reportElement x="227" y="521" width="15" height="15" uuid="c4cc3680-e720-4cb1-b422-fc1153cf5c80">
+				<reportElement x="357" y="344" width="15" height="15" uuid="c4cc3680-e720-4cb1-b422-fc1153cf5c80">
 					<printWhenExpression><![CDATA[new java.lang.Boolean($F{hzkcActive}.equals("2"))]]></printWhenExpression>
 				</reportElement>
 				<box>
@@ -619,10 +618,10 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<imageExpression><![CDATA["http://127.0.0.1:8090/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["http://39.108.140.135/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="204" y="489" width="15" height="15" uuid="f59bb180-4939-4465-94c6-7c3d115bae6c">
+				<reportElement x="334" y="312" width="15" height="15" uuid="f59bb180-4939-4465-94c6-7c3d115bae6c">
 					<printWhenExpression><![CDATA[new java.lang.Boolean($F{lk1Active}.equals("2"))]]></printWhenExpression>
 				</reportElement>
 				<box>
@@ -631,10 +630,10 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<imageExpression><![CDATA["http://127.0.0.1:8090/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["http://39.108.140.135/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="260" y="456" width="15" height="15" uuid="b6ea8c5c-4514-45fa-a1f4-7b04b9774b91">
+				<reportElement x="390" y="279" width="15" height="15" uuid="b6ea8c5c-4514-45fa-a1f4-7b04b9774b91">
 					<printWhenExpression><![CDATA[new java.lang.Boolean($F{ljActive}.equals("2"))]]></printWhenExpression>
 				</reportElement>
 				<box>
@@ -643,10 +642,10 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<imageExpression><![CDATA["http://127.0.0.1:8090/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["http://39.108.140.135/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="303" y="456" width="15" height="15" uuid="bec31401-856d-410d-a1cd-6d3a2195c78f">
+				<reportElement x="433" y="279" width="15" height="15" uuid="bec31401-856d-410d-a1cd-6d3a2195c78f">
 					<printWhenExpression><![CDATA[new java.lang.Boolean($F{pjActive}.equals("2"))]]></printWhenExpression>
 				</reportElement>
 				<box>
@@ -655,17 +654,17 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<imageExpression><![CDATA["http://127.0.0.1:8090/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["http://39.108.140.135/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement mode="Opaque" x="150" y="452" width="23" height="20" backcolor="#FFFFFF" uuid="55ac21cb-a060-447e-a26c-6dae42400d72"/>
+				<reportElement mode="Opaque" x="280" y="275" width="23" height="20" backcolor="#FFFFFF" uuid="55ac21cb-a060-447e-a26c-6dae42400d72"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[驼背]]></text>
 			</staticText>
 			<image>
-				<reportElement x="308" y="489" width="15" height="15" uuid="b7ed3ec2-08f6-4eb9-9aeb-b264df7a0631">
+				<reportElement x="438" y="312" width="15" height="15" uuid="b7ed3ec2-08f6-4eb9-9aeb-b264df7a0631">
 					<printWhenExpression><![CDATA[new java.lang.Boolean($F{lk3Active}.equals("2"))]]></printWhenExpression>
 				</reportElement>
 				<box>
@@ -674,17 +673,17 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<imageExpression><![CDATA["http://127.0.0.1:8090/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["http://39.108.140.135/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement mode="Opaque" x="167" y="484" width="35" height="20" backcolor="#FFFFFF" uuid="119f83d3-5c57-4125-b82b-f547add43084"/>
+				<reportElement mode="Opaque" x="297" y="307" width="35" height="20" backcolor="#FFFFFF" uuid="119f83d3-5c57-4125-b82b-f547add43084"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[一颗扣]]></text>
 			</staticText>
 			<image>
-				<reportElement x="296" y="521" width="15" height="15" uuid="303d6d18-c1cd-46ab-ac72-58c4314c24d9">
+				<reportElement x="426" y="344" width="15" height="15" uuid="303d6d18-c1cd-46ab-ac72-58c4314c24d9">
 					<printWhenExpression><![CDATA[new java.lang.Boolean($F{lbkcActive}.equals("2"))]]></printWhenExpression>
 				</reportElement>
 				<box>
@@ -693,17 +692,17 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<imageExpression><![CDATA["http://127.0.0.1:8090/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["http://39.108.140.135/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement mode="Opaque" x="174" y="517" width="50" height="20" backcolor="#FFFFFF" uuid="a9af6656-7acf-4f54-ac6f-6df8355f98ba"/>
+				<reportElement mode="Opaque" x="304" y="340" width="50" height="20" backcolor="#FFFFFF" uuid="a9af6656-7acf-4f54-ac6f-6df8355f98ba"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[后中开叉]]></text>
 			</staticText>
 			<image>
-				<reportElement x="218" y="456" width="15" height="15" uuid="496aa54a-2c42-4b35-8bb3-9267be4a4e4e">
+				<reportElement x="348" y="279" width="15" height="15" uuid="496aa54a-2c42-4b35-8bb3-9267be4a4e4e">
 					<printWhenExpression><![CDATA[new java.lang.Boolean($F{ydActive}.equals("2"))]]></printWhenExpression>
 				</reportElement>
 				<box>
@@ -712,17 +711,17 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<imageExpression><![CDATA["http://127.0.0.1:8090/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["http://39.108.140.135/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement mode="Opaque" x="235" y="452" width="23" height="20" backcolor="#FFFFFF" uuid="5791c027-fa79-48ca-acd3-44e9afbed03b"/>
+				<reportElement mode="Opaque" x="365" y="275" width="23" height="20" backcolor="#FFFFFF" uuid="5791c027-fa79-48ca-acd3-44e9afbed03b"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[溜肩]]></text>
 			</staticText>
 			<image>
-				<reportElement x="255" y="490" width="15" height="15" uuid="f2cea6ab-eda5-4a97-b7e0-38f5155b7043">
+				<reportElement x="385" y="313" width="15" height="15" uuid="f2cea6ab-eda5-4a97-b7e0-38f5155b7043">
 					<printWhenExpression><![CDATA[new java.lang.Boolean($F{lk2Active}.equals("2"))]]></printWhenExpression>
 				</reportElement>
 				<box>
@@ -731,17 +730,17 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<imageExpression><![CDATA["http://127.0.0.1:8090/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["http://39.108.140.135/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement mode="Opaque" x="218" y="485" width="35" height="20" backcolor="#FFFFFF" uuid="f8488437-e414-47bc-96fa-cd24cefd6ab4"/>
+				<reportElement mode="Opaque" x="348" y="308" width="35" height="20" backcolor="#FFFFFF" uuid="f8488437-e414-47bc-96fa-cd24cefd6ab4"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[二颗扣]]></text>
 			</staticText>
 			<image>
-				<reportElement x="346" y="456" width="15" height="15" uuid="e88a1844-1f17-4f56-bab0-c471041d70d4">
+				<reportElement x="476" y="279" width="15" height="15" uuid="e88a1844-1f17-4f56-bab0-c471041d70d4">
 					<printWhenExpression><![CDATA[new java.lang.Boolean($F{txActive}.equals("2"))]]></printWhenExpression>
 				</reportElement>
 				<box>
@@ -750,10 +749,10 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<imageExpression><![CDATA["http://127.0.0.1:8090/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["http://39.108.140.135/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement mode="Opaque" x="318" y="451" width="25" height="20" backcolor="#FFFFFF" uuid="e2ec8487-6218-402f-b9df-7172cbe2886e"/>
+				<reportElement mode="Opaque" x="448" y="274" width="25" height="20" backcolor="#FFFFFF" uuid="e2ec8487-6218-402f-b9df-7172cbe2886e"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
@@ -761,7 +760,7 @@
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="175" y="456" width="15" height="15" uuid="f24f6607-1d3c-44cd-b2de-fbb634e57157"/>
+				<reportElement x="305" y="279" width="15" height="15" uuid="f24f6607-1d3c-44cd-b2de-fbb634e57157"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -771,7 +770,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="218" y="456" width="15" height="15" uuid="66a8541e-5252-4108-bd57-a40a606f1dcc"/>
+				<reportElement x="348" y="279" width="15" height="15" uuid="66a8541e-5252-4108-bd57-a40a606f1dcc"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -781,7 +780,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="260" y="456" width="15" height="15" uuid="4d64818d-0fe7-422b-aca6-802c1e92fcd2"/>
+				<reportElement x="390" y="279" width="15" height="15" uuid="4d64818d-0fe7-422b-aca6-802c1e92fcd2"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -791,7 +790,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="303" y="456" width="15" height="15" uuid="a57b6c32-c990-4e37-8953-70e33497e675"/>
+				<reportElement x="433" y="279" width="15" height="15" uuid="a57b6c32-c990-4e37-8953-70e33497e675"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -801,7 +800,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="346" y="456" width="15" height="15" uuid="346effb3-b851-49e5-94cf-f1c6412257a0"/>
+				<reportElement x="476" y="279" width="15" height="15" uuid="346effb3-b851-49e5-94cf-f1c6412257a0"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -811,7 +810,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="204" y="489" width="15" height="15" uuid="41380b71-96f3-4663-9452-273446a824d0"/>
+				<reportElement x="334" y="312" width="15" height="15" uuid="41380b71-96f3-4663-9452-273446a824d0"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -821,7 +820,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="227" y="521" width="15" height="15" uuid="44378f67-d708-4384-a577-146b3f63b288"/>
+				<reportElement x="357" y="344" width="15" height="15" uuid="44378f67-d708-4384-a577-146b3f63b288"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -831,7 +830,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="308" y="489" width="15" height="15" uuid="c6e37ba2-ffe8-47fd-a2f9-7febaa451e30"/>
+				<reportElement x="438" y="312" width="15" height="15" uuid="c6e37ba2-ffe8-47fd-a2f9-7febaa451e30"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -841,7 +840,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="255" y="490" width="15" height="15" uuid="9909cedf-ecbc-4432-b076-c67e87b1d747"/>
+				<reportElement x="385" y="313" width="15" height="15" uuid="9909cedf-ecbc-4432-b076-c67e87b1d747"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -851,7 +850,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="296" y="521" width="15" height="15" uuid="fb62a632-5d58-490b-a87b-620249b3abf4"/>
+				<reportElement x="426" y="344" width="15" height="15" uuid="fb62a632-5d58-490b-a87b-620249b3abf4"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -861,23 +860,74 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<image isLazy="true">
-				<reportElement x="149" y="558" width="222" height="213" uuid="13bc96f8-2f07-4130-a960-695fbb2b8930"/>
-				<imageExpression><![CDATA["http://127.0.0.1:8090/sxs-web/assets/img/jasper/2.jpg"]]></imageExpression>
+				<reportElement x="143" y="508" width="222" height="213" uuid="13bc96f8-2f07-4130-a960-695fbb2b8930"/>
+				<imageExpression><![CDATA["http://39.108.140.135/sxs-web/assets/img/jasper/2.jpg"]]></imageExpression>
 			</image>
-			<textField isBlankWhenNull="true">
-				<reportElement x="93" y="135" width="190" height="20" uuid="64f70bd7-d4a2-42fa-870b-4a8c65799bcf"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{sendStatusText}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="1" y="135" width="92" height="20" backcolor="#FFFFFF" uuid="b17554ac-ca8d-4e6c-8e8f-6393cf467047"/>
+				<reportElement x="422" y="375" width="15" height="15" uuid="aa2f35f3-15d6-49f8-bce8-2c3e648cb2d7"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<image>
+				<reportElement x="360" y="375" width="15" height="15" uuid="cf7582a2-2042-488f-9c9f-2ac50a3e2144">
+					<printWhenExpression><![CDATA[new java.lang.Boolean($F{pblActive}.equals("2"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<imageExpression><![CDATA["http://39.108.140.135/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="383" y="370" width="36" height="20" backcolor="#FFFFFF" uuid="72dc429d-a632-4577-82d6-1ab08beda3f2"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[是否交货：]]></text>
+				<text><![CDATA[枪驳领]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="360" y="375" width="15" height="15" uuid="66a5df65-9745-4fec-bbf9-77d34467def1"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="307" y="371" width="50" height="20" backcolor="#FFFFFF" uuid="68e12ad7-dec0-4b5b-b30e-ebf5b8014538"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[平驳领]]></text>
+			</staticText>
+			<image>
+				<reportElement x="422" y="375" width="15" height="15" uuid="ee7a9fe6-2fe2-4e8e-955c-8413facc9add">
+					<printWhenExpression><![CDATA[new java.lang.Boolean($F{qblActive}.equals("2"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<imageExpression><![CDATA["http://39.108.140.135/sxs-web/assets/img/jasper/1.jpg"]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="172" y="488" width="318" height="20" uuid="cdb69738-2c41-4f2e-ae6a-014948661dfe"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{remark}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<summary>

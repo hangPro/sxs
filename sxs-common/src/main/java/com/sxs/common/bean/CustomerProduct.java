@@ -128,6 +128,10 @@ public class CustomerProduct extends PageObjectBase{
      */
     private Double xbNum;
     /**
+     * 肚围
+     */
+    private Double dwNum;
+    /**
      * 臀围
      */
     private Double twNum;
@@ -237,6 +241,10 @@ public class CustomerProduct extends PageObjectBase{
     private Integer qblActive;
 
     private Integer orderStatus;
+
+    private Integer printStatus;
+
+    private Integer printCount;
 
     private String remark;
 
@@ -737,5 +745,29 @@ public class CustomerProduct extends PageObjectBase{
 
     public void setQblActive(Integer qblActive) {
         this.qblActive = qblActive;
+    }
+
+    public Double getDwNum() {
+        return dwNum;
+    }
+
+    public void setDwNum(Double dwNum) {
+        this.dwNum = dwNum;
+    }
+
+    public Integer getPrintStatus() {
+        return printStatus;
+    }
+
+    public void setPrintStatus(Integer printStatus) {
+        this.printStatus = printStatus;
+    }
+
+    public Integer getPrintCount() {
+        return printCount;
+    }
+
+    public void setPrintCount(Integer printCount) {
+        this.printCount = printCount;
     }
 }

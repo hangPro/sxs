@@ -30,6 +30,7 @@
     <result column="kcNum" jdbcType="DECIMAL" property="kcNum" />
     <result column="qcNum" jdbcType="DECIMAL" property="qcNum" />
     <result column="xwNum" jdbcType="DECIMAL" property="xwNum" />
+    <result column="dwNum" jdbcType="DECIMAL" property="dwNum" />
     <result column="ywNum" jdbcType="DECIMAL" property="ywNum" />
     <result column="xbNum" jdbcType="DECIMAL" property="xbNum" />
     <result column="twNum" jdbcType="DECIMAL" property="twNum" />
@@ -58,6 +59,8 @@
     <result column="hzkcActive" jdbcType="SMALLINT" property="hzkcActive" />
     <result column="lbkcActive" jdbcType="SMALLINT" property="lbkcActive" />
     <result column="orderStatus" jdbcType="SMALLINT" property="orderStatus" />
+    <result column="printStatus" jdbcType="SMALLINT" property="printStatus" />
+    <result column="printCount" jdbcType="INTEGER" property="printCount" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="imgUrl" jdbcType="VARCHAR" property="imgUrl" />
   </resultMap>
@@ -66,10 +69,10 @@
     id, type, customerName, customerPhone, orderTime, sendTime, createTime, updateTime, 
     companyName, tbAccNo, tbOrderNo, orderNo, address, wechart, customerSex, clothNo, 
     price, orderAmount, depositAmount, clothDesc, bodyStatus, sendStatus, status, qycNum, 
-    hycNum, kcNum, qcNum, xwNum, ywNum, xbNum, twNum, jkNum, hdNum, xcNum, zdNum, xkNum, 
+    hycNum, kcNum, qcNum, xwNum, dwNum, ywNum, xbNum, twNum, jkNum, hdNum, xcNum, zdNum, xkNum,
     kjkNum, sxfNum, zhidNum, xxfNum, qxkNum, hbkNum, xjNum, xgNum, lwNum, tbActive, ydActive, ljActive,
     pjActive, txActive, lk1Active, lk2Active, lk3Active, hzkcActive, lbkcActive, pblActive, qblActive,
-    orderStatus, remark, imgUrl
+    orderStatus, remark, imgUrl, printStatus, printCount
   </sql>
 
   <sql id="whereClause">
@@ -85,6 +88,7 @@
       <if test="tbAccNo != null and ''!= tbAccNo">and tbAccNo = #{tbAccNo}</if>
       <if test="tbOrderNo != null and ''!= tbOrderNo">and tbOrderNo = #{tbOrderNo}</if>
       <if test="orderStatus != null and ''!= orderStatus">and orderStatus = #{orderStatus}</if>
+      <if test="printStatus != null and ''!= printStatus">and printStatus = #{printStatus}</if>
       <if test="status != null">and status = #{status}</if>
     </where>
   </sql>
@@ -194,6 +198,9 @@
       </if>
       <if test="xwNum != null">
         xwNum,
+      </if>
+      <if test="dwNum != null">
+        dwNum,
       </if>
       <if test="ywNum != null">
         ywNum,
@@ -376,6 +383,9 @@
       </if>
       <if test="xwNum != null">
         #{xwNum,jdbcType=DECIMAL},
+      </if>
+      <if test="dwNum != null">
+        #{dwNum,jdbcType=DECIMAL},
       </if>
       <if test="ywNum != null">
         #{ywNum,jdbcType=DECIMAL},
@@ -560,6 +570,9 @@
       <if test="xwNum != null">
         xwNum = #{xwNum,jdbcType=DECIMAL},
       </if>
+      <if test="dwNum != null">
+        dwNum = #{dwNum,jdbcType=DECIMAL},
+      </if>
       <if test="ywNum != null">
         ywNum = #{ywNum,jdbcType=DECIMAL},
       </if>
@@ -692,8 +705,16 @@
     </foreach>
   </select>
 
-  <update id="updateByIds">
+  <update id="updateOrderStatusByIds">
     update t_customer_product set orderStatus = #{orderStatus,jdbcType=SMALLINT}
+    where id in
+    <foreach collection="ids" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+
+  <update id="updatePrintStatusByIds">
+    update t_customer_product set printStatus = #{printStatus,jdbcType=SMALLINT},printCount = printCount + 1
     where id in
     <foreach collection="ids" item="item" index="index" open="(" separator="," close=")">
       #{item}

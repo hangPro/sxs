@@ -26,5 +26,7 @@ public interface CustomerProductMapper {
 
     List<CustomerProduct> queryByIds(@Param("ids")Long[] ids);
 
-    int updateByIds(@Param("ids")Long[] ids,@Param("orderStatus")Integer orderStatus);
+    int updateOrderStatusByIds(@Param("ids")Long[] ids,@Param("orderStatus")Integer orderStatus);
+
+    int updatePrintStatusByIds(@Param("ids")Long[] ids,@Param("printStatus")Integer printStatus);
 }

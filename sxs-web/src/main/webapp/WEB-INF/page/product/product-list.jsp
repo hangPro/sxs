@@ -282,7 +282,16 @@
             }
         });
         $('#printBtn').bind('click',function(){
-            //update();
+            var grid = $('#table_list');
+            var rowKey = grid.getGridParam("selrow");
+            if (rowKey) {
+                var selectedIDs = grid.getGridParam("selarrrow");
+                //window.location.href = "${ctx}/product/print?ids="+selectedIDs;
+                window.open("${ctx}/product/print?ids="+selectedIDs);
+            }else{
+                swal("提示！", "请选择记录！!", "error");
+                return;
+            }
         });
     });
 

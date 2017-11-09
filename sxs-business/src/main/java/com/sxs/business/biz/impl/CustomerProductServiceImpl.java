@@ -5,6 +5,7 @@ import com.sxs.business.mapper.CustomerProductMapper;
 import com.sxs.business.plugin.PageHelper;
 import com.sxs.common.bean.CustomerProduct;
 import com.sxs.common.enums.OrderStatusEnum;
+import com.sxs.common.enums.PrintStatusEnum;
 import com.sxs.common.enums.StatusEnum;
 import com.sxs.common.param.AddProductParam;
 import com.sxs.common.param.GetCustomerProductParam;
@@ -87,12 +88,13 @@ public class CustomerProductServiceImpl implements CustomerProductService {
 
     @Override
     public List<CustomerProduct> printList(Long[] ids) {
+        mapper.updatePrintStatusByIds(ids, PrintStatusEnum.TWO.getCode());
         return mapper.queryByIds(ids);
     }
 
     @Override
     public ReturnT updateOrders(Long[] ids,Integer orderStatus) {
-        mapper.updateByIds(ids,orderStatus);
+        mapper.updateOrderStatusByIds(ids,orderStatus);
         return new ReturnT().successDefault();
     }
 }

@@ -116,6 +116,10 @@ public class UpdateProductParam extends SessionParameter {
      */
     private Double xwNum;
     /**
+     * 肚围
+     */
+    private Double dwNum;
+    /**
      * 腰围
      */
     private Double ywNum;
@@ -697,5 +701,13 @@ public class UpdateProductParam extends SessionParameter {
 
     public void setQblActive(Integer qblActive) {
         this.qblActive = qblActive;
+    }
+
+    public Double getDwNum() {
+        return dwNum;
+    }
+
+    public void setDwNum(Double dwNum) {
+        this.dwNum = dwNum;
     }
 }
