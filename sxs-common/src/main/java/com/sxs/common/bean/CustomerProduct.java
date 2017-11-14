@@ -1,6 +1,5 @@
 package com.sxs.common.bean;
 
-import com.sxs.common.constats.GlobConts;
 import com.sxs.common.enums.BodyStatusEnum;
 import com.sxs.common.enums.ProductTypeEnum;
 import com.sxs.common.enums.SexEnum;
@@ -248,6 +247,8 @@ public class CustomerProduct extends PageObjectBase{
     private Integer printCount;
 
     private String remark;
+
+    private String remark1;
 
     private String imgUrl;
 
@@ -725,9 +726,6 @@ public class CustomerProduct extends PageObjectBase{
     }
 
     public String getImgUrl() {
-        if (imgUrl != null){
-            return GlobConts.IMAGE_ROOT_URL.concat(imgUrl);
-        }
         return imgUrl;
     }
 
@@ -773,5 +771,13 @@ public class CustomerProduct extends PageObjectBase{
 
     public void setPrintCount(Integer printCount) {
         this.printCount = printCount;
+    }
+
+    public String getRemark1() {
+        return remark1;
+    }
+
+    public void setRemark1(String remark1) {
+        this.remark1 = remark1;
     }
 }

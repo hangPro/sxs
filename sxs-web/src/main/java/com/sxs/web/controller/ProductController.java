@@ -8,6 +8,7 @@ import com.sxs.common.param.AddProductParam;
 import com.sxs.common.param.GetCustomerProductParam;
 import com.sxs.common.param.QueryCustomerProductParam;
 import com.sxs.common.param.UpdateProductParam;
+import com.sxs.common.response.CustomerProductView;
 import com.sxs.common.response.PageList;
 import com.sxs.common.response.ReturnT;
 import com.sxs.common.utils.DateUtils;
@@ -87,7 +88,7 @@ public class ProductController {
                 String filePath = rootPath.concat(String.valueOf(System.currentTimeMillis()));
                 String uploadPath = path.concat(File.separator).concat(filePath).concat(".jpg");
                 FileUtils.writeByteArrayToFile(new File(uploadPath),bytes);
-                param.setImgUrl(filePath);
+                param.setImgUrl(filePath.concat(".jpg"));
             } catch (IOException e) {
                 LOGGER.error("文件上传失败");
                 return new ReturnT().failureData("图片上传失败");
@@ -142,7 +143,7 @@ public class ProductController {
      * @return
      */
     @RequestMapping("getProductInfo")
-    public ReturnT<CustomerProduct> getProductInfo(GetCustomerProductParam param){
+    public ReturnT<CustomerProductView> getProductInfo(GetCustomerProductParam param){
         return customerProductService.getProductInfo(param);
     }
 

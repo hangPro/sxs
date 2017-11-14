@@ -1,6 +1,7 @@
 package com.sxs.business.mapper;
 
 import com.sxs.common.bean.CustomerProduct;
+import com.sxs.common.response.CustomerProductView;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface CustomerProductMapper {
 
     CustomerProduct selectByPrimaryKey(Long id);
 
-    CustomerProduct get(CustomerProduct record);
+    CustomerProductView get(CustomerProduct record);
 
     int updateById(CustomerProduct record);
 

@@ -6,6 +6,7 @@ import com.sxs.common.param.AddProductParam;
 import com.sxs.common.param.GetCustomerProductParam;
 import com.sxs.common.param.QueryCustomerProductParam;
 import com.sxs.common.param.UpdateProductParam;
+import com.sxs.common.response.CustomerProductView;
 import com.sxs.common.response.PageList;
 import com.sxs.common.response.ReturnT;
 
@@ -26,7 +27,7 @@ public interface CustomerProductService {
 
     ReturnT<PageList> queryByPage(QueryCustomerProductParam param);
 
-    ReturnT<CustomerProduct> getProductInfo(GetCustomerProductParam param);
+    ReturnT<CustomerProductView> getProductInfo(GetCustomerProductParam param);
 
     List<CustomerProduct> printList(Long[] ids);
 }

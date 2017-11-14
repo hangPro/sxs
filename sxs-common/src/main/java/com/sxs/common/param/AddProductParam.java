@@ -238,6 +238,10 @@ public class AddProductParam extends SessionParameter {
      */
     private String remark;
     /**
+     * 备注
+     */
+    private String remark1;
+    /**
      * 图片地址
      */
     private String imgUrl;
@@ -698,5 +702,13 @@ public class AddProductParam extends SessionParameter {
 
     public void setDwNum(Double dwNum) {
         this.dwNum = dwNum;
+    }
+
+    public String getRemark1() {
+        return remark1;
+    }
+
+    public void setRemark1(String remark1) {
+        this.remark1 = remark1;
     }
 }

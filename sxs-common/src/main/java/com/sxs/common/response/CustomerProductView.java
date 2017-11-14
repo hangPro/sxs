@@ -1,24 +1,22 @@
-package com.sxs.common.param;
+package com.sxs.common.response;
 
-import com.sxs.common.session.SessionParameter;
+import com.sxs.common.bean.PageObjectBase;
+import com.sxs.common.constats.GlobConts;
+import com.sxs.common.enums.BodyStatusEnum;
+import com.sxs.common.enums.ProductTypeEnum;
+import com.sxs.common.enums.SexEnum;
 
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
-
-/**
- * Created by hang on 2017/2/27.
- */
-public class UpdateProductParam extends SessionParameter {
-
-    @NotNull(message = "ID不能为空！")
+public class CustomerProductView extends PageObjectBase{
     private Long id;
 
     /**
      * 类型：衬衫:1、西装:2、马甲:3
      */
     private String type;
+    private String typeText = getTypeText();
     /**
      * 姓名
      */
@@ -35,6 +33,10 @@ public class UpdateProductParam extends SessionParameter {
      * 交货日期
      */
     private Date sendTime;
+
+    private Date createTime;
+
+    private Date updateTime;
     /**
      * 公司名
      */
@@ -64,6 +66,10 @@ public class UpdateProductParam extends SessionParameter {
      */
     private Integer customerSex;
     /**
+     * 性别：1：男，2：女
+     */
+    private String customerSexText = getCustomerSexText();
+    /**
      * 物料编号
      */
     private String clothNo;
@@ -87,13 +93,13 @@ public class UpdateProductParam extends SessionParameter {
      * 是否试身：1：否 2：是
      */
     private Integer bodyStatus;
+    private String bodyStatusText = getBodyStatusText();
     /**
      * 是否交货：1：否 2：是
      */
     private Integer sendStatus;
-    /**
-     * 删除状态： 0：正常 1：删除
-     */
+    private String sendStatusText = getSendStatusText();
+
     private Integer status;
     /**
      * 前衣长
@@ -116,10 +122,6 @@ public class UpdateProductParam extends SessionParameter {
      */
     private Double xwNum;
     /**
-     * 肚围
-     */
-    private Double dwNum;
-    /**
      * 腰围
      */
     private Double ywNum;
@@ -127,6 +129,10 @@ public class UpdateProductParam extends SessionParameter {
      * 下摆
      */
     private Double xbNum;
+    /**
+     * 肚围
+     */
+    private Double dwNum;
     /**
      * 臀围
      */
@@ -235,21 +241,18 @@ public class UpdateProductParam extends SessionParameter {
      * 枪驳领：1：未选择 2：已选择
      */
     private Integer qblActive;
-    /**
-     * 订单状态
-     ONE(1,"未定金"),
-     TWO(2,"已定金"),
-     THREE(3,"已完结"),
-     */
+
     private Integer orderStatus;
-    /**
-     * 图片地址
-     */
-    private String imgUrl;
+
+    private Integer printStatus;
+
+    private Integer printCount;
 
     private String remark;
 
     private String remark1;
+
+    private String imgUrl;
 
     public Long getId() {
         return id;
@@ -259,12 +262,16 @@ public class UpdateProductParam extends SessionParameter {
         this.id = id;
     }
 
+    public String getTypeText() {
+        return ProductTypeEnum.getEnumMessageByCode(type);
+    }
+
     public String getType() {
         return type;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.type = type == null ? null : type.trim();
     }
 
     public String getCustomerName() {
@@ -272,7 +279,7 @@ public class UpdateProductParam extends SessionParameter {
     }
 
     public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+        this.customerName = customerName == null ? null : customerName.trim();
     }
 
     public String getCustomerPhone() {
@@ -280,7 +287,7 @@ public class UpdateProductParam extends SessionParameter {
     }
 
     public void setCustomerPhone(String customerPhone) {
-        this.customerPhone = customerPhone;
+        this.customerPhone = customerPhone == null ? null : customerPhone.trim();
     }
 
     public Date getOrderTime() {
@@ -299,12 +306,28 @@ public class UpdateProductParam extends SessionParameter {
         this.sendTime = sendTime;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
     public String getCompanyName() {
         return companyName;
     }
 
     public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+        this.companyName = companyName == null ? null : companyName.trim();
     }
 
     public String getTbAccNo() {
@@ -312,7 +335,7 @@ public class UpdateProductParam extends SessionParameter {
     }
 
     public void setTbAccNo(String tbAccNo) {
-        this.tbAccNo = tbAccNo;
+        this.tbAccNo = tbAccNo == null ? null : tbAccNo.trim();
     }
 
     public String getTbOrderNo() {
@@ -320,7 +343,7 @@ public class UpdateProductParam extends SessionParameter {
     }
 
     public void setTbOrderNo(String tbOrderNo) {
-        this.tbOrderNo = tbOrderNo;
+        this.tbOrderNo = tbOrderNo == null ? null : tbOrderNo.trim();
     }
 
     public String getOrderNo() {
@@ -328,7 +351,7 @@ public class UpdateProductParam extends SessionParameter {
     }
 
     public void setOrderNo(String orderNo) {
-        this.orderNo = orderNo;
+        this.orderNo = orderNo == null ? null : orderNo.trim();
     }
 
     public String getAddress() {
@@ -336,7 +359,7 @@ public class UpdateProductParam extends SessionParameter {
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.address = address == null ? null : address.trim();
     }
 
     public String getWechart() {
@@ -344,11 +367,15 @@ public class UpdateProductParam extends SessionParameter {
     }
 
     public void setWechart(String wechart) {
-        this.wechart = wechart;
+        this.wechart = wechart == null ? null : wechart.trim();
     }
 
     public Integer getCustomerSex() {
         return customerSex;
+    }
+
+    public String getCustomerSexText() {
+        return SexEnum.getEnumMessageByCode(customerSex);
     }
 
     public void setCustomerSex(Integer customerSex) {
@@ -360,7 +387,7 @@ public class UpdateProductParam extends SessionParameter {
     }
 
     public void setClothNo(String clothNo) {
-        this.clothNo = clothNo;
+        this.clothNo = clothNo == null ? null : clothNo.trim();
     }
 
     public BigDecimal getPrice() {
@@ -392,11 +419,16 @@ public class UpdateProductParam extends SessionParameter {
     }
 
     public void setClothDesc(String clothDesc) {
-        this.clothDesc = clothDesc;
+        this.clothDesc = clothDesc == null ? null : clothDesc.trim();
     }
 
     public Integer getBodyStatus() {
         return bodyStatus;
+    }
+
+
+    public String getBodyStatusText() {
+        return BodyStatusEnum.getEnumMessageByCode(bodyStatus);
     }
 
     public void setBodyStatus(Integer bodyStatus) {
@@ -405,6 +437,10 @@ public class UpdateProductParam extends SessionParameter {
 
     public Integer getSendStatus() {
         return sendStatus;
+    }
+
+    public String getSendStatusText() {
+        return BodyStatusEnum.getEnumMessageByCode(sendStatus);
     }
 
     public void setSendStatus(Integer sendStatus) {
@@ -683,11 +719,24 @@ public class UpdateProductParam extends SessionParameter {
         this.orderStatus = orderStatus;
     }
 
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
     public String getImgUrl() {
         return imgUrl;
     }
 
     public void setImgUrl(String imgUrl) {
+        if (imgUrl != null){
+            this.imgUrl = GlobConts.IMAGE_ROOT_URL.concat(imgUrl);
+            return;
+
+        }
         this.imgUrl = imgUrl;
     }
 
@@ -715,12 +764,20 @@ public class UpdateProductParam extends SessionParameter {
         this.dwNum = dwNum;
     }
 
-    public String getRemark() {
-        return remark;
+    public Integer getPrintStatus() {
+        return printStatus;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setPrintStatus(Integer printStatus) {
+        this.printStatus = printStatus;
+    }
+
+    public Integer getPrintCount() {
+        return printCount;
+    }
+
+    public void setPrintCount(Integer printCount) {
+        this.printCount = printCount;
     }
 
     public String getRemark1() {

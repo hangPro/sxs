@@ -62,6 +62,7 @@
     <result column="printStatus" jdbcType="SMALLINT" property="printStatus" />
     <result column="printCount" jdbcType="INTEGER" property="printCount" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="remark1" jdbcType="VARCHAR" property="remark1" />
     <result column="imgUrl" jdbcType="VARCHAR" property="imgUrl" />
   </resultMap>
 
@@ -72,20 +73,20 @@
     hycNum, kcNum, qcNum, xwNum, dwNum, ywNum, xbNum, twNum, jkNum, hdNum, xcNum, zdNum, xkNum,
     kjkNum, sxfNum, zhidNum, xxfNum, qxkNum, hbkNum, xjNum, xgNum, lwNum, tbActive, ydActive, ljActive,
     pjActive, txActive, lk1Active, lk2Active, lk3Active, hzkcActive, lbkcActive, pblActive, qblActive,
-    orderStatus, remark, imgUrl, printStatus, printCount
+    orderStatus, remark, remark1, imgUrl, printStatus, printCount
   </sql>
 
   <sql id="whereClause">
     <where>
       <if test="id != null">and id = #{id}</if>
       <if test="type != null and ''!= type">and type = #{type}</if>
-      <if test="customerName != null and ''!= customerName">and customerName = #{customerName}</if>
-      <if test="address != null and ''!= address">and address = #{address}</if>
+      <if test="customerName != null and ''!= customerName">and customerName like '%${customerName}%'</if>
+      <if test="address != null and ''!= address">and address like '%${address}%'</if>
       <if test="orderTime != null and ''!= orderTime">and orderTime = #{orderTime}</if>
-      <if test="companyName != null and ''!= companyName">and companyName = #{companyName}</if>
+      <if test="companyName != null and ''!= companyName">and companyName like '%${companyName}%'</if>
       <if test="orderNo != null and ''!= orderNo">and orderNo = #{orderNo}</if>
-      <if test="wechart != null and ''!= wechart">and wechart = #{wechart}</if>
-      <if test="tbAccNo != null and ''!= tbAccNo">and tbAccNo = #{tbAccNo}</if>
+      <if test="wechart != null and ''!= wechart">and wechart like '%${wechart}%'</if>
+      <if test="tbAccNo != null and ''!= tbAccNo">and tbAccNo like '%${tbAccNo}%'</if>
       <if test="tbOrderNo != null and ''!= tbOrderNo">and tbOrderNo = #{tbOrderNo}</if>
       <if test="orderStatus != null and ''!= orderStatus">and orderStatus = #{orderStatus}</if>
       <if test="printStatus != null and ''!= printStatus">and printStatus = #{printStatus}</if>
@@ -295,6 +296,9 @@
       <if test="remark != null">
         remark,
       </if>
+      <if test="remark1 != null">
+        remark1,
+      </if>
       <if test="imgUrl != null">
         imgUrl,
       </if>
@@ -479,6 +483,9 @@
       </if>
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null">
+        #{remark1,jdbcType=VARCHAR},
       </if>
       <if test="imgUrl != null">
         #{imgUrl,jdbcType=VARCHAR},
@@ -666,6 +673,9 @@
       <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
       </if>
+      <if test="remark1 != null">
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
       <if test="imgUrl != null">
         imgUrl = #{imgUrl,jdbcType=VARCHAR},
       </if>
@@ -689,7 +699,7 @@
     <include refid="whereClause" />
   </select>
 
-  <select id="get" resultMap="BaseResultMap" parameterType="com.sxs.common.bean.CustomerProduct">
+  <select id="get" resultType="com.sxs.common.response.CustomerProductView" parameterType="com.sxs.common.bean.CustomerProduct">
     select <include refid="Base_Column_List" />
     from t_customer_product
     <include refid="whereClause" />

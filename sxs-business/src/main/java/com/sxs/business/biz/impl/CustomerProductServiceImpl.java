@@ -11,6 +11,7 @@ import com.sxs.common.param.AddProductParam;
 import com.sxs.common.param.GetCustomerProductParam;
 import com.sxs.common.param.QueryCustomerProductParam;
 import com.sxs.common.param.UpdateProductParam;
+import com.sxs.common.response.CustomerProductView;
 import com.sxs.common.response.PageList;
 import com.sxs.common.response.ReturnT;
 import com.sxs.common.utils.DateUtils;
@@ -80,7 +81,7 @@ public class CustomerProductServiceImpl implements CustomerProductService {
     }
 
     @Override
-    public ReturnT<CustomerProduct> getProductInfo(GetCustomerProductParam param) {
+    public ReturnT<CustomerProductView> getProductInfo(GetCustomerProductParam param) {
         CustomerProduct customerProduct = new CustomerProduct();
         BeanUtils.copyProperties(param,customerProduct);
         return new ReturnT<>(mapper.get(customerProduct)).successDefault();
