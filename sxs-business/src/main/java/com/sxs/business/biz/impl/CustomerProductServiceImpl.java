@@ -19,6 +19,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +41,9 @@ public class CustomerProductServiceImpl implements CustomerProductService {
             customerProduct.setOrderTime(DateUtils.formatDate(DateUtils.formatNowDate(DateUtils.FORMAT_YYYYMMDD),DateUtils.FORMAT_YYYYMMDD));
         }
         customerProduct.setOrderStatus(OrderStatusEnum.ONE.getCode());
+        if (customerProduct.getDepositAmount().compareTo(BigDecimal.ZERO)>0){
+            customerProduct.setOrderStatus(OrderStatusEnum.TWO.getCode());
+        }
         customerProduct.setCreateTime(now);
         customerProduct.setUpdateTime(now);
         customerProduct.setStatus(StatusEnum.ENABLE.getCode());
@@ -55,6 +59,11 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         Date now = new Date();
         customerProduct.setCreateTime(now);
         customerProduct.setUpdateTime(now);
+        if (customerProduct.getDepositAmount().compareTo(BigDecimal.ZERO)>0){
+            customerProduct.setOrderStatus(OrderStatusEnum.TWO.getCode());
+        }else{
+            customerProduct.setOrderStatus(OrderStatusEnum.ONE.getCode());
+        }
         mapper.updateById(customerProduct);
         return new ReturnT().successDefault();
     }

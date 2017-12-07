@@ -98,7 +98,7 @@
     select <include refid="Base_Column_List" />
     from t_customer_product
     <include refid="whereClause" />
-    order by orderStatus asc,orderTime desc
+    order by orderTime desc
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -687,7 +687,11 @@
     select <include refid="Base_Column_List" />
     from t_customer_product
     <include refid="whereClause" />
-    order by orderStatus asc,orderTime desc
+    <choose>
+      <when test="null!=orderStatus and orderStatus != 3">order by orderTime desc</when>
+      <when test="null!=orderStatus and orderStatus == 3">order by orderTime asc</when>
+      <otherwise>order by orderTime desc</otherwise>
+    </choose>
     <if test="null!=requestOffset">
       limit #{requestOffset},#{requestCount}
     </if>

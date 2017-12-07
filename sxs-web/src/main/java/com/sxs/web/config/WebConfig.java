@@ -22,7 +22,7 @@ public class WebConfig {
         gsonBuilder.registerTypeAdapter(String.class,new StringNullAdapter());
         gsonBuilder.registerTypeAdapter(Double.class,new DoubleNullAdapter());
         gsonBuilder.registerTypeAdapter(BigDecimal.class,new BigDecimalNullAdapter());
-        gsonBuilder.registerTypeAdapter(Integer.class,new NumberNullAdapter());
+        gsonBuilder.registerTypeAdapter(Integer.class,new IntegerNullAdapter());
         //gsonBuilder.registerTypeHierarchyAdapter(Number.class,new NumberNullAdapter());
         return gsonBuilder.create();
     }

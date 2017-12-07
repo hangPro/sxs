@@ -2,6 +2,7 @@ package com.sxs.web.formatter;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 
 import java.io.IOException;
@@ -15,8 +16,11 @@ public class BigDecimalNullAdapter extends TypeAdapter<BigDecimal> {
 
     @Override
     public BigDecimal read(JsonReader reader) throws IOException {
-        //System.out.println(reader);
-        return null;
+        if (reader.peek() == JsonToken.NULL) {//进行非空判断
+            reader.nextNull();
+            return null;
+        }
+        return new BigDecimal(reader.nextString());
     }
 
     @Override

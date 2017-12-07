@@ -28,6 +28,7 @@ import sun.misc.BASE64Decoder;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -163,5 +164,23 @@ public class ProductController {
         model.addAttribute("jrMainDataSource", jrDataSource);
 
         return new ModelAndView("iReportView");
+    }
+
+    /**
+     * android获取详情
+     * @return
+     */
+    @RequestMapping("getAddress")
+    public ReturnT getAddress(){
+        List<String> addressList = new ArrayList<>(10);
+        addressList.add("罗湖区");
+        addressList.add("福田区");
+        addressList.add("南山区");
+        addressList.add("盐田区");
+        addressList.add("宝安区");
+        addressList.add("龙岗区");
+        ReturnT result = new ReturnT();
+        result.setData(addressList);
+        return result.successDefault();
     }
 }
