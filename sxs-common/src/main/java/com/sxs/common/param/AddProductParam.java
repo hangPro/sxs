@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -244,9 +245,7 @@ public class AddProductParam extends SessionParameter {
     /**
      * 图片地址
      */
-    private String imgUrl;
-
-    private String fileStr;
+    private List<String> fileStr;
 
     public String getType() {
         return type;
@@ -664,19 +663,11 @@ public class AddProductParam extends SessionParameter {
         this.remark = remark;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
-    public String getFileStr() {
+    public List<String> getFileStr() {
         return fileStr;
     }
 
-    public void setFileStr(String fileStr) {
+    public void setFileStr(List<String> fileStr) {
         this.fileStr = fileStr;
     }
 

@@ -1,5 +1,6 @@
 package com.sxs.common.response;
 
+import com.google.gson.Gson;
 import com.sxs.common.bean.PageObjectBase;
 import com.sxs.common.constats.GlobConts;
 import com.sxs.common.enums.BodyStatusEnum;
@@ -8,6 +9,7 @@ import com.sxs.common.enums.SexEnum;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class CustomerProductView extends PageObjectBase{
     private Long id;
@@ -252,7 +254,7 @@ public class CustomerProductView extends PageObjectBase{
 
     private String remark1;
 
-    private String imgUrl;
+    private List<String> imgUrl;
 
     public Long getId() {
         return id;
@@ -727,17 +729,19 @@ public class CustomerProductView extends PageObjectBase{
         this.remark = remark;
     }
 
-    public String getImgUrl() {
+    public List<String> getImgUrl() {
         return imgUrl;
     }
 
     public void setImgUrl(String imgUrl) {
-        if (imgUrl != null){
-            this.imgUrl = GlobConts.IMAGE_ROOT_URL.concat(imgUrl);
-            return;
-
+        List<String> list = new Gson().fromJson(imgUrl, List.class);
+        for (int i=0;i<list.size();i++){
+            if (list.get(i) != null){
+                list.set(i,GlobConts.IMAGE_ROOT_URL.concat(list.get(i)));
+            }
         }
-        this.imgUrl = imgUrl;
+
+        this.imgUrl = list;
     }
 
     public Integer getPblActive() {

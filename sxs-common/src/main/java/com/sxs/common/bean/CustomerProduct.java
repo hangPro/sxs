@@ -1,11 +1,13 @@
 package com.sxs.common.bean;
 
+import com.google.gson.Gson;
 import com.sxs.common.enums.BodyStatusEnum;
 import com.sxs.common.enums.ProductTypeEnum;
 import com.sxs.common.enums.SexEnum;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class CustomerProduct extends PageObjectBase{
     private Long id;
@@ -250,7 +252,7 @@ public class CustomerProduct extends PageObjectBase{
 
     private String remark1;
 
-    private String imgUrl;
+    private List<String> imgUrl;
 
     public Long getId() {
         return id;
@@ -725,12 +727,12 @@ public class CustomerProduct extends PageObjectBase{
         this.remark = remark;
     }
 
-    public String getImgUrl() {
+    public List getImgUrl() {
         return imgUrl;
     }
 
     public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+        this.imgUrl = new Gson().fromJson(imgUrl, List.class);
     }
 
     public Integer getPblActive() {

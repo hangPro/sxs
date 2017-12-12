@@ -1,5 +1,6 @@
 package com.sxs.business.biz.impl;
 
+import com.google.gson.Gson;
 import com.sxs.business.biz.CustomerProductService;
 import com.sxs.business.mapper.CustomerProductMapper;
 import com.sxs.business.plugin.PageHelper;
@@ -20,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +38,8 @@ public class CustomerProductServiceImpl implements CustomerProductService {
     public ReturnT add(AddProductParam param) {
         CustomerProduct customerProduct = new CustomerProduct();
         BeanUtils.copyProperties(param,customerProduct);
+        Gson gson = new Gson();
+        customerProduct.setImgUrl(gson.toJson(param.getFileStr()));
         Date now = new Date();
         if (customerProduct.getOrderTime() == null){
             customerProduct.setOrderTime(DateUtils.formatDate(DateUtils.formatNowDate(DateUtils.FORMAT_YYYYMMDD),DateUtils.FORMAT_YYYYMMDD));
@@ -59,11 +63,21 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         Date now = new Date();
         customerProduct.setCreateTime(now);
         customerProduct.setUpdateTime(now);
-        if (customerProduct.getDepositAmount().compareTo(BigDecimal.ZERO)>0){
+        if (OrderStatusEnum.ONE.getCode().equals(param.getOrderStatus()) && customerProduct.getDepositAmount() != null && customerProduct.getDepositAmount().compareTo(BigDecimal.ZERO)>0){
             customerProduct.setOrderStatus(OrderStatusEnum.TWO.getCode());
-        }else{
+        }else if (param.getDepositAmount() == null || param.getDepositAmount().compareTo(BigDecimal.ZERO) <= 0){
             customerProduct.setOrderStatus(OrderStatusEnum.ONE.getCode());
         }
+        mapper.updateById(customerProduct);
+        return new ReturnT().successDefault();
+    }
+
+    @Override
+    public ReturnT updateById(UpdateProductParam param) {
+        CustomerProduct customerProduct = new CustomerProduct();
+        BeanUtils.copyProperties(param,customerProduct);
+        Date now = new Date();
+        customerProduct.setUpdateTime(now);
         mapper.updateById(customerProduct);
         return new ReturnT().successDefault();
     }
@@ -106,6 +120,17 @@ public class CustomerProductServiceImpl implements CustomerProductService {
     public ReturnT updateOrders(Long[] ids,Integer orderStatus) {
         mapper.updateOrderStatusByIds(ids,orderStatus);
         return new ReturnT().successDefault();
+    }
+
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add("4");
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(list));
+        System.out.println(gson.fromJson(gson.toJson(list),List.class));
     }
 }
 

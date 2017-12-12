@@ -47,6 +47,10 @@ public class QueryCustomerProductParam extends WebPageParameter {
      * 订单状态 状态 1：未定金  2：已定金 3：已完结
      */
     private Integer orderStatus;
+    /**
+     * 打印状态 状态 1：未打印  2：已打印
+     */
+    private Integer printStatus;
 
     public String getType() {
         return type;
@@ -126,5 +130,13 @@ public class QueryCustomerProductParam extends WebPageParameter {
 
     public void setOrderStatus(Integer orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public Integer getPrintStatus() {
+        return printStatus;
+    }
+
+    public void setPrintStatus(Integer printStatus) {
+        this.printStatus = printStatus;
     }
 }

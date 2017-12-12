@@ -3,7 +3,6 @@ package com.sxs.web.controller;
 import com.sxs.business.biz.CustomerProductService;
 import com.sxs.business.plugin.PageHelper;
 import com.sxs.common.bean.CustomerProduct;
-import com.sxs.common.constats.GlobConts;
 import com.sxs.common.param.AddProductParam;
 import com.sxs.common.param.GetCustomerProductParam;
 import com.sxs.common.param.QueryCustomerProductParam;
@@ -11,10 +10,9 @@ import com.sxs.common.param.UpdateProductParam;
 import com.sxs.common.response.CustomerProductView;
 import com.sxs.common.response.PageList;
 import com.sxs.common.response.ReturnT;
-import com.sxs.common.utils.DateUtils;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import org.apache.commons.io.FileUtils;
+import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import sun.misc.BASE64Decoder;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -77,24 +72,24 @@ public class ProductController {
 
     @RequestMapping("add")
     public ReturnT add(AddProductParam param, HttpServletRequest request){
-        if (param.getFileStr() != null){
-            try {
-                String path = request.getSession().getServletContext().getRealPath("/");
-                BASE64Decoder decoder = new BASE64Decoder();
-                byte[] bytes = decoder.decodeBuffer(param.getFileStr());
-                if (bytes.length > Integer.MAX_VALUE){
-                    return new ReturnT().failureData("图片过大，请重新上传！！！");
-                }
-                String rootPath =  GlobConts.UPLOAD_IMAGE_FATH.concat(DateUtils.formatNowDate("yyyyMMdd")).concat("/");
-                String filePath = rootPath.concat(String.valueOf(System.currentTimeMillis()));
-                String uploadPath = path.concat(File.separator).concat(filePath).concat(".jpg");
-                FileUtils.writeByteArrayToFile(new File(uploadPath),bytes);
-                param.setImgUrl(filePath.concat(".jpg"));
-            } catch (IOException e) {
-                LOGGER.error("文件上传失败");
-                return new ReturnT().failureData("图片上传失败");
-            }
-        }
+//        if (param.getFileStr() != null){
+//            try {
+//                String path = request.getSession().getServletContext().getRealPath("/");
+//                BASE64Decoder decoder = new BASE64Decoder();
+//                byte[] bytes = decoder.decodeBuffer(param.getFileStr());
+//                if (bytes.length > Integer.MAX_VALUE){
+//                    return new ReturnT().failureData("图片过大，请重新上传！！！");
+//                }
+//                String rootPath =  GlobConts.UPLOAD_IMAGE_FATH.concat(DateUtils.formatNowDate("yyyyMMdd")).concat("/");
+//                String filePath = rootPath.concat(String.valueOf(System.currentTimeMillis()));
+//                String uploadPath = path.concat(File.separator).concat(filePath).concat(".jpg");
+//                FileUtils.writeByteArrayToFile(new File(uploadPath),bytes);
+//                param.setImgUrl(filePath.concat(".jpg"));
+//            } catch (IOException e) {
+//                LOGGER.error("文件上传失败");
+//                return new ReturnT().failureData("图片上传失败");
+//            }
+//        }
         return customerProductService.add(param);
     }
 
@@ -110,7 +105,7 @@ public class ProductController {
 
     @RequestMapping("updateById")
     public ReturnT updateById(UpdateProductParam param){
-        return customerProductService.update(param);
+        return customerProductService.updateById(param);
     }
 
     @RequestMapping("updateOrders")
@@ -180,7 +175,9 @@ public class ProductController {
         addressList.add("宝安区");
         addressList.add("龙岗区");
         ReturnT result = new ReturnT();
-        result.setData(addressList);
+        Map map = new HashedMap();
+        map.put("list",addressList);
+        result.setData(map);
         return result.successDefault();
     }
 }
