@@ -1,260 +1,138 @@
-package com.sxs.common.response;
-
-import com.google.gson.Gson;
-import com.sxs.common.bean.PageObjectBase;
-import com.sxs.common.constats.GlobConts;
-import com.sxs.common.enums.BodyStatusEnum;
-import com.sxs.common.enums.ProductTypeEnum;
-import com.sxs.common.enums.SexEnum;
+package com.sxs.common.bean;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
-public class CustomerProductView extends PageObjectBase{
+public class CustomerProductLog {
     private Long id;
 
-    /**
-     * 类型：衬衫:1、西装:2、马甲:3
-     */
     private String type;
-    private String typeText = getTypeText();
-    /**
-     * 姓名
-     */
+
     private String customerName;
-    /**
-     * 手机号
-     */
+
     private String customerPhone;
-    /**
-     * 订单日期
-     */
+
     private Date orderTime;
-    /**
-     * 交货日期
-     */
+
     private Date sendTime;
 
     private Date createTime;
 
     private Date updateTime;
-    /**
-     * 公司名
-     */
+
     private String companyName;
-    /**
-     * 淘宝账号
-     */
+
     private String tbAccNo;
-    /**
-     * 淘宝订单号
-     */
+
     private String tbOrderNo;
-    /**
-     * 订单编号
-     */
+
     private String orderNo;
-    /**
-     * 地址
-     */
+
     private String address;
-    /**
-     * 微信号
-     */
+
     private String wechart;
-    /**
-     * 性别：1：男，2：女
-     */
+
     private Integer customerSex;
-    /**
-     * 性别：1：男，2：女
-     */
-    private String customerSexText = getCustomerSexText();
-    /**
-     * 物料编号
-     */
+
     private String clothNo;
-    /**
-     * 单价
-     */
+
     private BigDecimal price;
-    /**
-     * 订单金额
-     */
+
     private BigDecimal orderAmount;
-    /**
-     * 定金金额
-     */
+
     private BigDecimal depositAmount;
-    /**
-     * 备注
-     */
+
     private String clothDesc;
-    /**
-     * 是否试身：1：否 2：是
-     */
+
     private Integer bodyStatus;
-    private String bodyStatusText = getBodyStatusText();
-    /**
-     * 是否交货：1：否 2：是
-     */
+
     private Integer sendStatus;
-    private String sendStatusText = getSendStatusText();
 
     private Integer status;
-    /**
-     * 前衣长
-     */
+
     private String qycNum;
-    /**
-     * 后衣长
-     */
+
     private String hycNum;
-    /**
-     * 裤长
-     */
+
     private String kcNum;
-    /**
-     * 裙长
-     */
+
     private String qcNum;
-    /**
-     * 胸围
-     */
+
     private String xwNum;
-    /**
-     * 腰围
-     */
+
     private String ywNum;
-    /**
-     * 下摆
-     */
+
     private String xbNum;
-    /**
-     * 肚围
-     */
-    private String dwNum;
-    /**
-     * 臀围
-     */
+
     private String twNum;
-    /**
-     * 肩宽
-     */
+
     private String jkNum;
-    /**
-     * 横档
-     */
+
     private String hdNum;
-    /**
-     * 袖长
-     */
+
     private String xcNum;
-    /**
-     * 中档
-     */
+
     private String zdNum;
-    /**
-     * 袖口
-     */
+
     private String xkNum;
-    /**
-     * 裤脚口
-     */
+
     private String kjkNum;
-    /**
-     * 上袖肥
-     */
+
     private String sxfNum;
-    /**
-     * 直档
-     */
+
     private String zhidNum;
-    /**
-     * 下袖肥
-     */
+
     private String xxfNum;
-    /**
-     * 前胸宽
-     */
+
     private String qxkNum;
-    /**
-     * 后背宽
-     */
+
     private String hbkNum;
-    /**
-     * 胸距
-     */
+
     private String xjNum;
-    /**
-     * 胸高
-     */
+
     private String xgNum;
-    /**
-     * 领围
-     */
+
     private String lwNum;
-    /**
-     * 驼背：1：未选择 2：已选择
-     */
+
     private Integer tbActive;
-    /**
-     * 有肚：1：未选择 2：已选择
-     */
-    private Integer ydActive;
-    /**
-     * 溜肩：1：未选择 2：已选择
-     */
+
     private Integer ljActive;
-    /**
-     * 平肩：1：未选择 2：已选择
-     */
+
     private Integer pjActive;
-    /**
-     * 挺胸：1：未选择 2：已选择
-     */
+
     private Integer txActive;
-    /**
-     * 1颗扣：1：未选择 2：已选择
-     */
+
     private Integer lk1Active;
-    /**
-     * 2颗扣：1：未选择 2：已选择
-     */
+
     private Integer lk2Active;
-    /**
-     * 3颗扣：1：未选择 2：已选择
-     */
+
     private Integer lk3Active;
-    /**
-     * 后中开叉：1：未选择 2：已选择
-     */
+
     private Integer hzkcActive;
-    /**
-     * 俩边开叉：1：未选择 2：已选择
-     */
+
     private Integer lbkcActive;
-    /**
-     * 平驳领：1：未选择 2：已选择
-     */
+
     private Integer pblActive;
-    /**
-     * 枪驳领：1：未选择 2：已选择
-     */
+
     private Integer qblActive;
 
     private Integer orderStatus;
 
-    private Integer printStatus;
+    private Integer ydActive;
 
     private Integer printCount;
 
     private String remark;
 
+    private String imgUrl;
+
+    private String dwNum;
+
     private String remark1;
 
-    private List<String> imgUrl;
+    private Integer printStatus;
+
+    private Long customerProductId;
 
     public Long getId() {
         return id;
@@ -262,10 +140,6 @@ public class CustomerProductView extends PageObjectBase{
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTypeText() {
-        return ProductTypeEnum.getEnumMessageByCode(type);
     }
 
     public String getType() {
@@ -376,10 +250,6 @@ public class CustomerProductView extends PageObjectBase{
         return customerSex;
     }
 
-    public String getCustomerSexText() {
-        return SexEnum.getEnumMessageByCode(customerSex);
-    }
-
     public void setCustomerSex(Integer customerSex) {
         this.customerSex = customerSex;
     }
@@ -428,21 +298,12 @@ public class CustomerProductView extends PageObjectBase{
         return bodyStatus;
     }
 
-
-    public String getBodyStatusText() {
-        return BodyStatusEnum.getEnumMessageByCode(bodyStatus);
-    }
-
     public void setBodyStatus(Integer bodyStatus) {
         this.bodyStatus = bodyStatus;
     }
 
     public Integer getSendStatus() {
         return sendStatus;
-    }
-
-    public String getSendStatusText() {
-        return BodyStatusEnum.getEnumMessageByCode(sendStatus);
     }
 
     public void setSendStatus(Integer sendStatus) {
@@ -462,7 +323,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setQycNum(String qycNum) {
-        this.qycNum = qycNum;
+        this.qycNum = qycNum == null ? null : qycNum.trim();
     }
 
     public String getHycNum() {
@@ -470,7 +331,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setHycNum(String hycNum) {
-        this.hycNum = hycNum;
+        this.hycNum = hycNum == null ? null : hycNum.trim();
     }
 
     public String getKcNum() {
@@ -478,7 +339,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setKcNum(String kcNum) {
-        this.kcNum = kcNum;
+        this.kcNum = kcNum == null ? null : kcNum.trim();
     }
 
     public String getQcNum() {
@@ -486,7 +347,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setQcNum(String qcNum) {
-        this.qcNum = qcNum;
+        this.qcNum = qcNum == null ? null : qcNum.trim();
     }
 
     public String getXwNum() {
@@ -494,7 +355,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setXwNum(String xwNum) {
-        this.xwNum = xwNum;
+        this.xwNum = xwNum == null ? null : xwNum.trim();
     }
 
     public String getYwNum() {
@@ -502,7 +363,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setYwNum(String ywNum) {
-        this.ywNum = ywNum;
+        this.ywNum = ywNum == null ? null : ywNum.trim();
     }
 
     public String getXbNum() {
@@ -510,7 +371,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setXbNum(String xbNum) {
-        this.xbNum = xbNum;
+        this.xbNum = xbNum == null ? null : xbNum.trim();
     }
 
     public String getTwNum() {
@@ -518,7 +379,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setTwNum(String twNum) {
-        this.twNum = twNum;
+        this.twNum = twNum == null ? null : twNum.trim();
     }
 
     public String getJkNum() {
@@ -526,7 +387,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setJkNum(String jkNum) {
-        this.jkNum = jkNum;
+        this.jkNum = jkNum == null ? null : jkNum.trim();
     }
 
     public String getHdNum() {
@@ -534,7 +395,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setHdNum(String hdNum) {
-        this.hdNum = hdNum;
+        this.hdNum = hdNum == null ? null : hdNum.trim();
     }
 
     public String getXcNum() {
@@ -542,7 +403,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setXcNum(String xcNum) {
-        this.xcNum = xcNum;
+        this.xcNum = xcNum == null ? null : xcNum.trim();
     }
 
     public String getZdNum() {
@@ -550,7 +411,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setZdNum(String zdNum) {
-        this.zdNum = zdNum;
+        this.zdNum = zdNum == null ? null : zdNum.trim();
     }
 
     public String getXkNum() {
@@ -558,7 +419,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setXkNum(String xkNum) {
-        this.xkNum = xkNum;
+        this.xkNum = xkNum == null ? null : xkNum.trim();
     }
 
     public String getKjkNum() {
@@ -566,7 +427,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setKjkNum(String kjkNum) {
-        this.kjkNum = kjkNum;
+        this.kjkNum = kjkNum == null ? null : kjkNum.trim();
     }
 
     public String getSxfNum() {
@@ -574,7 +435,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setSxfNum(String sxfNum) {
-        this.sxfNum = sxfNum;
+        this.sxfNum = sxfNum == null ? null : sxfNum.trim();
     }
 
     public String getZhidNum() {
@@ -582,7 +443,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setZhidNum(String zhidNum) {
-        this.zhidNum = zhidNum;
+        this.zhidNum = zhidNum == null ? null : zhidNum.trim();
     }
 
     public String getXxfNum() {
@@ -590,7 +451,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setXxfNum(String xxfNum) {
-        this.xxfNum = xxfNum;
+        this.xxfNum = xxfNum == null ? null : xxfNum.trim();
     }
 
     public String getQxkNum() {
@@ -598,7 +459,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setQxkNum(String qxkNum) {
-        this.qxkNum = qxkNum;
+        this.qxkNum = qxkNum == null ? null : qxkNum.trim();
     }
 
     public String getHbkNum() {
@@ -606,7 +467,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setHbkNum(String hbkNum) {
-        this.hbkNum = hbkNum;
+        this.hbkNum = hbkNum == null ? null : hbkNum.trim();
     }
 
     public String getXjNum() {
@@ -614,7 +475,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setXjNum(String xjNum) {
-        this.xjNum = xjNum;
+        this.xjNum = xjNum == null ? null : xjNum.trim();
     }
 
     public String getXgNum() {
@@ -622,7 +483,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setXgNum(String xgNum) {
-        this.xgNum = xgNum;
+        this.xgNum = xgNum == null ? null : xgNum.trim();
     }
 
     public String getLwNum() {
@@ -630,7 +491,7 @@ public class CustomerProductView extends PageObjectBase{
     }
 
     public void setLwNum(String lwNum) {
-        this.lwNum = lwNum;
+        this.lwNum = lwNum == null ? null : lwNum.trim();
     }
 
     public Integer getTbActive() {
@@ -639,14 +500,6 @@ public class CustomerProductView extends PageObjectBase{
 
     public void setTbActive(Integer tbActive) {
         this.tbActive = tbActive;
-    }
-
-    public Integer getYdActive() {
-        return ydActive;
-    }
-
-    public void setYdActive(Integer ydActive) {
-        this.ydActive = ydActive;
     }
 
     public Integer getLjActive() {
@@ -713,37 +566,6 @@ public class CustomerProductView extends PageObjectBase{
         this.lbkcActive = lbkcActive;
     }
 
-    public Integer getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(Integer orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public List<String> getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        List<String> list = new Gson().fromJson(imgUrl, List.class);
-        for (int i=0;i<list.size();i++){
-            if (list.get(i) != null){
-                list.set(i,GlobConts.IMAGE_ROOT_URL.concat(list.get(i)));
-            }
-        }
-
-        this.imgUrl = list;
-    }
-
     public Integer getPblActive() {
         return pblActive;
     }
@@ -760,20 +582,20 @@ public class CustomerProductView extends PageObjectBase{
         this.qblActive = qblActive;
     }
 
-    public String getDwNum() {
-        return dwNum;
+    public Integer getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setDwNum(String dwNum) {
-        this.dwNum = dwNum;
+    public void setOrderStatus(Integer orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
-    public Integer getPrintStatus() {
-        return printStatus;
+    public Integer getYdActive() {
+        return ydActive;
     }
 
-    public void setPrintStatus(Integer printStatus) {
-        this.printStatus = printStatus;
+    public void setYdActive(Integer ydActive) {
+        this.ydActive = ydActive;
     }
 
     public Integer getPrintCount() {
@@ -784,11 +606,51 @@ public class CustomerProductView extends PageObjectBase{
         this.printCount = printCount;
     }
 
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl == null ? null : imgUrl.trim();
+    }
+
+    public String getDwNum() {
+        return dwNum;
+    }
+
+    public void setDwNum(String dwNum) {
+        this.dwNum = dwNum == null ? null : dwNum.trim();
+    }
+
     public String getRemark1() {
         return remark1;
     }
 
     public void setRemark1(String remark1) {
-        this.remark1 = remark1;
+        this.remark1 = remark1 == null ? null : remark1.trim();
+    }
+
+    public Integer getPrintStatus() {
+        return printStatus;
+    }
+
+    public void setPrintStatus(Integer printStatus) {
+        this.printStatus = printStatus;
+    }
+
+    public Long getCustomerProductId() {
+        return customerProductId;
+    }
+
+    public void setCustomerProductId(Long customerProductId) {
+        this.customerProductId = customerProductId;
     }
 }

@@ -17,6 +17,8 @@ public interface CustomerProductMapper {
 
     CustomerProductView get(CustomerProduct record);
 
+    CustomerProduct getById(Long id);
+
     int updateById(CustomerProduct record);
 
     List<CustomerProduct> query(CustomerProduct record);

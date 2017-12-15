@@ -102,97 +102,97 @@ public class CustomerProduct extends PageObjectBase{
 
     private Integer status;
     /**
-     * 前衣长
-     */
-    private Double qycNum;
-    /**
      * 后衣长
      */
-    private Double hycNum;
+    private String hycNum;
+    /**
+     * 前衣长
+     */
+    private String qycNum;
     /**
      * 裤长
      */
-    private Double kcNum;
+    private String kcNum;
     /**
      * 裙长
      */
-    private Double qcNum;
+    private String qcNum;
     /**
      * 胸围
      */
-    private Double xwNum;
+    private String xwNum;
     /**
      * 腰围
      */
-    private Double ywNum;
+    private String ywNum;
     /**
      * 下摆
      */
-    private Double xbNum;
+    private String xbNum;
     /**
      * 肚围
      */
-    private Double dwNum;
+    private String dwNum;
     /**
      * 臀围
      */
-    private Double twNum;
+    private String twNum;
     /**
      * 肩宽
      */
-    private Double jkNum;
+    private String jkNum;
     /**
      * 横档
      */
-    private Double hdNum;
+    private String hdNum;
     /**
      * 袖长
      */
-    private Double xcNum;
+    private String xcNum;
     /**
      * 中档
      */
-    private Double zdNum;
+    private String zdNum;
     /**
      * 袖口
      */
-    private Double xkNum;
+    private String xkNum;
     /**
      * 裤脚口
      */
-    private Double kjkNum;
+    private String kjkNum;
     /**
      * 上袖肥
      */
-    private Double sxfNum;
+    private String sxfNum;
     /**
      * 直档
      */
-    private Double zhidNum;
+    private String zhidNum;
     /**
      * 下袖肥
      */
-    private Double xxfNum;
+    private String xxfNum;
     /**
      * 前胸宽
      */
-    private Double qxkNum;
+    private String qxkNum;
     /**
      * 后背宽
      */
-    private Double hbkNum;
+    private String hbkNum;
     /**
      * 胸距
      */
-    private Double xjNum;
+    private String xjNum;
     /**
      * 胸高
      */
-    private Double xgNum;
+    private String xgNum;
     /**
      * 领围
      */
-    private Double lwNum;
+    private String lwNum;
     /**
      * 驼背：1：未选择 2：已选择
      */
@@ -455,179 +455,179 @@ public class CustomerProduct extends PageObjectBase{
         this.status = status;
     }
 
-    public Double getQycNum() {
+    public String getQycNum() {
         return qycNum;
     }
 
-    public void setQycNum(Double qycNum) {
+    public void setQycNum(String qycNum) {
         this.qycNum = qycNum;
     }
 
-    public Double getHycNum() {
+    public String getHycNum() {
         return hycNum;
     }
 
-    public void setHycNum(Double hycNum) {
+    public void setHycNum(String hycNum) {
         this.hycNum = hycNum;
     }
 
-    public Double getKcNum() {
+    public String getKcNum() {
         return kcNum;
     }
 
-    public void setKcNum(Double kcNum) {
+    public void setKcNum(String kcNum) {
         this.kcNum = kcNum;
     }
 
-    public Double getQcNum() {
+    public String getQcNum() {
         return qcNum;
     }
 
-    public void setQcNum(Double qcNum) {
+    public void setQcNum(String qcNum) {
         this.qcNum = qcNum;
     }
 
-    public Double getXwNum() {
+    public String getXwNum() {
         return xwNum;
     }
 
-    public void setXwNum(Double xwNum) {
+    public void setXwNum(String xwNum) {
         this.xwNum = xwNum;
     }
 
-    public Double getYwNum() {
+    public String getYwNum() {
         return ywNum;
     }
 
-    public void setYwNum(Double ywNum) {
+    public void setYwNum(String ywNum) {
         this.ywNum = ywNum;
     }
 
-    public Double getXbNum() {
+    public String getXbNum() {
         return xbNum;
     }
 
-    public void setXbNum(Double xbNum) {
+    public void setXbNum(String xbNum) {
         this.xbNum = xbNum;
     }
 
-    public Double getTwNum() {
+    public String getTwNum() {
         return twNum;
     }
 
-    public void setTwNum(Double twNum) {
+    public void setTwNum(String twNum) {
         this.twNum = twNum;
     }
 
-    public Double getJkNum() {
+    public String getJkNum() {
         return jkNum;
     }
 
-    public void setJkNum(Double jkNum) {
+    public void setJkNum(String jkNum) {
         this.jkNum = jkNum;
     }
 
-    public Double getHdNum() {
+    public String getHdNum() {
         return hdNum;
     }
 
-    public void setHdNum(Double hdNum) {
+    public void setHdNum(String hdNum) {
         this.hdNum = hdNum;
     }
 
-    public Double getXcNum() {
+    public String getXcNum() {
         return xcNum;
     }
 
-    public void setXcNum(Double xcNum) {
+    public void setXcNum(String xcNum) {
         this.xcNum = xcNum;
     }
 
-    public Double getZdNum() {
+    public String getZdNum() {
         return zdNum;
     }
 
-    public void setZdNum(Double zdNum) {
+    public void setZdNum(String zdNum) {
         this.zdNum = zdNum;
     }
 
-    public Double getXkNum() {
+    public String getXkNum() {
         return xkNum;
     }
 
-    public void setXkNum(Double xkNum) {
+    public void setXkNum(String xkNum) {
         this.xkNum = xkNum;
     }
 
-    public Double getKjkNum() {
+    public String getKjkNum() {
         return kjkNum;
     }
 
-    public void setKjkNum(Double kjkNum) {
+    public void setKjkNum(String kjkNum) {
         this.kjkNum = kjkNum;
     }
 
-    public Double getSxfNum() {
+    public String getSxfNum() {
         return sxfNum;
     }
 
-    public void setSxfNum(Double sxfNum) {
+    public void setSxfNum(String sxfNum) {
         this.sxfNum = sxfNum;
     }
 
-    public Double getZhidNum() {
+    public String getZhidNum() {
         return zhidNum;
     }
 
-    public void setZhidNum(Double zhidNum) {
+    public void setZhidNum(String zhidNum) {
         this.zhidNum = zhidNum;
     }
 
-    public Double getXxfNum() {
+    public String getXxfNum() {
         return xxfNum;
     }
 
-    public void setXxfNum(Double xxfNum) {
+    public void setXxfNum(String xxfNum) {
         this.xxfNum = xxfNum;
     }
 
-    public Double getQxkNum() {
+    public String getQxkNum() {
         return qxkNum;
     }
 
-    public void setQxkNum(Double qxkNum) {
+    public void setQxkNum(String qxkNum) {
         this.qxkNum = qxkNum;
     }
 
-    public Double getHbkNum() {
+    public String getHbkNum() {
         return hbkNum;
     }
 
-    public void setHbkNum(Double hbkNum) {
+    public void setHbkNum(String hbkNum) {
         this.hbkNum = hbkNum;
     }
 
-    public Double getXjNum() {
+    public String getXjNum() {
         return xjNum;
     }
 
-    public void setXjNum(Double xjNum) {
+    public void setXjNum(String xjNum) {
         this.xjNum = xjNum;
     }
 
-    public Double getXgNum() {
+    public String getXgNum() {
         return xgNum;
     }
 
-    public void setXgNum(Double xgNum) {
+    public void setXgNum(String xgNum) {
         this.xgNum = xgNum;
     }
 
-    public Double getLwNum() {
+    public String getLwNum() {
         return lwNum;
     }
 
-    public void setLwNum(Double lwNum) {
+    public void setLwNum(String lwNum) {
         this.lwNum = lwNum;
     }
 
@@ -751,11 +751,11 @@ public class CustomerProduct extends PageObjectBase{
         this.qblActive = qblActive;
     }
 
-    public Double getDwNum() {
+    public String getDwNum() {
         return dwNum;
     }
 
-    public void setDwNum(Double dwNum) {
+    public void setDwNum(String dwNum) {
         this.dwNum = dwNum;
     }
 
@@ -781,5 +781,101 @@ public class CustomerProduct extends PageObjectBase{
 
     public void setRemark1(String remark1) {
         this.remark1 = remark1;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CustomerProduct that = (CustomerProduct) o;
+
+        if (getHycNum() != null ? !getHycNum().equals(that.getHycNum()) : that.getHycNum() != null) return false;
+        if (getQycNum() != null ? !getQycNum().equals(that.getQycNum()) : that.getQycNum() != null) return false;
+        if (getKcNum() != null ? !getKcNum().equals(that.getKcNum()) : that.getKcNum() != null) return false;
+        if (getQcNum() != null ? !getQcNum().equals(that.getQcNum()) : that.getQcNum() != null) return false;
+        if (getXwNum() != null ? !getXwNum().equals(that.getXwNum()) : that.getXwNum() != null) return false;
+        if (getYwNum() != null ? !getYwNum().equals(that.getYwNum()) : that.getYwNum() != null) return false;
+        if (getXbNum() != null ? !getXbNum().equals(that.getXbNum()) : that.getXbNum() != null) return false;
+        if (getDwNum() != null ? !getDwNum().equals(that.getDwNum()) : that.getDwNum() != null) return false;
+        if (getTwNum() != null ? !getTwNum().equals(that.getTwNum()) : that.getTwNum() != null) return false;
+        if (getJkNum() != null ? !getJkNum().equals(that.getJkNum()) : that.getJkNum() != null) return false;
+        if (getHdNum() != null ? !getHdNum().equals(that.getHdNum()) : that.getHdNum() != null) return false;
+        if (getXcNum() != null ? !getXcNum().equals(that.getXcNum()) : that.getXcNum() != null) return false;
+        if (getZdNum() != null ? !getZdNum().equals(that.getZdNum()) : that.getZdNum() != null) return false;
+        if (getXkNum() != null ? !getXkNum().equals(that.getXkNum()) : that.getXkNum() != null) return false;
+        if (getKjkNum() != null ? !getKjkNum().equals(that.getKjkNum()) : that.getKjkNum() != null) return false;
+        if (getSxfNum() != null ? !getSxfNum().equals(that.getSxfNum()) : that.getSxfNum() != null) return false;
+        if (getZhidNum() != null ? !getZhidNum().equals(that.getZhidNum()) : that.getZhidNum() != null) return false;
+        if (getXxfNum() != null ? !getXxfNum().equals(that.getXxfNum()) : that.getXxfNum() != null) return false;
+        if (getQxkNum() != null ? !getQxkNum().equals(that.getQxkNum()) : that.getQxkNum() != null) return false;
+        if (getHbkNum() != null ? !getHbkNum().equals(that.getHbkNum()) : that.getHbkNum() != null) return false;
+        if (getXjNum() != null ? !getXjNum().equals(that.getXjNum()) : that.getXjNum() != null) return false;
+        if (getXgNum() != null ? !getXgNum().equals(that.getXgNum()) : that.getXgNum() != null) return false;
+        if (getLwNum() != null ? !getLwNum().equals(that.getLwNum()) : that.getLwNum() != null) return false;
+        if (getTbActive() != null ? !getTbActive().equals(that.getTbActive()) : that.getTbActive() != null)
+            return false;
+        if (getYdActive() != null ? !getYdActive().equals(that.getYdActive()) : that.getYdActive() != null)
+            return false;
+        if (getLjActive() != null ? !getLjActive().equals(that.getLjActive()) : that.getLjActive() != null)
+            return false;
+        if (getPjActive() != null ? !getPjActive().equals(that.getPjActive()) : that.getPjActive() != null)
+            return false;
+        if (getTxActive() != null ? !getTxActive().equals(that.getTxActive()) : that.getTxActive() != null)
+            return false;
+        if (getLk1Active() != null ? !getLk1Active().equals(that.getLk1Active()) : that.getLk1Active() != null)
+            return false;
+        if (getLk2Active() != null ? !getLk2Active().equals(that.getLk2Active()) : that.getLk2Active() != null)
+            return false;
+        if (getLk3Active() != null ? !getLk3Active().equals(that.getLk3Active()) : that.getLk3Active() != null)
+            return false;
+        if (getHzkcActive() != null ? !getHzkcActive().equals(that.getHzkcActive()) : that.getHzkcActive() != null)
+            return false;
+        if (getLbkcActive() != null ? !getLbkcActive().equals(that.getLbkcActive()) : that.getLbkcActive() != null)
+            return false;
+        if (getPblActive() != null ? !getPblActive().equals(that.getPblActive()) : that.getPblActive() != null)
+            return false;
+        return getQblActive() != null ? getQblActive().equals(that.getQblActive()) : that.getQblActive() == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getHycNum() != null ? getHycNum().hashCode() : 0;
+        result = 31 * result + (getQycNum() != null ? getQycNum().hashCode() : 0);
+        result = 31 * result + (getKcNum() != null ? getKcNum().hashCode() : 0);
+        result = 31 * result + (getQcNum() != null ? getQcNum().hashCode() : 0);
+        result = 31 * result + (getXwNum() != null ? getXwNum().hashCode() : 0);
+        result = 31 * result + (getYwNum() != null ? getYwNum().hashCode() : 0);
+        result = 31 * result + (getXbNum() != null ? getXbNum().hashCode() : 0);
+        result = 31 * result + (getDwNum() != null ? getDwNum().hashCode() : 0);
+        result = 31 * result + (getTwNum() != null ? getTwNum().hashCode() : 0);
+        result = 31 * result + (getJkNum() != null ? getJkNum().hashCode() : 0);
+        result = 31 * result + (getHdNum() != null ? getHdNum().hashCode() : 0);
+        result = 31 * result + (getXcNum() != null ? getXcNum().hashCode() : 0);
+        result = 31 * result + (getZdNum() != null ? getZdNum().hashCode() : 0);
+        result = 31 * result + (getXkNum() != null ? getXkNum().hashCode() : 0);
+        result = 31 * result + (getKjkNum() != null ? getKjkNum().hashCode() : 0);
+        result = 31 * result + (getSxfNum() != null ? getSxfNum().hashCode() : 0);
+        result = 31 * result + (getZhidNum() != null ? getZhidNum().hashCode() : 0);
+        result = 31 * result + (getXxfNum() != null ? getXxfNum().hashCode() : 0);
+        result = 31 * result + (getQxkNum() != null ? getQxkNum().hashCode() : 0);
+        result = 31 * result + (getHbkNum() != null ? getHbkNum().hashCode() : 0);
+        result = 31 * result + (getXjNum() != null ? getXjNum().hashCode() : 0);
+        result = 31 * result + (getXgNum() != null ? getXgNum().hashCode() : 0);
+        result = 31 * result + (getLwNum() != null ? getLwNum().hashCode() : 0);
+        result = 31 * result + (getTbActive() != null ? getTbActive().hashCode() : 0);
+        result = 31 * result + (getYdActive() != null ? getYdActive().hashCode() : 0);
+        result = 31 * result + (getLjActive() != null ? getLjActive().hashCode() : 0);
+        result = 31 * result + (getPjActive() != null ? getPjActive().hashCode() : 0);
+        result = 31 * result + (getTxActive() != null ? getTxActive().hashCode() : 0);
+        result = 31 * result + (getLk1Active() != null ? getLk1Active().hashCode() : 0);
+        result = 31 * result + (getLk2Active() != null ? getLk2Active().hashCode() : 0);
+        result = 31 * result + (getLk3Active() != null ? getLk3Active().hashCode() : 0);
+        result = 31 * result + (getHzkcActive() != null ? getHzkcActive().hashCode() : 0);
+        result = 31 * result + (getLbkcActive() != null ? getLbkcActive().hashCode() : 0);
+        result = 31 * result + (getPblActive() != null ? getPblActive().hashCode() : 0);
+        result = 31 * result + (getQblActive() != null ? getQblActive().hashCode() : 0);
+        return result;
     }
 }

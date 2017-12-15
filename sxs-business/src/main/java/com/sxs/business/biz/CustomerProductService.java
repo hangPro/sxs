@@ -32,4 +32,6 @@ public interface CustomerProductService {
     ReturnT<CustomerProductView> getProductInfo(GetCustomerProductParam param);
 
     List<CustomerProduct> printList(Long[] ids);
+
+    ReturnT queryProductLogList(Long customerProductId);
 }

@@ -25,29 +25,29 @@
     <result column="bodyStatus" jdbcType="SMALLINT" property="bodyStatus" />
     <result column="sendStatus" jdbcType="SMALLINT" property="sendStatus" />
     <result column="status" jdbcType="SMALLINT" property="status" />
-    <result column="qycNum" jdbcType="DECIMAL" property="qycNum" />
-    <result column="hycNum" jdbcType="DECIMAL" property="hycNum" />
-    <result column="kcNum" jdbcType="DECIMAL" property="kcNum" />
-    <result column="qcNum" jdbcType="DECIMAL" property="qcNum" />
-    <result column="xwNum" jdbcType="DECIMAL" property="xwNum" />
-    <result column="dwNum" jdbcType="DECIMAL" property="dwNum" />
-    <result column="ywNum" jdbcType="DECIMAL" property="ywNum" />
-    <result column="xbNum" jdbcType="DECIMAL" property="xbNum" />
-    <result column="twNum" jdbcType="DECIMAL" property="twNum" />
-    <result column="jkNum" jdbcType="DECIMAL" property="jkNum" />
-    <result column="hdNum" jdbcType="DECIMAL" property="hdNum" />
-    <result column="xcNum" jdbcType="DECIMAL" property="xcNum" />
-    <result column="zdNum" jdbcType="DECIMAL" property="zdNum" />
-    <result column="xkNum" jdbcType="DECIMAL" property="xkNum" />
-    <result column="kjkNum" jdbcType="DECIMAL" property="kjkNum" />
-    <result column="sxfNum" jdbcType="DECIMAL" property="sxfNum" />
-    <result column="zhidNum" jdbcType="DECIMAL" property="zhidNum" />
-    <result column="xxfNum" jdbcType="DECIMAL" property="xxfNum" />
-    <result column="qxkNum" jdbcType="DECIMAL" property="qxkNum" />
-    <result column="hbkNum" jdbcType="DECIMAL" property="hbkNum" />
-    <result column="xjNum" jdbcType="DECIMAL" property="xjNum" />
-    <result column="xgNum" jdbcType="DECIMAL" property="xgNum" />
-    <result column="lwNum" jdbcType="DECIMAL" property="lwNum" />
+    <result column="qycNum" jdbcType="VARCHAR" property="qycNum" />
+    <result column="hycNum" jdbcType="VARCHAR" property="hycNum" />
+    <result column="kcNum" jdbcType="VARCHAR" property="kcNum" />
+    <result column="qcNum" jdbcType="VARCHAR" property="qcNum" />
+    <result column="xwNum" jdbcType="VARCHAR" property="xwNum" />
+    <result column="dwNum" jdbcType="VARCHAR" property="dwNum" />
+    <result column="ywNum" jdbcType="VARCHAR" property="ywNum" />
+    <result column="xbNum" jdbcType="VARCHAR" property="xbNum" />
+    <result column="twNum" jdbcType="VARCHAR" property="twNum" />
+    <result column="jkNum" jdbcType="VARCHAR" property="jkNum" />
+    <result column="hdNum" jdbcType="VARCHAR" property="hdNum" />
+    <result column="xcNum" jdbcType="VARCHAR" property="xcNum" />
+    <result column="zdNum" jdbcType="VARCHAR" property="zdNum" />
+    <result column="xkNum" jdbcType="VARCHAR" property="xkNum" />
+    <result column="kjkNum" jdbcType="VARCHAR" property="kjkNum" />
+    <result column="sxfNum" jdbcType="VARCHAR" property="sxfNum" />
+    <result column="zhidNum" jdbcType="VARCHAR" property="zhidNum" />
+    <result column="xxfNum" jdbcType="VARCHAR" property="xxfNum" />
+    <result column="qxkNum" jdbcType="VARCHAR" property="qxkNum" />
+    <result column="hbkNum" jdbcType="VARCHAR" property="hbkNum" />
+    <result column="xjNum" jdbcType="VARCHAR" property="xjNum" />
+    <result column="xgNum" jdbcType="VARCHAR" property="xgNum" />
+    <result column="lwNum" jdbcType="VARCHAR" property="lwNum" />
     <result column="tbActive" jdbcType="SMALLINT" property="tbActive" />
     <result column="ydActive" jdbcType="SMALLINT" property="ydActive" />
     <result column="ljActive" jdbcType="SMALLINT" property="ljActive" />
@@ -374,73 +374,73 @@
         #{status,jdbcType=SMALLINT},
       </if>
       <if test="qycNum != null">
-        #{qycNum,jdbcType=DECIMAL},
+        #{qycNum,jdbcType=VARCHAR},
       </if>
       <if test="hycNum != null">
-        #{hycNum,jdbcType=DECIMAL},
+        #{hycNum,jdbcType=VARCHAR},
       </if>
       <if test="kcNum != null">
-        #{kcNum,jdbcType=DECIMAL},
+        #{kcNum,jdbcType=VARCHAR},
       </if>
       <if test="qcNum != null">
-        #{qcNum,jdbcType=DECIMAL},
+        #{qcNum,jdbcType=VARCHAR},
       </if>
       <if test="xwNum != null">
-        #{xwNum,jdbcType=DECIMAL},
+        #{xwNum,jdbcType=VARCHAR},
       </if>
       <if test="dwNum != null">
-        #{dwNum,jdbcType=DECIMAL},
+        #{dwNum,jdbcType=VARCHAR},
       </if>
       <if test="ywNum != null">
-        #{ywNum,jdbcType=DECIMAL},
+        #{ywNum,jdbcType=VARCHAR},
       </if>
       <if test="xbNum != null">
-        #{xbNum,jdbcType=DECIMAL},
+        #{xbNum,jdbcType=VARCHAR},
       </if>
       <if test="twNum != null">
-        #{twNum,jdbcType=DECIMAL},
+        #{twNum,jdbcType=VARCHAR},
       </if>
       <if test="jkNum != null">
-        #{jkNum,jdbcType=DECIMAL},
+        #{jkNum,jdbcType=VARCHAR},
       </if>
       <if test="hdNum != null">
-        #{hdNum,jdbcType=DECIMAL},
+        #{hdNum,jdbcType=VARCHAR},
       </if>
       <if test="xcNum != null">
-        #{xcNum,jdbcType=DECIMAL},
+        #{xcNum,jdbcType=VARCHAR},
       </if>
       <if test="zdNum != null">
-        #{zdNum,jdbcType=DECIMAL},
+        #{zdNum,jdbcType=VARCHAR},
       </if>
       <if test="xkNum != null">
-        #{xkNum,jdbcType=DECIMAL},
+        #{xkNum,jdbcType=VARCHAR},
       </if>
       <if test="kjkNum != null">
-        #{kjkNum,jdbcType=DECIMAL},
+        #{kjkNum,jdbcType=VARCHAR},
       </if>
       <if test="sxfNum != null">
-        #{sxfNum,jdbcType=DECIMAL},
+        #{sxfNum,jdbcType=VARCHAR},
       </if>
       <if test="zhidNum != null">
-        #{zhidNum,jdbcType=DECIMAL},
+        #{zhidNum,jdbcType=VARCHAR},
       </if>
       <if test="xxfNum != null">
-        #{xxfNum,jdbcType=DECIMAL},
+        #{xxfNum,jdbcType=VARCHAR},
       </if>
       <if test="qxkNum != null">
-        #{qxkNum,jdbcType=DECIMAL},
+        #{qxkNum,jdbcType=VARCHAR},
       </if>
       <if test="hbkNum != null">
-        #{hbkNum,jdbcType=DECIMAL},
+        #{hbkNum,jdbcType=VARCHAR},
       </if>
       <if test="xjNum != null">
-        #{xjNum,jdbcType=DECIMAL},
+        #{xjNum,jdbcType=VARCHAR},
       </if>
       <if test="xgNum != null">
-        #{xgNum,jdbcType=DECIMAL},
+        #{xgNum,jdbcType=VARCHAR},
       </if>
       <if test="lwNum != null">
-        #{lwNum,jdbcType=DECIMAL},
+        #{lwNum,jdbcType=VARCHAR},
       </if>
       <if test="tbActive != null">
         #{tbActive,jdbcType=SMALLINT},
@@ -563,73 +563,73 @@
         status = #{status,jdbcType=SMALLINT},
       </if>
       <if test="qycNum != null">
-        qycNum = #{qycNum,jdbcType=DECIMAL},
+        qycNum = #{qycNum,jdbcType=VARCHAR},
       </if>
       <if test="hycNum != null">
-        hycNum = #{hycNum,jdbcType=DECIMAL},
+        hycNum = #{hycNum,jdbcType=VARCHAR},
       </if>
       <if test="kcNum != null">
-        kcNum = #{kcNum,jdbcType=DECIMAL},
+        kcNum = #{kcNum,jdbcType=VARCHAR},
       </if>
       <if test="qcNum != null">
-        qcNum = #{qcNum,jdbcType=DECIMAL},
+        qcNum = #{qcNum,jdbcType=VARCHAR},
       </if>
       <if test="xwNum != null">
-        xwNum = #{xwNum,jdbcType=DECIMAL},
+        xwNum = #{xwNum,jdbcType=VARCHAR},
       </if>
       <if test="dwNum != null">
-        dwNum = #{dwNum,jdbcType=DECIMAL},
+        dwNum = #{dwNum,jdbcType=VARCHAR},
       </if>
       <if test="ywNum != null">
-        ywNum = #{ywNum,jdbcType=DECIMAL},
+        ywNum = #{ywNum,jdbcType=VARCHAR},
       </if>
       <if test="xbNum != null">
-        xbNum = #{xbNum,jdbcType=DECIMAL},
+        xbNum = #{xbNum,jdbcType=VARCHAR},
       </if>
       <if test="twNum != null">
-        twNum = #{twNum,jdbcType=DECIMAL},
+        twNum = #{twNum,jdbcType=VARCHAR},
       </if>
       <if test="jkNum != null">
-        jkNum = #{jkNum,jdbcType=DECIMAL},
+        jkNum = #{jkNum,jdbcType=VARCHAR},
       </if>
       <if test="hdNum != null">
-        hdNum = #{hdNum,jdbcType=DECIMAL},
+        hdNum = #{hdNum,jdbcType=VARCHAR},
       </if>
       <if test="xcNum != null">
-        xcNum = #{xcNum,jdbcType=DECIMAL},
+        xcNum = #{xcNum,jdbcType=VARCHAR},
       </if>
       <if test="zdNum != null">
-        zdNum = #{zdNum,jdbcType=DECIMAL},
+        zdNum = #{zdNum,jdbcType=VARCHAR},
       </if>
       <if test="xkNum != null">
-        xkNum = #{xkNum,jdbcType=DECIMAL},
+        xkNum = #{xkNum,jdbcType=VARCHAR},
       </if>
       <if test="kjkNum != null">
-        kjkNum = #{kjkNum,jdbcType=DECIMAL},
+        kjkNum = #{kjkNum,jdbcType=VARCHAR},
       </if>
       <if test="sxfNum != null">
-        sxfNum = #{sxfNum,jdbcType=DECIMAL},
+        sxfNum = #{sxfNum,jdbcType=VARCHAR},
       </if>
       <if test="zhidNum != null">
-        zhidNum = #{zhidNum,jdbcType=DECIMAL},
+        zhidNum = #{zhidNum,jdbcType=VARCHAR},
       </if>
       <if test="xxfNum != null">
-        xxfNum = #{xxfNum,jdbcType=DECIMAL},
+        xxfNum = #{xxfNum,jdbcType=VARCHAR},
       </if>
       <if test="qxkNum != null">
-        qxkNum = #{qxkNum,jdbcType=DECIMAL},
+        qxkNum = #{qxkNum,jdbcType=VARCHAR},
       </if>
       <if test="hbkNum != null">
-        hbkNum = #{hbkNum,jdbcType=DECIMAL},
+        hbkNum = #{hbkNum,jdbcType=VARCHAR},
       </if>
       <if test="xjNum != null">
-        xjNum = #{xjNum,jdbcType=DECIMAL},
+        xjNum = #{xjNum,jdbcType=VARCHAR},
       </if>
       <if test="xgNum != null">
-        xgNum = #{xgNum,jdbcType=DECIMAL},
+        xgNum = #{xgNum,jdbcType=VARCHAR},
       </if>
       <if test="lwNum != null">
-        lwNum = #{lwNum,jdbcType=DECIMAL},
+        lwNum = #{lwNum,jdbcType=VARCHAR},
       </if>
       <if test="tbActive != null">
         tbActive = #{tbActive,jdbcType=SMALLINT},
@@ -707,6 +707,13 @@
     select <include refid="Base_Column_List" />
     from t_customer_product
     <include refid="whereClause" />
+    limit 1
+  </select>
+
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select <include refid="Base_Column_List" />
+    from t_customer_product
+    where id = #{id,jdbcType=BIGINT}
     limit 1
   </select>
 

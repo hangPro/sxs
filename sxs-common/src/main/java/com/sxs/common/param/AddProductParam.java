@@ -97,95 +97,95 @@ public class AddProductParam extends SessionParameter {
     /**
      * 前衣长
      */
-    private Double qycNum;
+    private String qycNum;
     /**
      * 后衣长
      */
-    private Double hycNum;
+    private String hycNum;
     /**
      * 裤长
      */
-    private Double kcNum;
+    private String kcNum;
     /**
      * 裙长
      */
-    private Double qcNum;
+    private String qcNum;
     /**
      * 胸围
      */
-    private Double xwNum;
+    private String xwNum;
     /**
      * 肚围
      */
-    private Double dwNum;
+    private String dwNum;
     /**
      * 腰围
      */
-    private Double ywNum;
+    private String ywNum;
     /**
      * 下摆
      */
-    private Double xbNum;
+    private String xbNum;
     /**
      * 臀围
      */
-    private Double twNum;
+    private String twNum;
     /**
      * 肩宽
      */
-    private Double jkNum;
+    private String jkNum;
     /**
      * 横档
      */
-    private Double hdNum;
+    private String hdNum;
     /**
      * 袖长
      */
-    private Double xcNum;
+    private String xcNum;
     /**
      * 中档
      */
-    private Double zdNum;
+    private String zdNum;
     /**
      * 袖口
      */
-    private Double xkNum;
+    private String xkNum;
     /**
      * 裤脚口
      */
-    private Double kjkNum;
+    private String kjkNum;
     /**
      * 上袖肥
      */
-    private Double sxfNum;
+    private String sxfNum;
     /**
      * 直档
      */
-    private Double zhidNum;
+    private String zhidNum;
     /**
      * 下袖肥
      */
-    private Double xxfNum;
+    private String xxfNum;
     /**
      * 前胸宽
      */
-    private Double qxkNum;
+    private String qxkNum;
     /**
      * 后背宽
      */
-    private Double hbkNum;
+    private String hbkNum;
     /**
      * 胸距
      */
-    private Double xjNum;
+    private String xjNum;
     /**
      * 胸高
      */
-    private Double xgNum;
+    private String xgNum;
     /**
      * 领围
      */
-    private Double lwNum;
+    private String lwNum;
     /**
      * 驼背：1：未选择 2：已选择
      */
@@ -399,179 +399,179 @@ public class AddProductParam extends SessionParameter {
         this.sendStatus = sendStatus;
     }
 
-    public Double getQycNum() {
+    public String getQycNum() {
         return qycNum;
     }
 
-    public void setQycNum(Double qycNum) {
+    public void setQycNum(String qycNum) {
         this.qycNum = qycNum;
     }
 
-    public Double getHycNum() {
+    public String getHycNum() {
         return hycNum;
     }
 
-    public void setHycNum(Double hycNum) {
+    public void setHycNum(String hycNum) {
         this.hycNum = hycNum;
     }
 
-    public Double getKcNum() {
+    public String getKcNum() {
         return kcNum;
     }
 
-    public void setKcNum(Double kcNum) {
+    public void setKcNum(String kcNum) {
         this.kcNum = kcNum;
     }
 
-    public Double getQcNum() {
+    public String getQcNum() {
         return qcNum;
     }
 
-    public void setQcNum(Double qcNum) {
+    public void setQcNum(String qcNum) {
         this.qcNum = qcNum;
     }
 
-    public Double getXwNum() {
+    public String getXwNum() {
         return xwNum;
     }
 
-    public void setXwNum(Double xwNum) {
+    public void setXwNum(String xwNum) {
         this.xwNum = xwNum;
     }
 
-    public Double getYwNum() {
+    public String getYwNum() {
         return ywNum;
     }
 
-    public void setYwNum(Double ywNum) {
+    public void setYwNum(String ywNum) {
         this.ywNum = ywNum;
     }
 
-    public Double getXbNum() {
+    public String getXbNum() {
         return xbNum;
     }
 
-    public void setXbNum(Double xbNum) {
+    public void setXbNum(String xbNum) {
         this.xbNum = xbNum;
     }
 
-    public Double getTwNum() {
+    public String getTwNum() {
         return twNum;
     }
 
-    public void setTwNum(Double twNum) {
+    public void setTwNum(String twNum) {
         this.twNum = twNum;
     }
 
-    public Double getJkNum() {
+    public String getJkNum() {
         return jkNum;
     }
 
-    public void setJkNum(Double jkNum) {
+    public void setJkNum(String jkNum) {
         this.jkNum = jkNum;
     }
 
-    public Double getHdNum() {
+    public String getHdNum() {
         return hdNum;
     }
 
-    public void setHdNum(Double hdNum) {
+    public void setHdNum(String hdNum) {
         this.hdNum = hdNum;
     }
 
-    public Double getXcNum() {
+    public String getXcNum() {
         return xcNum;
     }
 
-    public void setXcNum(Double xcNum) {
+    public void setXcNum(String xcNum) {
         this.xcNum = xcNum;
     }
 
-    public Double getZdNum() {
+    public String getZdNum() {
         return zdNum;
     }
 
-    public void setZdNum(Double zdNum) {
+    public void setZdNum(String zdNum) {
         this.zdNum = zdNum;
     }
 
-    public Double getXkNum() {
+    public String getXkNum() {
         return xkNum;
     }
 
-    public void setXkNum(Double xkNum) {
+    public void setXkNum(String xkNum) {
         this.xkNum = xkNum;
     }
 
-    public Double getKjkNum() {
+    public String getKjkNum() {
         return kjkNum;
     }
 
-    public void setKjkNum(Double kjkNum) {
+    public void setKjkNum(String kjkNum) {
         this.kjkNum = kjkNum;
     }
 
-    public Double getSxfNum() {
+    public String getSxfNum() {
         return sxfNum;
     }
 
-    public void setSxfNum(Double sxfNum) {
+    public void setSxfNum(String sxfNum) {
         this.sxfNum = sxfNum;
     }
 
-    public Double getZhidNum() {
+    public String getZhidNum() {
         return zhidNum;
     }
 
-    public void setZhidNum(Double zhidNum) {
+    public void setZhidNum(String zhidNum) {
         this.zhidNum = zhidNum;
     }
 
-    public Double getXxfNum() {
+    public String getXxfNum() {
         return xxfNum;
     }
 
-    public void setXxfNum(Double xxfNum) {
+    public void setXxfNum(String xxfNum) {
         this.xxfNum = xxfNum;
     }
 
-    public Double getQxkNum() {
+    public String getQxkNum() {
         return qxkNum;
     }
 
-    public void setQxkNum(Double qxkNum) {
+    public void setQxkNum(String qxkNum) {
         this.qxkNum = qxkNum;
     }
 
-    public Double getHbkNum() {
+    public String getHbkNum() {
         return hbkNum;
     }
 
-    public void setHbkNum(Double hbkNum) {
+    public void setHbkNum(String hbkNum) {
         this.hbkNum = hbkNum;
     }
 
-    public Double getXjNum() {
+    public String getXjNum() {
         return xjNum;
     }
 
-    public void setXjNum(Double xjNum) {
+    public void setXjNum(String xjNum) {
         this.xjNum = xjNum;
     }
 
-    public Double getXgNum() {
+    public String getXgNum() {
         return xgNum;
     }
 
-    public void setXgNum(Double xgNum) {
+    public void setXgNum(String xgNum) {
         this.xgNum = xgNum;
     }
 
-    public Double getLwNum() {
+    public String getLwNum() {
         return lwNum;
     }
 
-    public void setLwNum(Double lwNum) {
+    public void setLwNum(String lwNum) {
         this.lwNum = lwNum;
     }
 
@@ -687,11 +687,11 @@ public class AddProductParam extends SessionParameter {
         this.qblActive = qblActive;
     }
 
-    public Double getDwNum() {
+    public String getDwNum() {
         return dwNum;
     }
 
-    public void setDwNum(Double dwNum) {
+    public void setDwNum(String dwNum) {
         this.dwNum = dwNum;
     }
 

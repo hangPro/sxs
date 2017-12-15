@@ -2,9 +2,11 @@ package com.sxs.business.biz.impl;
 
 import com.google.gson.Gson;
 import com.sxs.business.biz.CustomerProductService;
+import com.sxs.business.mapper.CustomerProductLogMapper;
 import com.sxs.business.mapper.CustomerProductMapper;
 import com.sxs.business.plugin.PageHelper;
 import com.sxs.common.bean.CustomerProduct;
+import com.sxs.common.bean.CustomerProductLog;
 import com.sxs.common.enums.OrderStatusEnum;
 import com.sxs.common.enums.PrintStatusEnum;
 import com.sxs.common.enums.StatusEnum;
@@ -16,14 +18,15 @@ import com.sxs.common.response.CustomerProductView;
 import com.sxs.common.response.PageList;
 import com.sxs.common.response.ReturnT;
 import com.sxs.common.utils.DateUtils;
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by hang on 2017/9/25 0025.
@@ -33,6 +36,8 @@ public class CustomerProductServiceImpl implements CustomerProductService {
 
     @Autowired
     private CustomerProductMapper mapper;
+    @Autowired
+    private CustomerProductLogMapper logMapper;
 
     @Override
     public ReturnT add(AddProductParam param) {
@@ -67,6 +72,17 @@ public class CustomerProductServiceImpl implements CustomerProductService {
             customerProduct.setOrderStatus(OrderStatusEnum.TWO.getCode());
         }else if (param.getDepositAmount() == null || param.getDepositAmount().compareTo(BigDecimal.ZERO) <= 0){
             customerProduct.setOrderStatus(OrderStatusEnum.ONE.getCode());
+        }
+        /**
+         * 保存修改历史
+         */
+        CustomerProduct log = mapper.getById(customerProduct.getId());
+        if (!log.equals(customerProduct)){
+            CustomerProductLog logInsert = new CustomerProductLog();
+            BeanUtils.copyProperties(log,logInsert);
+            logInsert.setCustomerProductId(customerProduct.getId());
+            logInsert.setId(null);
+            logMapper.insert(logInsert);
         }
         mapper.updateById(customerProduct);
         return new ReturnT().successDefault();
@@ -122,15 +138,13 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         return new ReturnT().successDefault();
     }
 
-    public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        list.add("1");
-        list.add("2");
-        list.add("3");
-        list.add("4");
-        Gson gson = new Gson();
-        System.out.println(gson.toJson(list));
-        System.out.println(gson.fromJson(gson.toJson(list),List.class));
+    @Override
+    public ReturnT queryProductLogList(Long customerProductId) {
+        ReturnT result = new ReturnT();
+        Map map = new HashedMap();
+        map.put("list",logMapper.queryListByParentId(customerProductId));
+        result.setData(map);
+        return result.successDefault();
     }
 }
 

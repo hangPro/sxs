@@ -1,0 +1,1160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sxs.business.mapper.CustomerProductLogMapper" >
+  <resultMap id="BaseResultMap" type="com.sxs.common.bean.CustomerProductLog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="customerName" property="customerName" jdbcType="VARCHAR" />
+    <result column="customerPhone" property="customerPhone" jdbcType="VARCHAR" />
+    <result column="orderTime" property="orderTime" jdbcType="DATE" />
+    <result column="sendTime" property="sendTime" jdbcType="TIMESTAMP" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+    <result column="tbAccNo" property="tbAccNo" jdbcType="VARCHAR" />
+    <result column="tbOrderNo" property="tbOrderNo" jdbcType="VARCHAR" />
+    <result column="orderNo" property="orderNo" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="wechart" property="wechart" jdbcType="VARCHAR" />
+    <result column="customerSex" property="customerSex" jdbcType="SMALLINT" />
+    <result column="clothNo" property="clothNo" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="orderAmount" property="orderAmount" jdbcType="DECIMAL" />
+    <result column="depositAmount" property="depositAmount" jdbcType="DECIMAL" />
+    <result column="clothDesc" property="clothDesc" jdbcType="VARCHAR" />
+    <result column="bodyStatus" property="bodyStatus" jdbcType="SMALLINT" />
+    <result column="sendStatus" property="sendStatus" jdbcType="SMALLINT" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="qycNum" property="qycNum" jdbcType="VARCHAR" />
+    <result column="hycNum" property="hycNum" jdbcType="VARCHAR" />
+    <result column="kcNum" property="kcNum" jdbcType="VARCHAR" />
+    <result column="qcNum" property="qcNum" jdbcType="VARCHAR" />
+    <result column="xwNum" property="xwNum" jdbcType="VARCHAR" />
+    <result column="ywNum" property="ywNum" jdbcType="VARCHAR" />
+    <result column="xbNum" property="xbNum" jdbcType="VARCHAR" />
+    <result column="twNum" property="twNum" jdbcType="VARCHAR" />
+    <result column="jkNum" property="jkNum" jdbcType="VARCHAR" />
+    <result column="hdNum" property="hdNum" jdbcType="VARCHAR" />
+    <result column="xcNum" property="xcNum" jdbcType="VARCHAR" />
+    <result column="zdNum" property="zdNum" jdbcType="VARCHAR" />
+    <result column="xkNum" property="xkNum" jdbcType="VARCHAR" />
+    <result column="kjkNum" property="kjkNum" jdbcType="VARCHAR" />
+    <result column="sxfNum" property="sxfNum" jdbcType="VARCHAR" />
+    <result column="zhidNum" property="zhidNum" jdbcType="VARCHAR" />
+    <result column="xxfNum" property="xxfNum" jdbcType="VARCHAR" />
+    <result column="qxkNum" property="qxkNum" jdbcType="VARCHAR" />
+    <result column="hbkNum" property="hbkNum" jdbcType="VARCHAR" />
+    <result column="xjNum" property="xjNum" jdbcType="VARCHAR" />
+    <result column="xgNum" property="xgNum" jdbcType="VARCHAR" />
+    <result column="lwNum" property="lwNum" jdbcType="VARCHAR" />
+    <result column="tbActive" property="tbActive" jdbcType="SMALLINT" />
+    <result column="ljActive" property="ljActive" jdbcType="SMALLINT" />
+    <result column="pjActive" property="pjActive" jdbcType="SMALLINT" />
+    <result column="txActive" property="txActive" jdbcType="SMALLINT" />
+    <result column="lk1Active" property="lk1Active" jdbcType="SMALLINT" />
+    <result column="lk2Active" property="lk2Active" jdbcType="SMALLINT" />
+    <result column="lk3Active" property="lk3Active" jdbcType="SMALLINT" />
+    <result column="hzkcActive" property="hzkcActive" jdbcType="SMALLINT" />
+    <result column="lbkcActive" property="lbkcActive" jdbcType="SMALLINT" />
+    <result column="pblActive" property="pblActive" jdbcType="SMALLINT" />
+    <result column="qblActive" property="qblActive" jdbcType="SMALLINT" />
+    <result column="orderStatus" property="orderStatus" jdbcType="SMALLINT" />
+    <result column="ydActive" property="ydActive" jdbcType="SMALLINT" />
+    <result column="printCount" property="printCount" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="imgUrl" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="dwNum" property="dwNum" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="printStatus" property="printStatus" jdbcType="SMALLINT" />
+    <result column="customerProductId" property="customerProductId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, type, customerName, customerPhone, orderTime, sendTime, createTime, updateTime, 
+    companyName, tbAccNo, tbOrderNo, orderNo, address, wechart, customerSex, clothNo, 
+    price, orderAmount, depositAmount, clothDesc, bodyStatus, sendStatus, status, qycNum, 
+    hycNum, kcNum, qcNum, xwNum, ywNum, xbNum, twNum, jkNum, hdNum, xcNum, zdNum, xkNum, 
+    kjkNum, sxfNum, zhidNum, xxfNum, qxkNum, hbkNum, xjNum, xgNum, lwNum, tbActive, ljActive, 
+    pjActive, txActive, lk1Active, lk2Active, lk3Active, hzkcActive, lbkcActive, pblActive, 
+    qblActive, orderStatus, ydActive, printCount, remark, imgUrl, dwNum, remark1, printStatus, 
+    customerProductId
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sxs.common.bean.CustomerProductLogExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_customer_product_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_customer_product_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_customer_product_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sxs.common.bean.CustomerProductLogExample" >
+    delete from t_customer_product_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sxs.common.bean.CustomerProductLog" >
+    insert into t_customer_product_log (id, type, customerName, 
+      customerPhone, orderTime, sendTime, 
+      createTime, updateTime, companyName, 
+      tbAccNo, tbOrderNo, orderNo, 
+      address, wechart, customerSex, 
+      clothNo, price, orderAmount, 
+      depositAmount, clothDesc, bodyStatus, 
+      sendStatus, status, qycNum, 
+      hycNum, kcNum, qcNum, 
+      xwNum, ywNum, xbNum, 
+      twNum, jkNum, hdNum, 
+      xcNum, zdNum, xkNum, 
+      kjkNum, sxfNum, zhidNum, 
+      xxfNum, qxkNum, hbkNum, 
+      xjNum, xgNum, lwNum, 
+      tbActive, ljActive, pjActive, 
+      txActive, lk1Active, lk2Active, 
+      lk3Active, hzkcActive, lbkcActive, 
+      pblActive, qblActive, orderStatus, 
+      ydActive, printCount, remark, 
+      imgUrl, dwNum, remark1, 
+      printStatus, customerProductId)
+    values (#{id,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, 
+      #{customerPhone,jdbcType=VARCHAR}, #{orderTime,jdbcType=DATE}, #{sendTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{companyName,jdbcType=VARCHAR}, 
+      #{tbAccNo,jdbcType=VARCHAR}, #{tbOrderNo,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{wechart,jdbcType=VARCHAR}, #{customerSex,jdbcType=SMALLINT}, 
+      #{clothNo,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{orderAmount,jdbcType=DECIMAL}, 
+      #{depositAmount,jdbcType=DECIMAL}, #{clothDesc,jdbcType=VARCHAR}, #{bodyStatus,jdbcType=SMALLINT}, 
+      #{sendStatus,jdbcType=SMALLINT}, #{status,jdbcType=SMALLINT}, #{qycNum,jdbcType=VARCHAR}, 
+      #{hycNum,jdbcType=VARCHAR}, #{kcNum,jdbcType=VARCHAR}, #{qcNum,jdbcType=VARCHAR}, 
+      #{xwNum,jdbcType=VARCHAR}, #{ywNum,jdbcType=VARCHAR}, #{xbNum,jdbcType=VARCHAR}, 
+      #{twNum,jdbcType=VARCHAR}, #{jkNum,jdbcType=VARCHAR}, #{hdNum,jdbcType=VARCHAR}, 
+      #{xcNum,jdbcType=VARCHAR}, #{zdNum,jdbcType=VARCHAR}, #{xkNum,jdbcType=VARCHAR}, 
+      #{kjkNum,jdbcType=VARCHAR}, #{sxfNum,jdbcType=VARCHAR}, #{zhidNum,jdbcType=VARCHAR}, 
+      #{xxfNum,jdbcType=VARCHAR}, #{qxkNum,jdbcType=VARCHAR}, #{hbkNum,jdbcType=VARCHAR}, 
+      #{xjNum,jdbcType=VARCHAR}, #{xgNum,jdbcType=VARCHAR}, #{lwNum,jdbcType=VARCHAR}, 
+      #{tbActive,jdbcType=SMALLINT}, #{ljActive,jdbcType=SMALLINT}, #{pjActive,jdbcType=SMALLINT}, 
+      #{txActive,jdbcType=SMALLINT}, #{lk1Active,jdbcType=SMALLINT}, #{lk2Active,jdbcType=SMALLINT}, 
+      #{lk3Active,jdbcType=SMALLINT}, #{hzkcActive,jdbcType=SMALLINT}, #{lbkcActive,jdbcType=SMALLINT}, 
+      #{pblActive,jdbcType=SMALLINT}, #{qblActive,jdbcType=SMALLINT}, #{orderStatus,jdbcType=SMALLINT}, 
+      #{ydActive,jdbcType=SMALLINT}, #{printCount,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{imgUrl,jdbcType=VARCHAR}, #{dwNum,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}, 
+      #{printStatus,jdbcType=SMALLINT}, #{customerProductId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxs.common.bean.CustomerProductLog" >
+    insert into t_customer_product_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="customerName != null" >
+        customerName,
+      </if>
+      <if test="customerPhone != null" >
+        customerPhone,
+      </if>
+      <if test="orderTime != null" >
+        orderTime,
+      </if>
+      <if test="sendTime != null" >
+        sendTime,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="updateTime != null" >
+        updateTime,
+      </if>
+      <if test="companyName != null" >
+        companyName,
+      </if>
+      <if test="tbAccNo != null" >
+        tbAccNo,
+      </if>
+      <if test="tbOrderNo != null" >
+        tbOrderNo,
+      </if>
+      <if test="orderNo != null" >
+        orderNo,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="wechart != null" >
+        wechart,
+      </if>
+      <if test="customerSex != null" >
+        customerSex,
+      </if>
+      <if test="clothNo != null" >
+        clothNo,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="orderAmount != null" >
+        orderAmount,
+      </if>
+      <if test="depositAmount != null" >
+        depositAmount,
+      </if>
+      <if test="clothDesc != null" >
+        clothDesc,
+      </if>
+      <if test="bodyStatus != null" >
+        bodyStatus,
+      </if>
+      <if test="sendStatus != null" >
+        sendStatus,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="qycNum != null" >
+        qycNum,
+      </if>
+      <if test="hycNum != null" >
+        hycNum,
+      </if>
+      <if test="kcNum != null" >
+        kcNum,
+      </if>
+      <if test="qcNum != null" >
+        qcNum,
+      </if>
+      <if test="xwNum != null" >
+        xwNum,
+      </if>
+      <if test="ywNum != null" >
+        ywNum,
+      </if>
+      <if test="xbNum != null" >
+        xbNum,
+      </if>
+      <if test="twNum != null" >
+        twNum,
+      </if>
+      <if test="jkNum != null" >
+        jkNum,
+      </if>
+      <if test="hdNum != null" >
+        hdNum,
+      </if>
+      <if test="xcNum != null" >
+        xcNum,
+      </if>
+      <if test="zdNum != null" >
+        zdNum,
+      </if>
+      <if test="xkNum != null" >
+        xkNum,
+      </if>
+      <if test="kjkNum != null" >
+        kjkNum,
+      </if>
+      <if test="sxfNum != null" >
+        sxfNum,
+      </if>
+      <if test="zhidNum != null" >
+        zhidNum,
+      </if>
+      <if test="xxfNum != null" >
+        xxfNum,
+      </if>
+      <if test="qxkNum != null" >
+        qxkNum,
+      </if>
+      <if test="hbkNum != null" >
+        hbkNum,
+      </if>
+      <if test="xjNum != null" >
+        xjNum,
+      </if>
+      <if test="xgNum != null" >
+        xgNum,
+      </if>
+      <if test="lwNum != null" >
+        lwNum,
+      </if>
+      <if test="tbActive != null" >
+        tbActive,
+      </if>
+      <if test="ljActive != null" >
+        ljActive,
+      </if>
+      <if test="pjActive != null" >
+        pjActive,
+      </if>
+      <if test="txActive != null" >
+        txActive,
+      </if>
+      <if test="lk1Active != null" >
+        lk1Active,
+      </if>
+      <if test="lk2Active != null" >
+        lk2Active,
+      </if>
+      <if test="lk3Active != null" >
+        lk3Active,
+      </if>
+      <if test="hzkcActive != null" >
+        hzkcActive,
+      </if>
+      <if test="lbkcActive != null" >
+        lbkcActive,
+      </if>
+      <if test="pblActive != null" >
+        pblActive,
+      </if>
+      <if test="qblActive != null" >
+        qblActive,
+      </if>
+      <if test="orderStatus != null" >
+        orderStatus,
+      </if>
+      <if test="ydActive != null" >
+        ydActive,
+      </if>
+      <if test="printCount != null" >
+        printCount,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="imgUrl != null" >
+        imgUrl,
+      </if>
+      <if test="dwNum != null" >
+        dwNum,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="printStatus != null" >
+        printStatus,
+      </if>
+      <if test="customerProductId != null" >
+        customerProductId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null" >
+        #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        #{orderTime,jdbcType=DATE},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="tbAccNo != null" >
+        #{tbAccNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tbOrderNo != null" >
+        #{tbOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="wechart != null" >
+        #{wechart,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSex != null" >
+        #{customerSex,jdbcType=SMALLINT},
+      </if>
+      <if test="clothNo != null" >
+        #{clothNo,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAmount != null" >
+        #{orderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="depositAmount != null" >
+        #{depositAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="clothDesc != null" >
+        #{clothDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyStatus != null" >
+        #{bodyStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="sendStatus != null" >
+        #{sendStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="qycNum != null" >
+        #{qycNum,jdbcType=VARCHAR},
+      </if>
+      <if test="hycNum != null" >
+        #{hycNum,jdbcType=VARCHAR},
+      </if>
+      <if test="kcNum != null" >
+        #{kcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="qcNum != null" >
+        #{qcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xwNum != null" >
+        #{xwNum,jdbcType=VARCHAR},
+      </if>
+      <if test="ywNum != null" >
+        #{ywNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xbNum != null" >
+        #{xbNum,jdbcType=VARCHAR},
+      </if>
+      <if test="twNum != null" >
+        #{twNum,jdbcType=VARCHAR},
+      </if>
+      <if test="jkNum != null" >
+        #{jkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="hdNum != null" >
+        #{hdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xcNum != null" >
+        #{xcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="zdNum != null" >
+        #{zdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xkNum != null" >
+        #{xkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="kjkNum != null" >
+        #{kjkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sxfNum != null" >
+        #{sxfNum,jdbcType=VARCHAR},
+      </if>
+      <if test="zhidNum != null" >
+        #{zhidNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xxfNum != null" >
+        #{xxfNum,jdbcType=VARCHAR},
+      </if>
+      <if test="qxkNum != null" >
+        #{qxkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="hbkNum != null" >
+        #{hbkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xjNum != null" >
+        #{xjNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xgNum != null" >
+        #{xgNum,jdbcType=VARCHAR},
+      </if>
+      <if test="lwNum != null" >
+        #{lwNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tbActive != null" >
+        #{tbActive,jdbcType=SMALLINT},
+      </if>
+      <if test="ljActive != null" >
+        #{ljActive,jdbcType=SMALLINT},
+      </if>
+      <if test="pjActive != null" >
+        #{pjActive,jdbcType=SMALLINT},
+      </if>
+      <if test="txActive != null" >
+        #{txActive,jdbcType=SMALLINT},
+      </if>
+      <if test="lk1Active != null" >
+        #{lk1Active,jdbcType=SMALLINT},
+      </if>
+      <if test="lk2Active != null" >
+        #{lk2Active,jdbcType=SMALLINT},
+      </if>
+      <if test="lk3Active != null" >
+        #{lk3Active,jdbcType=SMALLINT},
+      </if>
+      <if test="hzkcActive != null" >
+        #{hzkcActive,jdbcType=SMALLINT},
+      </if>
+      <if test="lbkcActive != null" >
+        #{lbkcActive,jdbcType=SMALLINT},
+      </if>
+      <if test="pblActive != null" >
+        #{pblActive,jdbcType=SMALLINT},
+      </if>
+      <if test="qblActive != null" >
+        #{qblActive,jdbcType=SMALLINT},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="ydActive != null" >
+        #{ydActive,jdbcType=SMALLINT},
+      </if>
+      <if test="printCount != null" >
+        #{printCount,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="dwNum != null" >
+        #{dwNum,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="printStatus != null" >
+        #{printStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="customerProductId != null" >
+        #{customerProductId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_customer_product_log
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerName != null" >
+        customerName = #{record.customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerPhone != null" >
+        customerPhone = #{record.customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderTime != null" >
+        orderTime = #{record.orderTime,jdbcType=DATE},
+      </if>
+      <if test="record.sendTime != null" >
+        sendTime = #{record.sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null" >
+        createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.companyName != null" >
+        companyName = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tbAccNo != null" >
+        tbAccNo = #{record.tbAccNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tbOrderNo != null" >
+        tbOrderNo = #{record.tbOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderNo != null" >
+        orderNo = #{record.orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wechart != null" >
+        wechart = #{record.wechart,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerSex != null" >
+        customerSex = #{record.customerSex,jdbcType=SMALLINT},
+      </if>
+      <if test="record.clothNo != null" >
+        clothNo = #{record.clothNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orderAmount != null" >
+        orderAmount = #{record.orderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.depositAmount != null" >
+        depositAmount = #{record.depositAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.clothDesc != null" >
+        clothDesc = #{record.clothDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bodyStatus != null" >
+        bodyStatus = #{record.bodyStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="record.sendStatus != null" >
+        sendStatus = #{record.sendStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=SMALLINT},
+      </if>
+      <if test="record.qycNum != null" >
+        qycNum = #{record.qycNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hycNum != null" >
+        hycNum = #{record.hycNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kcNum != null" >
+        kcNum = #{record.kcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qcNum != null" >
+        qcNum = #{record.qcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xwNum != null" >
+        xwNum = #{record.xwNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ywNum != null" >
+        ywNum = #{record.ywNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xbNum != null" >
+        xbNum = #{record.xbNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.twNum != null" >
+        twNum = #{record.twNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jkNum != null" >
+        jkNum = #{record.jkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hdNum != null" >
+        hdNum = #{record.hdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xcNum != null" >
+        xcNum = #{record.xcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zdNum != null" >
+        zdNum = #{record.zdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xkNum != null" >
+        xkNum = #{record.xkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kjkNum != null" >
+        kjkNum = #{record.kjkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sxfNum != null" >
+        sxfNum = #{record.sxfNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhidNum != null" >
+        zhidNum = #{record.zhidNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xxfNum != null" >
+        xxfNum = #{record.xxfNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qxkNum != null" >
+        qxkNum = #{record.qxkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hbkNum != null" >
+        hbkNum = #{record.hbkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xjNum != null" >
+        xjNum = #{record.xjNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xgNum != null" >
+        xgNum = #{record.xgNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lwNum != null" >
+        lwNum = #{record.lwNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tbActive != null" >
+        tbActive = #{record.tbActive,jdbcType=SMALLINT},
+      </if>
+      <if test="record.ljActive != null" >
+        ljActive = #{record.ljActive,jdbcType=SMALLINT},
+      </if>
+      <if test="record.pjActive != null" >
+        pjActive = #{record.pjActive,jdbcType=SMALLINT},
+      </if>
+      <if test="record.txActive != null" >
+        txActive = #{record.txActive,jdbcType=SMALLINT},
+      </if>
+      <if test="record.lk1Active != null" >
+        lk1Active = #{record.lk1Active,jdbcType=SMALLINT},
+      </if>
+      <if test="record.lk2Active != null" >
+        lk2Active = #{record.lk2Active,jdbcType=SMALLINT},
+      </if>
+      <if test="record.lk3Active != null" >
+        lk3Active = #{record.lk3Active,jdbcType=SMALLINT},
+      </if>
+      <if test="record.hzkcActive != null" >
+        hzkcActive = #{record.hzkcActive,jdbcType=SMALLINT},
+      </if>
+      <if test="record.lbkcActive != null" >
+        lbkcActive = #{record.lbkcActive,jdbcType=SMALLINT},
+      </if>
+      <if test="record.pblActive != null" >
+        pblActive = #{record.pblActive,jdbcType=SMALLINT},
+      </if>
+      <if test="record.qblActive != null" >
+        qblActive = #{record.qblActive,jdbcType=SMALLINT},
+      </if>
+      <if test="record.orderStatus != null" >
+        orderStatus = #{record.orderStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="record.ydActive != null" >
+        ydActive = #{record.ydActive,jdbcType=SMALLINT},
+      </if>
+      <if test="record.printCount != null" >
+        printCount = #{record.printCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgUrl != null" >
+        imgUrl = #{record.imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dwNum != null" >
+        dwNum = #{record.dwNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark1 != null" >
+        remark1 = #{record.remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.printStatus != null" >
+        printStatus = #{record.printStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="record.customerProductId != null" >
+        customerProductId = #{record.customerProductId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_customer_product_log
+    set id = #{record.id,jdbcType=BIGINT},
+      type = #{record.type,jdbcType=VARCHAR},
+      customerName = #{record.customerName,jdbcType=VARCHAR},
+      customerPhone = #{record.customerPhone,jdbcType=VARCHAR},
+      orderTime = #{record.orderTime,jdbcType=DATE},
+      sendTime = #{record.sendTime,jdbcType=TIMESTAMP},
+      createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
+      companyName = #{record.companyName,jdbcType=VARCHAR},
+      tbAccNo = #{record.tbAccNo,jdbcType=VARCHAR},
+      tbOrderNo = #{record.tbOrderNo,jdbcType=VARCHAR},
+      orderNo = #{record.orderNo,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      wechart = #{record.wechart,jdbcType=VARCHAR},
+      customerSex = #{record.customerSex,jdbcType=SMALLINT},
+      clothNo = #{record.clothNo,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=DECIMAL},
+      orderAmount = #{record.orderAmount,jdbcType=DECIMAL},
+      depositAmount = #{record.depositAmount,jdbcType=DECIMAL},
+      clothDesc = #{record.clothDesc,jdbcType=VARCHAR},
+      bodyStatus = #{record.bodyStatus,jdbcType=SMALLINT},
+      sendStatus = #{record.sendStatus,jdbcType=SMALLINT},
+      status = #{record.status,jdbcType=SMALLINT},
+      qycNum = #{record.qycNum,jdbcType=VARCHAR},
+      hycNum = #{record.hycNum,jdbcType=VARCHAR},
+      kcNum = #{record.kcNum,jdbcType=VARCHAR},
+      qcNum = #{record.qcNum,jdbcType=VARCHAR},
+      xwNum = #{record.xwNum,jdbcType=VARCHAR},
+      ywNum = #{record.ywNum,jdbcType=VARCHAR},
+      xbNum = #{record.xbNum,jdbcType=VARCHAR},
+      twNum = #{record.twNum,jdbcType=VARCHAR},
+      jkNum = #{record.jkNum,jdbcType=VARCHAR},
+      hdNum = #{record.hdNum,jdbcType=VARCHAR},
+      xcNum = #{record.xcNum,jdbcType=VARCHAR},
+      zdNum = #{record.zdNum,jdbcType=VARCHAR},
+      xkNum = #{record.xkNum,jdbcType=VARCHAR},
+      kjkNum = #{record.kjkNum,jdbcType=VARCHAR},
+      sxfNum = #{record.sxfNum,jdbcType=VARCHAR},
+      zhidNum = #{record.zhidNum,jdbcType=VARCHAR},
+      xxfNum = #{record.xxfNum,jdbcType=VARCHAR},
+      qxkNum = #{record.qxkNum,jdbcType=VARCHAR},
+      hbkNum = #{record.hbkNum,jdbcType=VARCHAR},
+      xjNum = #{record.xjNum,jdbcType=VARCHAR},
+      xgNum = #{record.xgNum,jdbcType=VARCHAR},
+      lwNum = #{record.lwNum,jdbcType=VARCHAR},
+      tbActive = #{record.tbActive,jdbcType=SMALLINT},
+      ljActive = #{record.ljActive,jdbcType=SMALLINT},
+      pjActive = #{record.pjActive,jdbcType=SMALLINT},
+      txActive = #{record.txActive,jdbcType=SMALLINT},
+      lk1Active = #{record.lk1Active,jdbcType=SMALLINT},
+      lk2Active = #{record.lk2Active,jdbcType=SMALLINT},
+      lk3Active = #{record.lk3Active,jdbcType=SMALLINT},
+      hzkcActive = #{record.hzkcActive,jdbcType=SMALLINT},
+      lbkcActive = #{record.lbkcActive,jdbcType=SMALLINT},
+      pblActive = #{record.pblActive,jdbcType=SMALLINT},
+      qblActive = #{record.qblActive,jdbcType=SMALLINT},
+      orderStatus = #{record.orderStatus,jdbcType=SMALLINT},
+      ydActive = #{record.ydActive,jdbcType=SMALLINT},
+      printCount = #{record.printCount,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      imgUrl = #{record.imgUrl,jdbcType=VARCHAR},
+      dwNum = #{record.dwNum,jdbcType=VARCHAR},
+      remark1 = #{record.remark1,jdbcType=VARCHAR},
+      printStatus = #{record.printStatus,jdbcType=SMALLINT},
+      customerProductId = #{record.customerProductId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxs.common.bean.CustomerProductLog" >
+    update t_customer_product_log
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        customerName = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null" >
+        customerPhone = #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        orderTime = #{orderTime,jdbcType=DATE},
+      </if>
+      <if test="sendTime != null" >
+        sendTime = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyName != null" >
+        companyName = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="tbAccNo != null" >
+        tbAccNo = #{tbAccNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tbOrderNo != null" >
+        tbOrderNo = #{tbOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null" >
+        orderNo = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="wechart != null" >
+        wechart = #{wechart,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSex != null" >
+        customerSex = #{customerSex,jdbcType=SMALLINT},
+      </if>
+      <if test="clothNo != null" >
+        clothNo = #{clothNo,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAmount != null" >
+        orderAmount = #{orderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="depositAmount != null" >
+        depositAmount = #{depositAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="clothDesc != null" >
+        clothDesc = #{clothDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyStatus != null" >
+        bodyStatus = #{bodyStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="sendStatus != null" >
+        sendStatus = #{sendStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="qycNum != null" >
+        qycNum = #{qycNum,jdbcType=VARCHAR},
+      </if>
+      <if test="hycNum != null" >
+        hycNum = #{hycNum,jdbcType=VARCHAR},
+      </if>
+      <if test="kcNum != null" >
+        kcNum = #{kcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="qcNum != null" >
+        qcNum = #{qcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xwNum != null" >
+        xwNum = #{xwNum,jdbcType=VARCHAR},
+      </if>
+      <if test="ywNum != null" >
+        ywNum = #{ywNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xbNum != null" >
+        xbNum = #{xbNum,jdbcType=VARCHAR},
+      </if>
+      <if test="twNum != null" >
+        twNum = #{twNum,jdbcType=VARCHAR},
+      </if>
+      <if test="jkNum != null" >
+        jkNum = #{jkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="hdNum != null" >
+        hdNum = #{hdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xcNum != null" >
+        xcNum = #{xcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="zdNum != null" >
+        zdNum = #{zdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xkNum != null" >
+        xkNum = #{xkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="kjkNum != null" >
+        kjkNum = #{kjkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sxfNum != null" >
+        sxfNum = #{sxfNum,jdbcType=VARCHAR},
+      </if>
+      <if test="zhidNum != null" >
+        zhidNum = #{zhidNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xxfNum != null" >
+        xxfNum = #{xxfNum,jdbcType=VARCHAR},
+      </if>
+      <if test="qxkNum != null" >
+        qxkNum = #{qxkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="hbkNum != null" >
+        hbkNum = #{hbkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xjNum != null" >
+        xjNum = #{xjNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xgNum != null" >
+        xgNum = #{xgNum,jdbcType=VARCHAR},
+      </if>
+      <if test="lwNum != null" >
+        lwNum = #{lwNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tbActive != null" >
+        tbActive = #{tbActive,jdbcType=SMALLINT},
+      </if>
+      <if test="ljActive != null" >
+        ljActive = #{ljActive,jdbcType=SMALLINT},
+      </if>
+      <if test="pjActive != null" >
+        pjActive = #{pjActive,jdbcType=SMALLINT},
+      </if>
+      <if test="txActive != null" >
+        txActive = #{txActive,jdbcType=SMALLINT},
+      </if>
+      <if test="lk1Active != null" >
+        lk1Active = #{lk1Active,jdbcType=SMALLINT},
+      </if>
+      <if test="lk2Active != null" >
+        lk2Active = #{lk2Active,jdbcType=SMALLINT},
+      </if>
+      <if test="lk3Active != null" >
+        lk3Active = #{lk3Active,jdbcType=SMALLINT},
+      </if>
+      <if test="hzkcActive != null" >
+        hzkcActive = #{hzkcActive,jdbcType=SMALLINT},
+      </if>
+      <if test="lbkcActive != null" >
+        lbkcActive = #{lbkcActive,jdbcType=SMALLINT},
+      </if>
+      <if test="pblActive != null" >
+        pblActive = #{pblActive,jdbcType=SMALLINT},
+      </if>
+      <if test="qblActive != null" >
+        qblActive = #{qblActive,jdbcType=SMALLINT},
+      </if>
+      <if test="orderStatus != null" >
+        orderStatus = #{orderStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="ydActive != null" >
+        ydActive = #{ydActive,jdbcType=SMALLINT},
+      </if>
+      <if test="printCount != null" >
+        printCount = #{printCount,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null" >
+        imgUrl = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="dwNum != null" >
+        dwNum = #{dwNum,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="printStatus != null" >
+        printStatus = #{printStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="customerProductId != null" >
+        customerProductId = #{customerProductId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxs.common.bean.CustomerProductLog" >
+    update t_customer_product_log
+    set type = #{type,jdbcType=VARCHAR},
+      customerName = #{customerName,jdbcType=VARCHAR},
+      customerPhone = #{customerPhone,jdbcType=VARCHAR},
+      orderTime = #{orderTime,jdbcType=DATE},
+      sendTime = #{sendTime,jdbcType=TIMESTAMP},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      companyName = #{companyName,jdbcType=VARCHAR},
+      tbAccNo = #{tbAccNo,jdbcType=VARCHAR},
+      tbOrderNo = #{tbOrderNo,jdbcType=VARCHAR},
+      orderNo = #{orderNo,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      wechart = #{wechart,jdbcType=VARCHAR},
+      customerSex = #{customerSex,jdbcType=SMALLINT},
+      clothNo = #{clothNo,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      orderAmount = #{orderAmount,jdbcType=DECIMAL},
+      depositAmount = #{depositAmount,jdbcType=DECIMAL},
+      clothDesc = #{clothDesc,jdbcType=VARCHAR},
+      bodyStatus = #{bodyStatus,jdbcType=SMALLINT},
+      sendStatus = #{sendStatus,jdbcType=SMALLINT},
+      status = #{status,jdbcType=SMALLINT},
+      qycNum = #{qycNum,jdbcType=VARCHAR},
+      hycNum = #{hycNum,jdbcType=VARCHAR},
+      kcNum = #{kcNum,jdbcType=VARCHAR},
+      qcNum = #{qcNum,jdbcType=VARCHAR},
+      xwNum = #{xwNum,jdbcType=VARCHAR},
+      ywNum = #{ywNum,jdbcType=VARCHAR},
+      xbNum = #{xbNum,jdbcType=VARCHAR},
+      twNum = #{twNum,jdbcType=VARCHAR},
+      jkNum = #{jkNum,jdbcType=VARCHAR},
+      hdNum = #{hdNum,jdbcType=VARCHAR},
+      xcNum = #{xcNum,jdbcType=VARCHAR},
+      zdNum = #{zdNum,jdbcType=VARCHAR},
+      xkNum = #{xkNum,jdbcType=VARCHAR},
+      kjkNum = #{kjkNum,jdbcType=VARCHAR},
+      sxfNum = #{sxfNum,jdbcType=VARCHAR},
+      zhidNum = #{zhidNum,jdbcType=VARCHAR},
+      xxfNum = #{xxfNum,jdbcType=VARCHAR},
+      qxkNum = #{qxkNum,jdbcType=VARCHAR},
+      hbkNum = #{hbkNum,jdbcType=VARCHAR},
+      xjNum = #{xjNum,jdbcType=VARCHAR},
+      xgNum = #{xgNum,jdbcType=VARCHAR},
+      lwNum = #{lwNum,jdbcType=VARCHAR},
+      tbActive = #{tbActive,jdbcType=SMALLINT},
+      ljActive = #{ljActive,jdbcType=SMALLINT},
+      pjActive = #{pjActive,jdbcType=SMALLINT},
+      txActive = #{txActive,jdbcType=SMALLINT},
+      lk1Active = #{lk1Active,jdbcType=SMALLINT},
+      lk2Active = #{lk2Active,jdbcType=SMALLINT},
+      lk3Active = #{lk3Active,jdbcType=SMALLINT},
+      hzkcActive = #{hzkcActive,jdbcType=SMALLINT},
+      lbkcActive = #{lbkcActive,jdbcType=SMALLINT},
+      pblActive = #{pblActive,jdbcType=SMALLINT},
+      qblActive = #{qblActive,jdbcType=SMALLINT},
+      orderStatus = #{orderStatus,jdbcType=SMALLINT},
+      ydActive = #{ydActive,jdbcType=SMALLINT},
+      printCount = #{printCount,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      imgUrl = #{imgUrl,jdbcType=VARCHAR},
+      dwNum = #{dwNum,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      printStatus = #{printStatus,jdbcType=SMALLINT},
+      customerProductId = #{customerProductId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="queryListByParentId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from t_customer_product_log
+    where customerProductId = #{customerProductId,jdbcType=BIGINT}
+  </select>
+</mapper>

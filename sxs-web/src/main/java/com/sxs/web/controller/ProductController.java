@@ -180,4 +180,13 @@ public class ProductController {
         result.setData(map);
         return result.successDefault();
     }
+
+    /**
+     * 获取历史
+     * @return
+     */
+    @RequestMapping("queryProductLogList")
+    public ReturnT queryProductLogList(@RequestParam(value = "customerProductId",required = false)Long customerProductId){
+        return customerProductService.queryProductLogList(customerProductId);
+    }
 }
