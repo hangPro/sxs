@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sxs.business.mapper.TypeProductLogMapper" >
+  <resultMap id="BaseResultMap" type="com.sxs.common.bean.TypeProductLog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="qycNum" property="qycNum" jdbcType="VARCHAR" />
+    <result column="hycNum" property="hycNum" jdbcType="VARCHAR" />
+    <result column="kcNum" property="kcNum" jdbcType="VARCHAR" />
+    <result column="qcNum" property="qcNum" jdbcType="VARCHAR" />
+    <result column="xwNum" property="xwNum" jdbcType="VARCHAR" />
+    <result column="ywNum" property="ywNum" jdbcType="VARCHAR" />
+    <result column="xbNum" property="xbNum" jdbcType="VARCHAR" />
+    <result column="twNum" property="twNum" jdbcType="VARCHAR" />
+    <result column="jkNum" property="jkNum" jdbcType="VARCHAR" />
+    <result column="hdNum" property="hdNum" jdbcType="VARCHAR" />
+    <result column="xcNum" property="xcNum" jdbcType="VARCHAR" />
+    <result column="zdNum" property="zdNum" jdbcType="VARCHAR" />
+    <result column="xkNum" property="xkNum" jdbcType="VARCHAR" />
+    <result column="kjkNum" property="kjkNum" jdbcType="VARCHAR" />
+    <result column="sxfNum" property="sxfNum" jdbcType="VARCHAR" />
+    <result column="zhidNum" property="zhidNum" jdbcType="VARCHAR" />
+    <result column="xxfNum" property="xxfNum" jdbcType="VARCHAR" />
+    <result column="qxkNum" property="qxkNum" jdbcType="VARCHAR" />
+    <result column="hbkNum" property="hbkNum" jdbcType="VARCHAR" />
+    <result column="xjNum" property="xjNum" jdbcType="VARCHAR" />
+    <result column="xgNum" property="xgNum" jdbcType="VARCHAR" />
+    <result column="lwNum" property="lwNum" jdbcType="VARCHAR" />
+    <result column="tbActive" property="tbActive" jdbcType="SMALLINT" />
+    <result column="ljActive" property="ljActive" jdbcType="SMALLINT" />
+    <result column="pjActive" property="pjActive" jdbcType="SMALLINT" />
+    <result column="txActive" property="txActive" jdbcType="SMALLINT" />
+    <result column="lk1Active" property="lk1Active" jdbcType="SMALLINT" />
+    <result column="lk2Active" property="lk2Active" jdbcType="SMALLINT" />
+    <result column="lk3Active" property="lk3Active" jdbcType="SMALLINT" />
+    <result column="hzkcActive" property="hzkcActive" jdbcType="SMALLINT" />
+    <result column="lbkcActive" property="lbkcActive" jdbcType="SMALLINT" />
+    <result column="pblActive" property="pblActive" jdbcType="SMALLINT" />
+    <result column="qblActive" property="qblActive" jdbcType="SMALLINT" />
+    <result column="ydActive" property="ydActive" jdbcType="SMALLINT" />
+    <result column="customerProductId" property="customerProductId" jdbcType="BIGINT" />
+    <result column="dwNum" property="dwNum" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type, createTime, updateTime, qycNum, hycNum, kcNum, qcNum, xwNum, ywNum, xbNum, 
+    twNum, jkNum, hdNum, xcNum, zdNum, xkNum, kjkNum, sxfNum, zhidNum, xxfNum, qxkNum, 
+    hbkNum, xjNum, xgNum, lwNum, tbActive, ljActive, pjActive, txActive, lk1Active, lk2Active, 
+    lk3Active, hzkcActive, lbkcActive, pblActive, qblActive, ydActive, customerProductId, 
+    dwNum
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_type_product_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_type_product_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.sxs.common.bean.TypeProductLog" >
+    insert into t_type_product_log (id, type, createTime, 
+      updateTime, qycNum, hycNum, 
+      kcNum, qcNum, xwNum, 
+      ywNum, xbNum, twNum, 
+      jkNum, hdNum, xcNum, 
+      zdNum, xkNum, kjkNum, 
+      sxfNum, zhidNum, xxfNum, 
+      qxkNum, hbkNum, xjNum, 
+      xgNum, lwNum, tbActive, 
+      ljActive, pjActive, txActive, 
+      lk1Active, lk2Active, lk3Active, 
+      hzkcActive, lbkcActive, pblActive, 
+      qblActive, ydActive, customerProductId, 
+      dwNum)
+    values (#{id,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{qycNum,jdbcType=VARCHAR}, #{hycNum,jdbcType=VARCHAR}, 
+      #{kcNum,jdbcType=VARCHAR}, #{qcNum,jdbcType=VARCHAR}, #{xwNum,jdbcType=VARCHAR}, 
+      #{ywNum,jdbcType=VARCHAR}, #{xbNum,jdbcType=VARCHAR}, #{twNum,jdbcType=VARCHAR}, 
+      #{jkNum,jdbcType=VARCHAR}, #{hdNum,jdbcType=VARCHAR}, #{xcNum,jdbcType=VARCHAR}, 
+      #{zdNum,jdbcType=VARCHAR}, #{xkNum,jdbcType=VARCHAR}, #{kjkNum,jdbcType=VARCHAR}, 
+      #{sxfNum,jdbcType=VARCHAR}, #{zhidNum,jdbcType=VARCHAR}, #{xxfNum,jdbcType=VARCHAR}, 
+      #{qxkNum,jdbcType=VARCHAR}, #{hbkNum,jdbcType=VARCHAR}, #{xjNum,jdbcType=VARCHAR}, 
+      #{xgNum,jdbcType=VARCHAR}, #{lwNum,jdbcType=VARCHAR}, #{tbActive,jdbcType=SMALLINT}, 
+      #{ljActive,jdbcType=SMALLINT}, #{pjActive,jdbcType=SMALLINT}, #{txActive,jdbcType=SMALLINT}, 
+      #{lk1Active,jdbcType=SMALLINT}, #{lk2Active,jdbcType=SMALLINT}, #{lk3Active,jdbcType=SMALLINT}, 
+      #{hzkcActive,jdbcType=SMALLINT}, #{lbkcActive,jdbcType=SMALLINT}, #{pblActive,jdbcType=SMALLINT}, 
+      #{qblActive,jdbcType=SMALLINT}, #{ydActive,jdbcType=SMALLINT}, #{customerProductId,jdbcType=BIGINT}, 
+      #{dwNum,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxs.common.bean.TypeProductLog" >
+    insert into t_type_product_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="updateTime != null" >
+        updateTime,
+      </if>
+      <if test="qycNum != null" >
+        qycNum,
+      </if>
+      <if test="hycNum != null" >
+        hycNum,
+      </if>
+      <if test="kcNum != null" >
+        kcNum,
+      </if>
+      <if test="qcNum != null" >
+        qcNum,
+      </if>
+      <if test="xwNum != null" >
+        xwNum,
+      </if>
+      <if test="ywNum != null" >
+        ywNum,
+      </if>
+      <if test="xbNum != null" >
+        xbNum,
+      </if>
+      <if test="twNum != null" >
+        twNum,
+      </if>
+      <if test="jkNum != null" >
+        jkNum,
+      </if>
+      <if test="hdNum != null" >
+        hdNum,
+      </if>
+      <if test="xcNum != null" >
+        xcNum,
+      </if>
+      <if test="zdNum != null" >
+        zdNum,
+      </if>
+      <if test="xkNum != null" >
+        xkNum,
+      </if>
+      <if test="kjkNum != null" >
+        kjkNum,
+      </if>
+      <if test="sxfNum != null" >
+        sxfNum,
+      </if>
+      <if test="zhidNum != null" >
+        zhidNum,
+      </if>
+      <if test="xxfNum != null" >
+        xxfNum,
+      </if>
+      <if test="qxkNum != null" >
+        qxkNum,
+      </if>
+      <if test="hbkNum != null" >
+        hbkNum,
+      </if>
+      <if test="xjNum != null" >
+        xjNum,
+      </if>
+      <if test="xgNum != null" >
+        xgNum,
+      </if>
+      <if test="lwNum != null" >
+        lwNum,
+      </if>
+      <if test="tbActive != null" >
+        tbActive,
+      </if>
+      <if test="ljActive != null" >
+        ljActive,
+      </if>
+      <if test="pjActive != null" >
+        pjActive,
+      </if>
+      <if test="txActive != null" >
+        txActive,
+      </if>
+      <if test="lk1Active != null" >
+        lk1Active,
+      </if>
+      <if test="lk2Active != null" >
+        lk2Active,
+      </if>
+      <if test="lk3Active != null" >
+        lk3Active,
+      </if>
+      <if test="hzkcActive != null" >
+        hzkcActive,
+      </if>
+      <if test="lbkcActive != null" >
+        lbkcActive,
+      </if>
+      <if test="pblActive != null" >
+        pblActive,
+      </if>
+      <if test="qblActive != null" >
+        qblActive,
+      </if>
+      <if test="ydActive != null" >
+        ydActive,
+      </if>
+      <if test="customerProductId != null" >
+        customerProductId,
+      </if>
+      <if test="dwNum != null" >
+        dwNum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qycNum != null" >
+        #{qycNum,jdbcType=VARCHAR},
+      </if>
+      <if test="hycNum != null" >
+        #{hycNum,jdbcType=VARCHAR},
+      </if>
+      <if test="kcNum != null" >
+        #{kcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="qcNum != null" >
+        #{qcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xwNum != null" >
+        #{xwNum,jdbcType=VARCHAR},
+      </if>
+      <if test="ywNum != null" >
+        #{ywNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xbNum != null" >
+        #{xbNum,jdbcType=VARCHAR},
+      </if>
+      <if test="twNum != null" >
+        #{twNum,jdbcType=VARCHAR},
+      </if>
+      <if test="jkNum != null" >
+        #{jkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="hdNum != null" >
+        #{hdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xcNum != null" >
+        #{xcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="zdNum != null" >
+        #{zdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xkNum != null" >
+        #{xkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="kjkNum != null" >
+        #{kjkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sxfNum != null" >
+        #{sxfNum,jdbcType=VARCHAR},
+      </if>
+      <if test="zhidNum != null" >
+        #{zhidNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xxfNum != null" >
+        #{xxfNum,jdbcType=VARCHAR},
+      </if>
+      <if test="qxkNum != null" >
+        #{qxkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="hbkNum != null" >
+        #{hbkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xjNum != null" >
+        #{xjNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xgNum != null" >
+        #{xgNum,jdbcType=VARCHAR},
+      </if>
+      <if test="lwNum != null" >
+        #{lwNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tbActive != null" >
+        #{tbActive,jdbcType=SMALLINT},
+      </if>
+      <if test="ljActive != null" >
+        #{ljActive,jdbcType=SMALLINT},
+      </if>
+      <if test="pjActive != null" >
+        #{pjActive,jdbcType=SMALLINT},
+      </if>
+      <if test="txActive != null" >
+        #{txActive,jdbcType=SMALLINT},
+      </if>
+      <if test="lk1Active != null" >
+        #{lk1Active,jdbcType=SMALLINT},
+      </if>
+      <if test="lk2Active != null" >
+        #{lk2Active,jdbcType=SMALLINT},
+      </if>
+      <if test="lk3Active != null" >
+        #{lk3Active,jdbcType=SMALLINT},
+      </if>
+      <if test="hzkcActive != null" >
+        #{hzkcActive,jdbcType=SMALLINT},
+      </if>
+      <if test="lbkcActive != null" >
+        #{lbkcActive,jdbcType=SMALLINT},
+      </if>
+      <if test="pblActive != null" >
+        #{pblActive,jdbcType=SMALLINT},
+      </if>
+      <if test="qblActive != null" >
+        #{qblActive,jdbcType=SMALLINT},
+      </if>
+      <if test="ydActive != null" >
+        #{ydActive,jdbcType=SMALLINT},
+      </if>
+      <if test="customerProductId != null" >
+        #{customerProductId,jdbcType=BIGINT},
+      </if>
+      <if test="dwNum != null" >
+        #{dwNum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxs.common.bean.TypeProductLog" >
+    update t_type_product_log
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qycNum != null" >
+        qycNum = #{qycNum,jdbcType=VARCHAR},
+      </if>
+      <if test="hycNum != null" >
+        hycNum = #{hycNum,jdbcType=VARCHAR},
+      </if>
+      <if test="kcNum != null" >
+        kcNum = #{kcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="qcNum != null" >
+        qcNum = #{qcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xwNum != null" >
+        xwNum = #{xwNum,jdbcType=VARCHAR},
+      </if>
+      <if test="ywNum != null" >
+        ywNum = #{ywNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xbNum != null" >
+        xbNum = #{xbNum,jdbcType=VARCHAR},
+      </if>
+      <if test="twNum != null" >
+        twNum = #{twNum,jdbcType=VARCHAR},
+      </if>
+      <if test="jkNum != null" >
+        jkNum = #{jkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="hdNum != null" >
+        hdNum = #{hdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xcNum != null" >
+        xcNum = #{xcNum,jdbcType=VARCHAR},
+      </if>
+      <if test="zdNum != null" >
+        zdNum = #{zdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xkNum != null" >
+        xkNum = #{xkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="kjkNum != null" >
+        kjkNum = #{kjkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sxfNum != null" >
+        sxfNum = #{sxfNum,jdbcType=VARCHAR},
+      </if>
+      <if test="zhidNum != null" >
+        zhidNum = #{zhidNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xxfNum != null" >
+        xxfNum = #{xxfNum,jdbcType=VARCHAR},
+      </if>
+      <if test="qxkNum != null" >
+        qxkNum = #{qxkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="hbkNum != null" >
+        hbkNum = #{hbkNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xjNum != null" >
+        xjNum = #{xjNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xgNum != null" >
+        xgNum = #{xgNum,jdbcType=VARCHAR},
+      </if>
+      <if test="lwNum != null" >
+        lwNum = #{lwNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tbActive != null" >
+        tbActive = #{tbActive,jdbcType=SMALLINT},
+      </if>
+      <if test="ljActive != null" >
+        ljActive = #{ljActive,jdbcType=SMALLINT},
+      </if>
+      <if test="pjActive != null" >
+        pjActive = #{pjActive,jdbcType=SMALLINT},
+      </if>
+      <if test="txActive != null" >
+        txActive = #{txActive,jdbcType=SMALLINT},
+      </if>
+      <if test="lk1Active != null" >
+        lk1Active = #{lk1Active,jdbcType=SMALLINT},
+      </if>
+      <if test="lk2Active != null" >
+        lk2Active = #{lk2Active,jdbcType=SMALLINT},
+      </if>
+      <if test="lk3Active != null" >
+        lk3Active = #{lk3Active,jdbcType=SMALLINT},
+      </if>
+      <if test="hzkcActive != null" >
+        hzkcActive = #{hzkcActive,jdbcType=SMALLINT},
+      </if>
+      <if test="lbkcActive != null" >
+        lbkcActive = #{lbkcActive,jdbcType=SMALLINT},
+      </if>
+      <if test="pblActive != null" >
+        pblActive = #{pblActive,jdbcType=SMALLINT},
+      </if>
+      <if test="qblActive != null" >
+        qblActive = #{qblActive,jdbcType=SMALLINT},
+      </if>
+      <if test="ydActive != null" >
+        ydActive = #{ydActive,jdbcType=SMALLINT},
+      </if>
+      <if test="customerProductId != null" >
+        customerProductId = #{customerProductId,jdbcType=BIGINT},
+      </if>
+      <if test="dwNum != null" >
+        dwNum = #{dwNum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxs.common.bean.TypeProductLog" >
+    update t_type_product_log
+    set type = #{type,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      qycNum = #{qycNum,jdbcType=VARCHAR},
+      hycNum = #{hycNum,jdbcType=VARCHAR},
+      kcNum = #{kcNum,jdbcType=VARCHAR},
+      qcNum = #{qcNum,jdbcType=VARCHAR},
+      xwNum = #{xwNum,jdbcType=VARCHAR},
+      ywNum = #{ywNum,jdbcType=VARCHAR},
+      xbNum = #{xbNum,jdbcType=VARCHAR},
+      twNum = #{twNum,jdbcType=VARCHAR},
+      jkNum = #{jkNum,jdbcType=VARCHAR},
+      hdNum = #{hdNum,jdbcType=VARCHAR},
+      xcNum = #{xcNum,jdbcType=VARCHAR},
+      zdNum = #{zdNum,jdbcType=VARCHAR},
+      xkNum = #{xkNum,jdbcType=VARCHAR},
+      kjkNum = #{kjkNum,jdbcType=VARCHAR},
+      sxfNum = #{sxfNum,jdbcType=VARCHAR},
+      zhidNum = #{zhidNum,jdbcType=VARCHAR},
+      xxfNum = #{xxfNum,jdbcType=VARCHAR},
+      qxkNum = #{qxkNum,jdbcType=VARCHAR},
+      hbkNum = #{hbkNum,jdbcType=VARCHAR},
+      xjNum = #{xjNum,jdbcType=VARCHAR},
+      xgNum = #{xgNum,jdbcType=VARCHAR},
+      lwNum = #{lwNum,jdbcType=VARCHAR},
+      tbActive = #{tbActive,jdbcType=SMALLINT},
+      ljActive = #{ljActive,jdbcType=SMALLINT},
+      pjActive = #{pjActive,jdbcType=SMALLINT},
+      txActive = #{txActive,jdbcType=SMALLINT},
+      lk1Active = #{lk1Active,jdbcType=SMALLINT},
+      lk2Active = #{lk2Active,jdbcType=SMALLINT},
+      lk3Active = #{lk3Active,jdbcType=SMALLINT},
+      hzkcActive = #{hzkcActive,jdbcType=SMALLINT},
+      lbkcActive = #{lbkcActive,jdbcType=SMALLINT},
+      pblActive = #{pblActive,jdbcType=SMALLINT},
+      qblActive = #{qblActive,jdbcType=SMALLINT},
+      ydActive = #{ydActive,jdbcType=SMALLINT},
+      customerProductId = #{customerProductId,jdbcType=BIGINT},
+      dwNum = #{dwNum,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="queryListByParentId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from t_type_product_log
+    where customerProductId = #{customerProductId,jdbcType=BIGINT}
+  </select>
+</mapper>

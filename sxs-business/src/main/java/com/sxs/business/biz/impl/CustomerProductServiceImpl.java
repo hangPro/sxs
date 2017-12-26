@@ -1,12 +1,17 @@
 package com.sxs.business.biz.impl;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.sxs.business.biz.CustomerProductService;
-import com.sxs.business.mapper.CustomerProductLogMapper;
 import com.sxs.business.mapper.CustomerProductMapper;
+import com.sxs.business.mapper.TypeProductLogMapper;
+import com.sxs.business.mapper.TypeProductMapper;
 import com.sxs.business.plugin.PageHelper;
 import com.sxs.common.bean.CustomerProduct;
-import com.sxs.common.bean.CustomerProductLog;
+import com.sxs.common.bean.TypeProduct;
+import com.sxs.common.bean.TypeProductLog;
+import com.sxs.common.constats.GlobConts;
 import com.sxs.common.enums.OrderStatusEnum;
 import com.sxs.common.enums.PrintStatusEnum;
 import com.sxs.common.enums.StatusEnum;
@@ -24,6 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +43,9 @@ public class CustomerProductServiceImpl implements CustomerProductService {
     @Autowired
     private CustomerProductMapper mapper;
     @Autowired
-    private CustomerProductLogMapper logMapper;
+    private TypeProductMapper typeProductMapper;
+    @Autowired
+    private TypeProductLogMapper typeProductLogMapper;
 
     @Override
     public ReturnT add(AddProductParam param) {
@@ -57,8 +65,18 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         customerProduct.setUpdateTime(now);
         customerProduct.setStatus(StatusEnum.ENABLE.getCode());
         customerProduct.setOrderNo(DateUtils.formatNowDate(DateUtils.FORMAT_YYYYMMDDHHMMSS));
-        int id = mapper.insert(customerProduct);
-        return new ReturnT().sucessData(id);
+        mapper.insert(customerProduct);
+        if (param.getTypeProductMap() != null && !"".equals(param.getTypeProductMap())){
+            JSONArray array = JSONObject.parseObject(param.getTypeProductMap()).getJSONArray("typeProductMap");
+            array.forEach(v -> {
+                TypeProduct typeProduct = JSONObject.parseObject(v.toString(),TypeProduct.class);
+                typeProduct.setCreateTime(now);
+                typeProduct.setUpdateTime(now);
+                typeProduct.setCustomerProductId(customerProduct.getId());
+                typeProductMapper.insert(typeProduct);
+            });
+        }
+        return new ReturnT().sucessData(customerProduct.getId());
     }
 
     @Override
@@ -73,21 +91,29 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         }else if (param.getDepositAmount() == null || param.getDepositAmount().compareTo(BigDecimal.ZERO) <= 0){
             customerProduct.setOrderStatus(OrderStatusEnum.ONE.getCode());
         }
-        /**
-         * 保存修改历史
-         */
-        CustomerProduct log = mapper.getById(customerProduct.getId());
-        if (!log.equals(customerProduct)){
-            CustomerProductLog logInsert = new CustomerProductLog();
-            BeanUtils.copyProperties(log,logInsert);
-            logInsert.setCustomerProductId(customerProduct.getId());
-            logInsert.setId(null);
-            logMapper.insert(logInsert);
+        final Long customerProductId = customerProduct.getId();
+        if (param.getTypeProductMap() != null && !"".equals(param.getTypeProductMap())){
+            //历史
+            List<TypeProduct> typeProducts = typeProductMapper.selectByProductId(customerProduct.getId());
+            JSONArray array = JSONObject.parseObject(param.getTypeProductMap()).getJSONArray("typeProductMap");
+            array.forEach(v -> {
+                TypeProduct typeProduct = JSONObject.parseObject(v.toString(),TypeProduct.class);
+                typeProduct.setCreateTime(now);
+                typeProduct.setUpdateTime(now);
+                typeProduct.setCustomerProductId(customerProductId);
+                //不同才更新历史
+                typeProducts.stream().filter(a -> a.getType().equals(typeProduct.getType()) && !a.equals(typeProduct)).forEach(b -> {
+                    typeProductMapper.updateByProductId(typeProduct);
+                    TypeProductLog log = new TypeProductLog();
+                    BeanUtils.copyProperties(b,log);
+                    log.setId(null);
+                    typeProductLogMapper.insert(log);
+                });
+            });
         }
         mapper.updateById(customerProduct);
         return new ReturnT().successDefault();
     }
-
     @Override
     public ReturnT updateById(UpdateProductParam param) {
         CustomerProduct customerProduct = new CustomerProduct();
@@ -123,7 +149,17 @@ public class CustomerProductServiceImpl implements CustomerProductService {
     public ReturnT<CustomerProductView> getProductInfo(GetCustomerProductParam param) {
         CustomerProduct customerProduct = new CustomerProduct();
         BeanUtils.copyProperties(param,customerProduct);
-        return new ReturnT<>(mapper.get(customerProduct)).successDefault();
+        CustomerProductView view = mapper.get(customerProduct);
+        view.setTypeProducts(typeProductMapper.selectByProductId(customerProduct.getId()));
+        List<String> imgList = new ArrayList<>();
+        if (view.getImgUrl() != null && !"".equals(view.getImgUrl()) && !"null".equals(view.getImgUrl())){
+            List<String> list = new Gson().fromJson(view.getImgUrl(), List.class);
+            list.stream().filter(v -> v!= null).forEach(v -> {
+                imgList.add(GlobConts.IMAGE_ROOT_URL.concat(v));
+            });
+            view.setImgUrlList(imgList);
+        }
+        return new ReturnT<>(view).successDefault();
     }
 
     @Override
@@ -142,9 +178,18 @@ public class CustomerProductServiceImpl implements CustomerProductService {
     public ReturnT queryProductLogList(Long customerProductId) {
         ReturnT result = new ReturnT();
         Map map = new HashedMap();
-        map.put("list",logMapper.queryListByParentId(customerProductId));
+        map.put("list",typeProductLogMapper.queryListByParentId(customerProductId));
         result.setData(map);
         return result.successDefault();
+    }
+
+    @Override
+    public CustomerProduct print(Long id) {
+        mapper.updatePrintStatusById(id, PrintStatusEnum.TWO.getCode());
+        CustomerProduct customerProduct = mapper.getById(id);
+        List<TypeProduct> list = typeProductMapper.selectByProductId(id);
+        customerProduct.setTypeProducts(list);
+        return customerProduct;
     }
 }
 

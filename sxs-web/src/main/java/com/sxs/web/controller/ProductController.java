@@ -148,9 +148,29 @@ public class ProductController {
      * @param ids
      * @return
      */
-    @RequestMapping("print")
-    public ModelAndView print(Model model,Long[] ids){
+    @RequestMapping("printList")
+    public ModelAndView printList(Model model,Long[] ids){
         List<CustomerProduct> list = customerProductService.printList(ids);
+        // 报表数据源
+        JRDataSource jrDataSource = new JRBeanCollectionDataSource(list);
+        // 动态指定报表模板url
+        model.addAttribute("url", "/WEB-INF/jasper/MvcIReportExample.jasper");
+        model.addAttribute("format", "pdf"); // 报表格式
+        model.addAttribute("jrMainDataSource", jrDataSource);
+
+        return new ModelAndView("iReportView");
+    }
+
+    /**
+     * android打印详情
+     * @param id
+     * @return
+     */
+    @RequestMapping("print")
+    public ModelAndView print(Model model,Long id){
+        CustomerProduct customerProduct = customerProductService.print(id);
+        List<CustomerProduct> list = new ArrayList<>(1);
+        list.add(customerProduct);
         // 报表数据源
         JRDataSource jrDataSource = new JRBeanCollectionDataSource(list);
         // 动态指定报表模板url

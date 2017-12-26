@@ -33,5 +33,7 @@ public interface CustomerProductService {
 
     List<CustomerProduct> printList(Long[] ids);
 
+    CustomerProduct print(Long id);
+
     ReturnT queryProductLogList(Long customerProductId);
 }

@@ -1,6 +1,7 @@
 package com.sxs.common.bean;
 
 import com.google.gson.Gson;
+import com.sxs.common.constats.GlobConts;
 import com.sxs.common.enums.BodyStatusEnum;
 import com.sxs.common.enums.ProductTypeEnum;
 import com.sxs.common.enums.SexEnum;
@@ -252,7 +253,11 @@ public class CustomerProduct extends PageObjectBase{
 
     private String remark1;
 
-    private List<String> imgUrl;
+    private List<String> imgUrlList;
+
+    private String imgUrl;
+
+    private List<TypeProduct> typeProducts;
 
     public Long getId() {
         return id;
@@ -727,12 +732,28 @@ public class CustomerProduct extends PageObjectBase{
         this.remark = remark;
     }
 
-    public List getImgUrl() {
+    public String getImgUrl() {
         return imgUrl;
     }
 
     public void setImgUrl(String imgUrl) {
-        this.imgUrl = new Gson().fromJson(imgUrl, List.class);
+        this.imgUrl = imgUrl;
+    }
+
+    public List<String> getImgUrlList() {
+        return imgUrlList;
+    }
+
+    public void setImgUrlList(List<String>  imgUrlList) {
+        if (imgUrl != null && !"".equals(imgUrl) && !"null".equals(imgUrl)) {
+            List<String> list = new Gson().fromJson(imgUrl, List.class);
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) != null) {
+                    list.set(i, GlobConts.IMAGE_ROOT_URL.concat(list.get(i)));
+                }
+            }
+            this.imgUrlList = list;
+        }
     }
 
     public Integer getPblActive() {
@@ -783,99 +804,11 @@ public class CustomerProduct extends PageObjectBase{
         this.remark1 = remark1;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        CustomerProduct that = (CustomerProduct) o;
-
-        if (getHycNum() != null ? !getHycNum().equals(that.getHycNum()) : that.getHycNum() != null) return false;
-        if (getQycNum() != null ? !getQycNum().equals(that.getQycNum()) : that.getQycNum() != null) return false;
-        if (getKcNum() != null ? !getKcNum().equals(that.getKcNum()) : that.getKcNum() != null) return false;
-        if (getQcNum() != null ? !getQcNum().equals(that.getQcNum()) : that.getQcNum() != null) return false;
-        if (getXwNum() != null ? !getXwNum().equals(that.getXwNum()) : that.getXwNum() != null) return false;
-        if (getYwNum() != null ? !getYwNum().equals(that.getYwNum()) : that.getYwNum() != null) return false;
-        if (getXbNum() != null ? !getXbNum().equals(that.getXbNum()) : that.getXbNum() != null) return false;
-        if (getDwNum() != null ? !getDwNum().equals(that.getDwNum()) : that.getDwNum() != null) return false;
-        if (getTwNum() != null ? !getTwNum().equals(that.getTwNum()) : that.getTwNum() != null) return false;
-        if (getJkNum() != null ? !getJkNum().equals(that.getJkNum()) : that.getJkNum() != null) return false;
-        if (getHdNum() != null ? !getHdNum().equals(that.getHdNum()) : that.getHdNum() != null) return false;
-        if (getXcNum() != null ? !getXcNum().equals(that.getXcNum()) : that.getXcNum() != null) return false;
-        if (getZdNum() != null ? !getZdNum().equals(that.getZdNum()) : that.getZdNum() != null) return false;
-        if (getXkNum() != null ? !getXkNum().equals(that.getXkNum()) : that.getXkNum() != null) return false;
-        if (getKjkNum() != null ? !getKjkNum().equals(that.getKjkNum()) : that.getKjkNum() != null) return false;
-        if (getSxfNum() != null ? !getSxfNum().equals(that.getSxfNum()) : that.getSxfNum() != null) return false;
-        if (getZhidNum() != null ? !getZhidNum().equals(that.getZhidNum()) : that.getZhidNum() != null) return false;
-        if (getXxfNum() != null ? !getXxfNum().equals(that.getXxfNum()) : that.getXxfNum() != null) return false;
-        if (getQxkNum() != null ? !getQxkNum().equals(that.getQxkNum()) : that.getQxkNum() != null) return false;
-        if (getHbkNum() != null ? !getHbkNum().equals(that.getHbkNum()) : that.getHbkNum() != null) return false;
-        if (getXjNum() != null ? !getXjNum().equals(that.getXjNum()) : that.getXjNum() != null) return false;
-        if (getXgNum() != null ? !getXgNum().equals(that.getXgNum()) : that.getXgNum() != null) return false;
-        if (getLwNum() != null ? !getLwNum().equals(that.getLwNum()) : that.getLwNum() != null) return false;
-        if (getTbActive() != null ? !getTbActive().equals(that.getTbActive()) : that.getTbActive() != null)
-            return false;
-        if (getYdActive() != null ? !getYdActive().equals(that.getYdActive()) : that.getYdActive() != null)
-            return false;
-        if (getLjActive() != null ? !getLjActive().equals(that.getLjActive()) : that.getLjActive() != null)
-            return false;
-        if (getPjActive() != null ? !getPjActive().equals(that.getPjActive()) : that.getPjActive() != null)
-            return false;
-        if (getTxActive() != null ? !getTxActive().equals(that.getTxActive()) : that.getTxActive() != null)
-            return false;
-        if (getLk1Active() != null ? !getLk1Active().equals(that.getLk1Active()) : that.getLk1Active() != null)
-            return false;
-        if (getLk2Active() != null ? !getLk2Active().equals(that.getLk2Active()) : that.getLk2Active() != null)
-            return false;
-        if (getLk3Active() != null ? !getLk3Active().equals(that.getLk3Active()) : that.getLk3Active() != null)
-            return false;
-        if (getHzkcActive() != null ? !getHzkcActive().equals(that.getHzkcActive()) : that.getHzkcActive() != null)
-            return false;
-        if (getLbkcActive() != null ? !getLbkcActive().equals(that.getLbkcActive()) : that.getLbkcActive() != null)
-            return false;
-        if (getPblActive() != null ? !getPblActive().equals(that.getPblActive()) : that.getPblActive() != null)
-            return false;
-        return getQblActive() != null ? getQblActive().equals(that.getQblActive()) : that.getQblActive() == null;
-
+    public List<TypeProduct> getTypeProducts() {
+        return typeProducts;
     }
 
-    @Override
-    public int hashCode() {
-        int result = getHycNum() != null ? getHycNum().hashCode() : 0;
-        result = 31 * result + (getQycNum() != null ? getQycNum().hashCode() : 0);
-        result = 31 * result + (getKcNum() != null ? getKcNum().hashCode() : 0);
-        result = 31 * result + (getQcNum() != null ? getQcNum().hashCode() : 0);
-        result = 31 * result + (getXwNum() != null ? getXwNum().hashCode() : 0);
-        result = 31 * result + (getYwNum() != null ? getYwNum().hashCode() : 0);
-        result = 31 * result + (getXbNum() != null ? getXbNum().hashCode() : 0);
-        result = 31 * result + (getDwNum() != null ? getDwNum().hashCode() : 0);
-        result = 31 * result + (getTwNum() != null ? getTwNum().hashCode() : 0);
-        result = 31 * result + (getJkNum() != null ? getJkNum().hashCode() : 0);
-        result = 31 * result + (getHdNum() != null ? getHdNum().hashCode() : 0);
-        result = 31 * result + (getXcNum() != null ? getXcNum().hashCode() : 0);
-        result = 31 * result + (getZdNum() != null ? getZdNum().hashCode() : 0);
-        result = 31 * result + (getXkNum() != null ? getXkNum().hashCode() : 0);
-        result = 31 * result + (getKjkNum() != null ? getKjkNum().hashCode() : 0);
-        result = 31 * result + (getSxfNum() != null ? getSxfNum().hashCode() : 0);
-        result = 31 * result + (getZhidNum() != null ? getZhidNum().hashCode() : 0);
-        result = 31 * result + (getXxfNum() != null ? getXxfNum().hashCode() : 0);
-        result = 31 * result + (getQxkNum() != null ? getQxkNum().hashCode() : 0);
-        result = 31 * result + (getHbkNum() != null ? getHbkNum().hashCode() : 0);
-        result = 31 * result + (getXjNum() != null ? getXjNum().hashCode() : 0);
-        result = 31 * result + (getXgNum() != null ? getXgNum().hashCode() : 0);
-        result = 31 * result + (getLwNum() != null ? getLwNum().hashCode() : 0);
-        result = 31 * result + (getTbActive() != null ? getTbActive().hashCode() : 0);
-        result = 31 * result + (getYdActive() != null ? getYdActive().hashCode() : 0);
-        result = 31 * result + (getLjActive() != null ? getLjActive().hashCode() : 0);
-        result = 31 * result + (getPjActive() != null ? getPjActive().hashCode() : 0);
-        result = 31 * result + (getTxActive() != null ? getTxActive().hashCode() : 0);
-        result = 31 * result + (getLk1Active() != null ? getLk1Active().hashCode() : 0);
-        result = 31 * result + (getLk2Active() != null ? getLk2Active().hashCode() : 0);
-        result = 31 * result + (getLk3Active() != null ? getLk3Active().hashCode() : 0);
-        result = 31 * result + (getHzkcActive() != null ? getHzkcActive().hashCode() : 0);
-        result = 31 * result + (getLbkcActive() != null ? getLbkcActive().hashCode() : 0);
-        result = 31 * result + (getPblActive() != null ? getPblActive().hashCode() : 0);
-        result = 31 * result + (getQblActive() != null ? getQblActive().hashCode() : 0);
-        return result;
+    public void setTypeProducts(List<TypeProduct> typeProducts) {
+        this.typeProducts = typeProducts;
     }
 }

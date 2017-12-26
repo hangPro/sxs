@@ -1,8 +1,7 @@
 package com.sxs.common.response;
 
-import com.google.gson.Gson;
 import com.sxs.common.bean.PageObjectBase;
-import com.sxs.common.constats.GlobConts;
+import com.sxs.common.bean.TypeProduct;
 import com.sxs.common.enums.BodyStatusEnum;
 import com.sxs.common.enums.ProductTypeEnum;
 import com.sxs.common.enums.SexEnum;
@@ -103,146 +102,6 @@ public class CustomerProductView extends PageObjectBase{
     private String sendStatusText = getSendStatusText();
 
     private Integer status;
-    /**
-     * 前衣长
-     */
-    private String qycNum;
-    /**
-     * 后衣长
-     */
-    private String hycNum;
-    /**
-     * 裤长
-     */
-    private String kcNum;
-    /**
-     * 裙长
-     */
-    private String qcNum;
-    /**
-     * 胸围
-     */
-    private String xwNum;
-    /**
-     * 腰围
-     */
-    private String ywNum;
-    /**
-     * 下摆
-     */
-    private String xbNum;
-    /**
-     * 肚围
-     */
-    private String dwNum;
-    /**
-     * 臀围
-     */
-    private String twNum;
-    /**
-     * 肩宽
-     */
-    private String jkNum;
-    /**
-     * 横档
-     */
-    private String hdNum;
-    /**
-     * 袖长
-     */
-    private String xcNum;
-    /**
-     * 中档
-     */
-    private String zdNum;
-    /**
-     * 袖口
-     */
-    private String xkNum;
-    /**
-     * 裤脚口
-     */
-    private String kjkNum;
-    /**
-     * 上袖肥
-     */
-    private String sxfNum;
-    /**
-     * 直档
-     */
-    private String zhidNum;
-    /**
-     * 下袖肥
-     */
-    private String xxfNum;
-    /**
-     * 前胸宽
-     */
-    private String qxkNum;
-    /**
-     * 后背宽
-     */
-    private String hbkNum;
-    /**
-     * 胸距
-     */
-    private String xjNum;
-    /**
-     * 胸高
-     */
-    private String xgNum;
-    /**
-     * 领围
-     */
-    private String lwNum;
-    /**
-     * 驼背：1：未选择 2：已选择
-     */
-    private Integer tbActive;
-    /**
-     * 有肚：1：未选择 2：已选择
-     */
-    private Integer ydActive;
-    /**
-     * 溜肩：1：未选择 2：已选择
-     */
-    private Integer ljActive;
-    /**
-     * 平肩：1：未选择 2：已选择
-     */
-    private Integer pjActive;
-    /**
-     * 挺胸：1：未选择 2：已选择
-     */
-    private Integer txActive;
-    /**
-     * 1颗扣：1：未选择 2：已选择
-     */
-    private Integer lk1Active;
-    /**
-     * 2颗扣：1：未选择 2：已选择
-     */
-    private Integer lk2Active;
-    /**
-     * 3颗扣：1：未选择 2：已选择
-     */
-    private Integer lk3Active;
-    /**
-     * 后中开叉：1：未选择 2：已选择
-     */
-    private Integer hzkcActive;
-    /**
-     * 俩边开叉：1：未选择 2：已选择
-     */
-    private Integer lbkcActive;
-    /**
-     * 平驳领：1：未选择 2：已选择
-     */
-    private Integer pblActive;
-    /**
-     * 枪驳领：1：未选择 2：已选择
-     */
-    private Integer qblActive;
 
     private Integer orderStatus;
 
@@ -254,7 +113,11 @@ public class CustomerProductView extends PageObjectBase{
 
     private String remark1;
 
-    private List<String> imgUrl;
+    private String imgUrl;
+
+    private List<String> imgUrlList;
+
+    private List<TypeProduct> typeProducts;
 
     public Long getId() {
         return id;
@@ -457,262 +320,6 @@ public class CustomerProductView extends PageObjectBase{
         this.status = status;
     }
 
-    public String getQycNum() {
-        return qycNum;
-    }
-
-    public void setQycNum(String qycNum) {
-        this.qycNum = qycNum;
-    }
-
-    public String getHycNum() {
-        return hycNum;
-    }
-
-    public void setHycNum(String hycNum) {
-        this.hycNum = hycNum;
-    }
-
-    public String getKcNum() {
-        return kcNum;
-    }
-
-    public void setKcNum(String kcNum) {
-        this.kcNum = kcNum;
-    }
-
-    public String getQcNum() {
-        return qcNum;
-    }
-
-    public void setQcNum(String qcNum) {
-        this.qcNum = qcNum;
-    }
-
-    public String getXwNum() {
-        return xwNum;
-    }
-
-    public void setXwNum(String xwNum) {
-        this.xwNum = xwNum;
-    }
-
-    public String getYwNum() {
-        return ywNum;
-    }
-
-    public void setYwNum(String ywNum) {
-        this.ywNum = ywNum;
-    }
-
-    public String getXbNum() {
-        return xbNum;
-    }
-
-    public void setXbNum(String xbNum) {
-        this.xbNum = xbNum;
-    }
-
-    public String getTwNum() {
-        return twNum;
-    }
-
-    public void setTwNum(String twNum) {
-        this.twNum = twNum;
-    }
-
-    public String getJkNum() {
-        return jkNum;
-    }
-
-    public void setJkNum(String jkNum) {
-        this.jkNum = jkNum;
-    }
-
-    public String getHdNum() {
-        return hdNum;
-    }
-
-    public void setHdNum(String hdNum) {
-        this.hdNum = hdNum;
-    }
-
-    public String getXcNum() {
-        return xcNum;
-    }
-
-    public void setXcNum(String xcNum) {
-        this.xcNum = xcNum;
-    }
-
-    public String getZdNum() {
-        return zdNum;
-    }
-
-    public void setZdNum(String zdNum) {
-        this.zdNum = zdNum;
-    }
-
-    public String getXkNum() {
-        return xkNum;
-    }
-
-    public void setXkNum(String xkNum) {
-        this.xkNum = xkNum;
-    }
-
-    public String getKjkNum() {
-        return kjkNum;
-    }
-
-    public void setKjkNum(String kjkNum) {
-        this.kjkNum = kjkNum;
-    }
-
-    public String getSxfNum() {
-        return sxfNum;
-    }
-
-    public void setSxfNum(String sxfNum) {
-        this.sxfNum = sxfNum;
-    }
-
-    public String getZhidNum() {
-        return zhidNum;
-    }
-
-    public void setZhidNum(String zhidNum) {
-        this.zhidNum = zhidNum;
-    }
-
-    public String getXxfNum() {
-        return xxfNum;
-    }
-
-    public void setXxfNum(String xxfNum) {
-        this.xxfNum = xxfNum;
-    }
-
-    public String getQxkNum() {
-        return qxkNum;
-    }
-
-    public void setQxkNum(String qxkNum) {
-        this.qxkNum = qxkNum;
-    }
-
-    public String getHbkNum() {
-        return hbkNum;
-    }
-
-    public void setHbkNum(String hbkNum) {
-        this.hbkNum = hbkNum;
-    }
-
-    public String getXjNum() {
-        return xjNum;
-    }
-
-    public void setXjNum(String xjNum) {
-        this.xjNum = xjNum;
-    }
-
-    public String getXgNum() {
-        return xgNum;
-    }
-
-    public void setXgNum(String xgNum) {
-        this.xgNum = xgNum;
-    }
-
-    public String getLwNum() {
-        return lwNum;
-    }
-
-    public void setLwNum(String lwNum) {
-        this.lwNum = lwNum;
-    }
-
-    public Integer getTbActive() {
-        return tbActive;
-    }
-
-    public void setTbActive(Integer tbActive) {
-        this.tbActive = tbActive;
-    }
-
-    public Integer getYdActive() {
-        return ydActive;
-    }
-
-    public void setYdActive(Integer ydActive) {
-        this.ydActive = ydActive;
-    }
-
-    public Integer getLjActive() {
-        return ljActive;
-    }
-
-    public void setLjActive(Integer ljActive) {
-        this.ljActive = ljActive;
-    }
-
-    public Integer getPjActive() {
-        return pjActive;
-    }
-
-    public void setPjActive(Integer pjActive) {
-        this.pjActive = pjActive;
-    }
-
-    public Integer getTxActive() {
-        return txActive;
-    }
-
-    public void setTxActive(Integer txActive) {
-        this.txActive = txActive;
-    }
-
-    public Integer getLk1Active() {
-        return lk1Active;
-    }
-
-    public void setLk1Active(Integer lk1Active) {
-        this.lk1Active = lk1Active;
-    }
-
-    public Integer getLk2Active() {
-        return lk2Active;
-    }
-
-    public void setLk2Active(Integer lk2Active) {
-        this.lk2Active = lk2Active;
-    }
-
-    public Integer getLk3Active() {
-        return lk3Active;
-    }
-
-    public void setLk3Active(Integer lk3Active) {
-        this.lk3Active = lk3Active;
-    }
-
-    public Integer getHzkcActive() {
-        return hzkcActive;
-    }
-
-    public void setHzkcActive(Integer hzkcActive) {
-        this.hzkcActive = hzkcActive;
-    }
-
-    public Integer getLbkcActive() {
-        return lbkcActive;
-    }
-
-    public void setLbkcActive(Integer lbkcActive) {
-        this.lbkcActive = lbkcActive;
-    }
-
     public Integer getOrderStatus() {
         return orderStatus;
     }
@@ -729,43 +336,20 @@ public class CustomerProductView extends PageObjectBase{
         this.remark = remark;
     }
 
-    public List<String> getImgUrl() {
+    public String getImgUrl() {
         return imgUrl;
     }
 
     public void setImgUrl(String imgUrl) {
-        List<String> list = new Gson().fromJson(imgUrl, List.class);
-        for (int i=0;i<list.size();i++){
-            if (list.get(i) != null){
-                list.set(i,GlobConts.IMAGE_ROOT_URL.concat(list.get(i)));
-            }
-        }
-
-        this.imgUrl = list;
+        this.imgUrl = imgUrl;
     }
 
-    public Integer getPblActive() {
-        return pblActive;
+    public List<String> getImgUrlList() {
+        return imgUrlList;
     }
 
-    public void setPblActive(Integer pblActive) {
-        this.pblActive = pblActive;
-    }
-
-    public Integer getQblActive() {
-        return qblActive;
-    }
-
-    public void setQblActive(Integer qblActive) {
-        this.qblActive = qblActive;
-    }
-
-    public String getDwNum() {
-        return dwNum;
-    }
-
-    public void setDwNum(String dwNum) {
-        this.dwNum = dwNum;
+    public void setImgUrlList(List<String> imgUrlList) {
+        this.imgUrlList = imgUrlList;
     }
 
     public Integer getPrintStatus() {
@@ -790,5 +374,13 @@ public class CustomerProductView extends PageObjectBase{
 
     public void setRemark1(String remark1) {
         this.remark1 = remark1;
+    }
+
+    public List<TypeProduct> getTypeProducts() {
+        return typeProducts;
+    }
+
+    public void setTypeProducts(List<TypeProduct> typeProducts) {
+        this.typeProducts = typeProducts;
     }
 }

@@ -67,9 +67,9 @@
   </resultMap>
 
   <sql id="Base_Column_List">
-    id, type, customerName, customerPhone, orderTime, sendTime, createTime, updateTime, 
+    id, type, customerName, customerPhone, orderTime, sendTime, createTime, updateTime,
     companyName, tbAccNo, tbOrderNo, orderNo, address, wechart, customerSex, clothNo, 
-    price, orderAmount, depositAmount, clothDesc, bodyStatus, sendStatus, status, qycNum, 
+    price, orderAmount, depositAmount, clothDesc, bodyStatus, sendStatus, status, qycNum,
     hycNum, kcNum, qcNum, xwNum, dwNum, ywNum, xbNum, twNum, jkNum, hdNum, xcNum, zdNum, xkNum,
     kjkNum, sxfNum, zhidNum, xxfNum, qxkNum, hbkNum, xjNum, xgNum, lwNum, tbActive, ydActive, ljActive,
     pjActive, txActive, lk1Active, lk2Active, lk3Active, hzkcActive, lbkcActive, pblActive, qblActive,
@@ -116,9 +116,6 @@
   <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.sxs.common.bean.CustomerProduct">
     insert into t_customer_product
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="type != null">
         type,
       </if>
@@ -304,9 +301,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
       <if test="type != null">
         #{type,jdbcType=VARCHAR},
       </if>
@@ -707,6 +701,7 @@
     select <include refid="Base_Column_List" />
     from t_customer_product
     <include refid="whereClause" />
+    order by createTime desc
     limit 1
   </select>
 
@@ -740,5 +735,10 @@
     <foreach collection="ids" item="item" index="index" open="(" separator="," close=")">
       #{item}
     </foreach>
+  </update>
+
+  <update id="updatePrintStatusById">
+    update t_customer_product set printStatus = #{printStatus,jdbcType=SMALLINT},printCount = printCount + 1
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
