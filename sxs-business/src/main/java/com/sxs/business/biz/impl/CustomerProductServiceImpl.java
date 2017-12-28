@@ -54,6 +54,9 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         CustomerProduct customerProduct = new CustomerProduct();
         BeanUtils.copyProperties(param,customerProduct);
         Gson gson = new Gson();
+        if (param.getFileStr() != null && param.getFileStr().size() > 6){
+            return new ReturnT().failureData("图片最多只能上传6张！");
+        }
         customerProduct.setImgUrl(gson.toJson(param.getFileStr()));
         Date now = new Date();
         if (customerProduct.getOrderTime() == null){

@@ -92,6 +92,9 @@ public class UploadController {
             LOGGER.error("文件上传失败",e);
             return returnT.failureData("文件上传出错！");
         }
+        if (filePathList.size() >6){
+            return returnT.failureData("图片最多只能上传6张");
+        }
         returnT.setData(filePathList);
         return returnT.successDefault();
     }
