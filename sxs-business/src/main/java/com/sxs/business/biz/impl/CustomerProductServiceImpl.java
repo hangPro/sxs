@@ -24,6 +24,7 @@ import com.sxs.common.response.CustomerProductView;
 import com.sxs.common.response.PageList;
 import com.sxs.common.response.ReturnT;
 import com.sxs.common.utils.DateUtils;
+import com.sxs.common.utils.ImageEnableUtil;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,7 +103,6 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         CustomerProduct customerProduct = new CustomerProduct();
         BeanUtils.copyProperties(param,customerProduct);
         Date now = new Date();
-        customerProduct.setCreateTime(now);
         customerProduct.setUpdateTime(now);
         if (OrderStatusEnum.ONE.getCode().equals(param.getOrderStatus()) && customerProduct.getDepositAmount() != null && customerProduct.getDepositAmount().compareTo(BigDecimal.ZERO)>0){
             customerProduct.setOrderStatus(OrderStatusEnum.TWO.getCode());
@@ -178,7 +178,7 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         List<String> imgList = new ArrayList<>();
         if (view.getImgUrl() != null && !"".equals(view.getImgUrl()) && !"null".equals(view.getImgUrl())){
             List<String> list = new Gson().fromJson(view.getImgUrl(), List.class);
-            list.stream().filter(v -> v!= null).forEach(v -> {
+            list.stream().filter(v -> v!= null && ImageEnableUtil.isConnect(GlobConts.IMAGE_ROOT_URL.concat(v))).forEach(v -> {
                 imgList.add(GlobConts.IMAGE_ROOT_URL.concat(v));
             });
             view.setImgUrlList(imgList);
@@ -212,6 +212,7 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         mapper.updatePrintStatusById(id, PrintStatusEnum.TWO.getCode());
         CustomerProduct customerProduct = mapper.getById(id);
         List<TypeProduct> list = typeProductMapper.selectByProductId(id);
+        list.sort((a,b) -> a.getType().compareTo(b.getType()));
         customerProduct.setTypeProducts(list);
         return customerProduct;
     }

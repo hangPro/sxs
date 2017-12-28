@@ -5,6 +5,7 @@ import com.sxs.common.constats.GlobConts;
 import com.sxs.common.enums.BodyStatusEnum;
 import com.sxs.common.enums.ProductTypeEnum;
 import com.sxs.common.enums.SexEnum;
+import com.sxs.common.utils.ImageEnableUtil;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -748,7 +749,7 @@ public class CustomerProduct extends PageObjectBase{
         if (imgUrl != null && !"".equals(imgUrl) && !"null".equals(imgUrl)) {
             List<String> list = new Gson().fromJson(imgUrl, List.class);
             for (int i = 0; i < list.size(); i++) {
-                if (list.get(i) != null) {
+                if (list.get(i) != null && ImageEnableUtil.isConnect(GlobConts.IMAGE_ROOT_URL.concat(list.get(i)))) {
                     list.set(i, GlobConts.IMAGE_ROOT_URL.concat(list.get(i)));
                 }
             }

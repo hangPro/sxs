@@ -17,7 +17,7 @@ public class Base64Util {
      */
     public static String encodePassWord(String pwd){
         StringBuilder sb = new StringBuilder();
-        sb.append(PropertieUtils.getString(PASSWORD_ENCODE_KEY,"^^dyk-website@#")).append(pwd);
+        sb.append(PropertieUtils.getString(PASSWORD_ENCODE_KEY,"^^test@#")).append(pwd);
         return encode(sb.toString());
     }
 
@@ -303,5 +303,9 @@ public class Base64Util {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Base64Util.encodePassWord("123456"));
     }
 }

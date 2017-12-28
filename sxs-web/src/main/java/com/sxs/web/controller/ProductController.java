@@ -163,7 +163,7 @@ public class ProductController {
 
     /**
      * android打印详情
-     * @param id
+     * @param ids
      * @return
      */
     @RequestMapping("print")
