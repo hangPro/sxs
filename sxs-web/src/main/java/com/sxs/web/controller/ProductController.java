@@ -167,8 +167,8 @@ public class ProductController {
      * @return
      */
     @RequestMapping("print")
-    public ModelAndView print(Model model,Long id){
-        CustomerProduct customerProduct = customerProductService.print(id);
+    public ModelAndView print(Model model,Long[] ids){
+        CustomerProduct customerProduct = customerProductService.print(ids[0]);
         List<CustomerProduct> list = new ArrayList<>(1);
         list.add(customerProduct);
         // 报表数据源

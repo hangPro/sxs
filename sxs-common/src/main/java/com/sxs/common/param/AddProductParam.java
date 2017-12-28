@@ -1,6 +1,7 @@
 package com.sxs.common.param;
 
 import com.sxs.common.session.SessionParameter;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 import java.math.BigDecimal;
@@ -17,11 +18,13 @@ public class AddProductParam extends SessionParameter {
      * 姓名
      */
     @NotBlank(message = "客户姓名不能为空！")
+    @Length(min=1, max=32, message="姓名输入不正常！")
     private String customerName;
     /**
      * 手机号
      */
     @NotBlank(message = "客户手机号不能为空！")
+    @Length(min=11, max=11, message="手机号码格式不正确！")
     private String customerPhone;
     /**
      * 订单日期

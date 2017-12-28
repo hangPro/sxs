@@ -73,15 +73,14 @@ public class UploadController {
     }
 
     @RequestMapping(value = "filedata")
-    public ReturnT uploadFile(HttpServletRequest request){
+    public ReturnT uploadFile(MultipartHttpServletRequest multiRequest){
         ReturnT returnT = new ReturnT();
         List<String> filePathList = new ArrayList<>(6);
-        MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
         try {
             Iterator<String> fileNames = multiRequest.getFileNames();
             while (fileNames.hasNext()) { //循环遍历
                 MultipartFile file = multiRequest.getFile(fileNames.next()); //取出单个文件
-                String path = request.getSession().getServletContext().getRealPath("/");
+                String path = multiRequest.getSession().getServletContext().getRealPath("/");
                 byte[] bytes = IOUtils.toByteArray(file.getInputStream());
                 String rootPath =  GlobConts.UPLOAD_IMAGE_FATH.concat(DateUtils.formatNowDate("yyyyMMdd")).concat("/");
                 String filePath = rootPath.concat(String.valueOf(System.currentTimeMillis())).concat(getFilePrefix(file.getOriginalFilename()));

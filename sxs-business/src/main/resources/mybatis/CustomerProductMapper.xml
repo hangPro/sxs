@@ -93,6 +93,12 @@
       <if test="status != null">and status = #{status}</if>
     </where>
   </sql>
+  <sql id="getWhereClause">
+    <where>
+      <if test="id != null">and id = #{id}</if>
+      <if test="customerName != null and ''!= customerName">and customerName = #{customerName}</if>
+    </where>
+  </sql>
 
   <select id="query" resultMap="BaseResultMap" parameterType="com.sxs.common.bean.CustomerProduct" >
     select <include refid="Base_Column_List" />
@@ -700,7 +706,7 @@
   <select id="get" resultType="com.sxs.common.response.CustomerProductView" parameterType="com.sxs.common.bean.CustomerProduct">
     select <include refid="Base_Column_List" />
     from t_customer_product
-    <include refid="whereClause" />
+    <include refid="getWhereClause" />
     order by createTime desc
     limit 1
   </select>

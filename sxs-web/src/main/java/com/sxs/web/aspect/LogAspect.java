@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -97,6 +98,9 @@ public class LogAspect implements Ordered {
                         continue;
                     }
                     if (args[i].getClass().getName().equals(HTTP_SERVLET_REQUEST)) {
+                        continue;
+                    }
+                    if (args[i] instanceof HttpServletRequest){
                         continue;
                     }
                     paramMap.put(paramName, args[i]);

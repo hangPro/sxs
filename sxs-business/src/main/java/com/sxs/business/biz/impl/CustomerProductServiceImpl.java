@@ -14,6 +14,7 @@ import com.sxs.common.bean.TypeProductLog;
 import com.sxs.common.constats.GlobConts;
 import com.sxs.common.enums.OrderStatusEnum;
 import com.sxs.common.enums.PrintStatusEnum;
+import com.sxs.common.enums.ProductTypeEnum;
 import com.sxs.common.enums.StatusEnum;
 import com.sxs.common.param.AddProductParam;
 import com.sxs.common.param.GetCustomerProductParam;
@@ -66,15 +67,32 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         customerProduct.setStatus(StatusEnum.ENABLE.getCode());
         customerProduct.setOrderNo(DateUtils.formatNowDate(DateUtils.FORMAT_YYYYMMDDHHMMSS));
         mapper.insert(customerProduct);
+        List<String> types = new ArrayList<>(3);
         if (param.getTypeProductMap() != null && !"".equals(param.getTypeProductMap())){
             JSONArray array = JSONObject.parseObject(param.getTypeProductMap()).getJSONArray("typeProductMap");
+            if(array.size() == 0){
+                return new ReturnT().failureData("没有尺寸信息！");
+            }
             array.forEach(v -> {
                 TypeProduct typeProduct = JSONObject.parseObject(v.toString(),TypeProduct.class);
                 typeProduct.setCreateTime(now);
                 typeProduct.setUpdateTime(now);
                 typeProduct.setCustomerProductId(customerProduct.getId());
+                types.add(typeProduct.getType());
                 typeProductMapper.insert(typeProduct);
             });
+            for(ProductTypeEnum productTypeEnum : ProductTypeEnum.values()){
+                if (types.stream().noneMatch(a -> a.equals(productTypeEnum.getCode()))){
+                    TypeProduct typeProduct = new TypeProduct();
+                    typeProduct.setCreateTime(now);
+                    typeProduct.setUpdateTime(now);
+                    typeProduct.setType(productTypeEnum.getCode());
+                    typeProduct.setCustomerProductId(customerProduct.getId());
+                    typeProductMapper.insert(typeProduct);
+                }
+            }
+        } else {
+           return new ReturnT().failureData("没有尺寸信息！");
         }
         return new ReturnT().sucessData(customerProduct.getId());
     }
@@ -109,6 +127,9 @@ public class CustomerProductServiceImpl implements CustomerProductService {
                     log.setId(null);
                     typeProductLogMapper.insert(log);
                 });
+                if (typeProducts.stream().noneMatch(a -> a.getType().equals(typeProduct.getType()))){
+                    typeProductMapper.insert(typeProduct);
+                }
             });
         }
         mapper.updateById(customerProduct);
@@ -150,7 +171,10 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         CustomerProduct customerProduct = new CustomerProduct();
         BeanUtils.copyProperties(param,customerProduct);
         CustomerProductView view = mapper.get(customerProduct);
-        view.setTypeProducts(typeProductMapper.selectByProductId(customerProduct.getId()));
+        if (view == null){
+            return new ReturnT<>().successDefault();
+        }
+        view.setTypeProducts(typeProductMapper.selectByProductId(view.getId()));
         List<String> imgList = new ArrayList<>();
         if (view.getImgUrl() != null && !"".equals(view.getImgUrl()) && !"null".equals(view.getImgUrl())){
             List<String> list = new Gson().fromJson(view.getImgUrl(), List.class);

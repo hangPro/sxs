@@ -40,7 +40,7 @@
 	<!-- ===================================================================== -->
     <!-- Root logger                                                           -->
     <!-- ===================================================================== -->
-	<logger name="com.sxs.business" level="INFO" additivity="false">
+	<logger name="com.sxs.business" level="DEBUG" additivity="false">
 		<appender-ref ref="console" />
 		<appender-ref ref="STDOUT_LOGGING" />
 	</logger>
