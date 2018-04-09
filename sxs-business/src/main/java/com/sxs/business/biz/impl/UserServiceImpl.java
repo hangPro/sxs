@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
         if(!encodePwd.equals(u.getPassword())){
             return new ReturnT().failureData(ResultCodeEnum.LOGIN_PASSWORD_ERROR);
         }
-        //登录成功
+        //登录成功Xl50ZXN0QCN5ZWppbmc=
         return new ReturnT().sucessData(u);
     }
 
