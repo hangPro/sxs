@@ -306,6 +306,6 @@ public class Base64Util {
     }
 
     public static void main(String[] args) {
-        System.out.println(Base64Util.encodePassWord("123456"));
+        System.out.println(Base64Util.encodePassWord("yejing"));
     }
 }

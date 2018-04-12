@@ -158,7 +158,7 @@
             shrinkToFit: true,
             rowNum: 14,
             rowList: [10, 20, 30],
-            colNames: ['id', '姓名', '类型', '订单日期','公司','区域','送货时间','状态', '操作'],
+            colNames: ['id', '姓名', '订单日期','公司','区域','送货时间','状态', '操作'],
             colModel: [
                 {
                     name: 'id',
@@ -170,14 +170,6 @@
                     name: 'customerName',
                     index: 'customerName',
                     width: 90
-                },
-                {
-                    name: 'type',
-                    index: 'type',
-                    width: 90,
-                    formatter : function(cellvalue, options, rowObject){
-                       return types[cellvalue];
-                    }
                 },
                 {
                     name: 'orderTime',

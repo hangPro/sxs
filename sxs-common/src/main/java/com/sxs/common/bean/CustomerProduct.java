@@ -272,6 +272,10 @@ public class CustomerProduct extends PageObjectBase{
         return ProductTypeEnum.getEnumMessageByCode(type);
     }
 
+    public void setTypeText() {
+        this.typeText = ProductTypeEnum.getEnumMessageByCode(type);
+    }
+
     public String getType() {
         return type;
     }

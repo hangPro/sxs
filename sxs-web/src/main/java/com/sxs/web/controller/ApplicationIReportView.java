@@ -8,8 +8,8 @@ import java.util.Map;
 
 /**
  * SpringMVC + IReport整合 视图处理扩展
- * @Author 许亮
- * @Create 2015-11-7 21:38:18
+ * @Author Hang
+ * @Create 2017-11-7 21:38:18
  */
 public class ApplicationIReportView extends JasperReportsMultiFormatView {
     private JasperReport jasperReport;
